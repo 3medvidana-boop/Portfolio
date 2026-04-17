@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case — Designing a Prompt Marketplace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Inter:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header header--inner">
+    <a href="../index.html" class="header__home" aria-label="Home">
+      <img class="header__home-icon" src="../assets/images/logo56.svg" alt="Logo" width="56" height="56">
+      <img class="header__menu-icon header__menu-icon--open" src="../assets/icons/icon-manu.svg" alt="Menu" width="48" height="48">
+      <img class="header__menu-icon header__menu-icon--close" src="../assets/icons/icon-close.svg" alt="Close" width="48" height="48">
+    </a>
+    <div class="header__center">
+      <span class="header__name">Anastasiia Medvid</span>
+      <span class="header__role">UX/UI designer</span>
+    </div>
+    <a href="#" class="header__email js-contact-open" aria-label="Email">
+      <img class="header__email-icon" src="../assets/icons/icon-email.svg" alt="Email" width="48" height="48">
+    </a>
+    <a href="#" class="header__resume">
+      <span class="header__resume-label">Resume</span>
+      <img class="header__resume-arrow" src="../assets/icons/icon-arrow-right.svg" alt="" width="48" height="48">
+    </a>
+  </header>
+
+  <!-- Contact Form Overlay -->
+  <div class="contact-overlay" id="contact-overlay">
+    <div class="contact-overlay__backdrop"></div>
+    <div class="contact-overlay__panel">
+      <div class="contact-overlay__content">
+        <div class="contact-overlay__header">
+          <h2 class="contact-overlay__title">Let's break the ice</h2>
+          <button class="contact-overlay__close" aria-label="Close">
+            <img src="../assets/icons/icon-close.svg" alt="" width="48" height="48">
+          </button>
+        </div>
+        <form class="contact-overlay__form" novalidate action="https://formspree.io/f/xvzvbadp" method="POST">
+          <div class="contact-overlay__row">
+            <div class="contact-overlay__field">
+              <input class="contact-overlay__input" type="email" name="email" placeholder="Email" required>
+              <span class="contact-overlay__error"></span>
+            </div>
+            <div class="contact-overlay__field">
+              <input class="contact-overlay__input" type="text" name="name" placeholder="Name" required>
+              <span class="contact-overlay__error"></span>
+            </div>
+          </div>
+          <div class="contact-overlay__field">
+            <textarea class="contact-overlay__textarea" name="message" placeholder="What project can I help you with?" rows="5"></textarea>
+            <span class="contact-overlay__error"></span>
+          </div>
+          <div class="contact-overlay__bottom">
+            <button class="contact-overlay__submit" type="submit">
+              <span class="contact-overlay__submit-label">Send message</span>
+              <img class="contact-overlay__submit-arrow" src="../assets/icons/icon-arrow-right.svg" alt="" width="48" height="48">
+            </button>
+            <img class="contact-overlay__image" src="../assets/images/email-image.svg" alt="">
+          </div>
+        </form>
+        <div class="contact-overlay__success">
+          <p class="contact-overlay__success-text">Thank you! Your message has been sent.</p>
+          <button class="contact-overlay__again" type="button">
+            <span class="contact-overlay__again-label">Send one more</span>
+            <img class="contact-overlay__again-arrow" src="../assets/icons/icon-arrow-right.svg" alt="" width="48" height="48">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile / Tablet menu -->
+  <nav class="header__menu" aria-label="Main menu">
+    <img class="header__menu-left" src="../assets/images/manu-left.svg" alt="">
+    <div class="header__menu-content">
+      <a class="header__menu-link" href="../index.html">Home</a>
+      <a class="header__menu-link" href="../index.html#competences">Competences</a>
+      <a class="header__menu-link" href="../index.html#services">Services</a>
+      <a class="header__menu-link" href="../index.html#projects">Projects</a>
+      <a class="header__menu-link" href="../index.html#workflow">Workflow</a>
+      <a href="#" class="header__menu-email js-contact-open" aria-label="Email">
+        <img src="../assets/icons/icon-email.svg" alt="" width="48" height="48">
+      </a>
+    </div>
+    <img class="header__menu-bottom" src="../assets/images/manu-bottom.svg" alt="">
+  </nav>
+
+  <!-- Case Hero -->
+  <section class="case-hero">
+    <div class="case-hero__left">
+      <img src="../assets/images/case2-hero-left.svg" alt="">
+    </div>
+
+    <div class="case-hero__body">
+      <div class="case-hero__top">
+        <div class="case-hero__title-block">
+          <h1 class="case-hero__title">Designing a  Prompt Marketplace</h1>
+          <p class="case-hero__subtitle">Prompt workspace for creating, organizing, and reusing personal and public prompts within an AI prompt productivity platform.</p>
+        </div>
+        <div class="case-hero__info" style="background-image: url('../assets/images/case2-hero-right.svg')">
+          <div class="case-hero__info-row">
+            <p class="case-hero__info-label">Project</p>
+            <p class="case-hero__info-value">Prompt optimization platform for LLMs</p>
+          </div>
+          <div class="case-hero__info-row">
+            <p class="case-hero__info-label">Tools</p>
+            <p class="case-hero__info-value">Figma, Claude, Jira, Confluence</p>
+          </div>
+          <div class="case-hero__info-row">
+            <p class="case-hero__info-label">Contribution</p>
+            <p class="case-hero__info-value">Research, Ideation, User flows, Prototyping, Final design</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-hero__main">
+        <div class="case-hero__laptop">
+          <img src="../assets/images/case2-hero.png" alt="Case 2 preview">
+        </div>
+        <div class="case-hero__nav">
+        <div class="case-hero__nav-item is-open" id="solution">
+          <div class="case-hero__nav-left">
+            <h3 class="case-hero__nav-title">Solution</h3>
+            <p class="case-hero__nav-body">My work in this iteration focused on implementing an important control layer: a public/shared prompt library that becomes the backbone for a sandbox, which pulls prompts from the library and lets users run and refine them on a single AI model at a time.</p>
+          </div>
+          <div class="case-hero__nav-content">
+            <!-- Solution content here -->
+          </div>
+        </div>
+        <div class="case-hero__nav-item" id="context-problem">
+          <div class="case-hero__nav-left">
+            <h3 class="case-hero__nav-title">Context &amp; problem</h3>
+            <p class="case-hero__nav-body">This was an iteration on a live product. The core flows for creating and editing prompts were already in place.<br><br>Prompts were still treated as isolated artifacts rather than a managed asset. Users could create, tweak, and save prompts, but had no structured way to group them, share them, or discover prompts from others as a starting point for their own work.</p>
+          </div>
+          <div class="case-hero__nav-content">
+            <div class="content-blocks">
+              <div class="content-block">
+                <h4 class="content-block__title">Public prompt marketplace as a foundation</h4>
+                <p class="content-block__text">By introducing a public prompt marketplace where users can publish, browse, and save prompts into their own workspace, we unlocked the foundations for a managed prompt ecosystem and future playground features that reuse the same prompt assets across the web app, extension, and team accounts.</p>
+                <div class="content-block__media content-block__media--fit">
+                  <img class="content-block__media-img" src="../assets/images/case2-context.png" alt="Context screenshot">
+                  <button class="content-block__zoom" type="button" data-zoom-src="../assets/images/case2-context.png" data-zoom-alt="Context screenshot">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="case-hero__nav-item" id="goals-success">
+          <div class="case-hero__nav-left">
+            <h3 class="case-hero__nav-title">Goals &amp; success criteria</h3>
+            <p class="case-hero__nav-body">Objectives and how success will be measured</p>
+          </div>
+          <div class="case-hero__nav-content">
+            <div class="content-blocks">
+              <div class="content-block">
+                <h4 class="content-block__title">Product goals</h4>
+                <ul class="content-block__list">
+                  <li>Launch the first version of a public prompt marketplace where users can publish prompts and save them into their own workspace.</li>
+                  <li>Increase user productivity and time on platform by offering a curated prompt library directly inside the product.</li>
+                  <li>Support cross-surface usage (web app and extension) with a single source of truth for all prompts.</li>
+                </ul>
+              </div>
+              <div class="content-block">
+                <h4 class="content-block__title">UX goals</h4>
+                <p class="content-block__text">Make saving a prompt from the marketplace into a structured workspace a one-step alternative to existing ways of adding new prompts.</p>
+                <p class="content-block__text">Make it easy to find relevant prompts in the marketplace and add them to a personal library for future use.</p>
+                <p class="content-block__text">Make the transition from public library to personal space seamless when a user starts working with a marketplace prompt.</p>
+                <p class="content-block__text">Keep marketplace interactions lightweight so they fit naturally into the existing prompt creation flow.</p>
+              </div>
+              <div class="content-block">
+                <h4 class="content-block__title">Success criteria</h4>
+                <p class="content-block__text">Events to track:</p>
+                <ul class="content-block__pills">
+                  <li class="content-block__pill">prompt_saved</li>
+                  <li class="content-block__pill">prompt_published</li>
+                  <li class="content-block__pill">prompt_used_from_marketplace</li>
+                  <li class="content-block__pill">prompt_saved_from_marketplace</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="case-hero__nav-item" id="scope">
+          <div class="case-hero__nav-left">
+            <h3 class="case-hero__nav-title">Scope of this iteration</h3>
+            <p class="case-hero__nav-body"></p>
+          </div>
+          <div class="case-hero__nav-content">
+            <ul class="bullet-list">
+              <li class="bullet-list__item">
+                <span class="bullet-list__marker"></span>
+                <h4 class="bullet-list__title">Prompt lifecycle and publishing</h4>
+                <p class="bullet-list__subtitle">Save prompts from marketplace, edit and restore versions, publish/hide/delete prompts, categories, and groups.</p>
+              </li>
+              <li class="bullet-list__item">
+                <span class="bullet-list__marker"></span>
+                <h4 class="bullet-list__title">Grouping, moderation, and edge cases</h4>
+                <p class="bullet-list__subtitle">Create prompt groups, publish categories/subcategories, report content, detect spam/duplicates, handle inappropriate or removed prompts.</p>
+              </li>
+              <li class="bullet-list__item">
+                <span class="bullet-list__marker"></span>
+                <h4 class="bullet-list__title">Navigation and entry points</h4>
+                <p class="bullet-list__subtitle">Add marketplace as a first-class entry in navigation and sidebar.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="case-hero__nav-item" id="constraints">
+          <div class="case-hero__nav-left">
+            <h3 class="case-hero__nav-title">Constraints &amp; inputs</h3>
+            <p class="case-hero__nav-body">What shaped the solution and what trade-offs followed.</p>
+          </div>
+          <div class="case-hero__nav-content">
+            <div class="content-blocks">
+              <div class="content-block">
+                <h4 class="content-block__title">Inputs</h4>
+                <p class="content-block__text">Existing prompt management (private library, editor, history, variables) defined the data model and main workflows the marketplace had to align with.</p>
+                <p class="content-block__text">Business requirements to plug marketplace publishing and "add from marketplace to library" into this system set the minimum surface the design needed to cover.</p>
+              </div>
+              <div class="content-block">
+                <h4 class="content-block__title">Constraints</h4>
+                <p class="content-block__text">New marketplace flows had to be embedded into the current Prompt Manager, which limited how much navigation and information architecture could change in one iteration.</p>
+                <p class="content-block__text">The UX needed to blur the line between editing a prompt in the marketplace and in the private library, while still making ownership and state explicit, which pushed the design toward clear status labels, badges, and history views.</p>
+                <p class="content-block__text">Users had to see a reliable history and current status for each prompt, which drove decisions around versioning, status changes, and how destructive actions (hide/delete) are communicated in the UI.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="case-hero__nav-item" id="competitive-analysis">
+          <div class="case-hero__nav-left">
+            <h3 class="case-hero__nav-title">Competitive &amp; best‑practice analysis</h3>
+            <p class="case-hero__nav-body">As a result of the competitive and best-practice analysis, the following patterns were adopted:</p>
+          </div>
+          <div class="case-hero__nav-content">
+            <div class="content-blocks">
+              <div class="content-block">
+                <h4 class="content-block__title">Patterns</h4>
+                <ul class="content-block__list">
+                  <li>Category-grid marketplace landing</li>
+                  <li>Faceted filters (model, language, difficulty) + search</li>
+                  <li>Category cards with subtopic chips</li>
+                  <li>Timeline-based version history</li>
+                  <li>Timeline-based usage history</li>
+                  <li>Version/usage cards with inline primary actions</li>
+                  <li>Unified modal for enhance / save / publish</li>
+                  <li>Single metadata form for marketplace publishing</li>
+                </ul>
+              </div>
+            </div>
+            <div class="content-block__media content-block__media--fit">
+              <img class="content-block__media-img" src="../assets/images/case2-research.png" alt="Competitive analysis" loading="lazy">
+              <button class="content-block__zoom" type="button" data-zoom-src="../assets/images/case2-research.png" data-zoom-alt="Competitive analysis">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="case-hero__nav-item" id="key-user-flow">
+          <div class="case-hero__nav-left">
+            <h3 class="case-hero__nav-title">Key user flow</h3>
+            <p class="case-hero__nav-body">After several iterations, the solution aligned with both user and business needs. The core flows were refined into a functional, predictable, and easy-to-use system.</p>
+          </div>
+          <div class="case-hero__nav-content">
+            <div class="content-blocks">
+              <div class="content-block">
+                <h4 class="content-block__title">Prompt marketplace</h4>
+                <p class="content-block__text">I went with a familiar search-and-filter layout, with filters for model, language, and difficulty. On the main page, topics are grouped into clear categories; tapping a category drills down into a scoped view with a topic list and prompt previews. Users can also run a separate search scoped by author to quickly find prompts from specific creators.nngroup+2</p>
+                <div class="image-carousel">
+                  <div class="image-carousel__track">
+                    <div class="image-carousel__slide"><img src="../assets/images/case2-flow1.png" alt="Prompt marketplace — main view" loading="lazy"></div>
+                    <div class="image-carousel__slide"><img src="../assets/images/case2-flow2.png" alt="Prompt marketplace — category view" loading="lazy"></div>
+                    <div class="image-carousel__slide"><img src="../assets/images/case2-flow3.png" alt="Prompt marketplace — search" loading="lazy"></div>
+                    <div class="image-carousel__slide"><img src="../assets/images/case2-flow4.png" alt="Prompt marketplace — prompt detail" loading="lazy"></div>
+                  </div>
+                  <button class="image-carousel__btn image-carousel__btn--prev" type="button" aria-label="Previous"></button>
+                  <button class="image-carousel__btn image-carousel__btn--next" type="button" aria-label="Next"></button>
+                  <div class="image-carousel__dots">
+                    <button class="image-carousel__dot is-active" type="button" aria-label="Slide 1"></button>
+                    <button class="image-carousel__dot" type="button" aria-label="Slide 2"></button>
+                    <button class="image-carousel__dot" type="button" aria-label="Slide 3"></button>
+                    <button class="image-carousel__dot" type="button" aria-label="Slide 4"></button>
+                  </div>
+                </div>
+              </div>
+              <div class="content-block">
+                <h4 class="content-block__title">Save prompt from marketplace</h4>
+                <p class="content-block__text">The prompt action buttons mirror the personal workspace pattern, so users don't have to relearn the flow. Saving a prompt from the marketplace is streamlined to just three clicks end-to-end.</p>
+                <div class="video-player"
+                     data-video-src="../assets/videos/case2-userSaveFromMarketplace.mp4"
+                     data-video-poster="../assets/images/case2-preview-user-save-from-marketplace.png">
+                  <img class="video-player__poster" src="../assets/images/case2-preview-user-save-from-marketplace.png" alt="Save prompt from marketplace" loading="lazy">
+                  <button class="video-player__play" type="button" aria-label="Play video"></button>
+                </div>
+              </div>
+              <div class="content-block">
+                <h4 class="content-block__title">Prompt details</h4>
+                <p class="content-block__text">The prompt details page surfaces what the prompt does, the prompt content itself with primary actions, a worked example, and a strip of similar prompts to explore related use cases.</p>
+                <div class="video-player"
+                     data-video-src="../assets/videos/case2-prompt-details.mp4"
+                     data-video-poster="../assets/images/case2-preview-prompt-detals.png">
+                  <img class="video-player__poster" src="../assets/images/case2-preview-prompt-detals.png" alt="Prompt details" loading="lazy">
+                  <button class="video-player__play" type="button" aria-label="Play video"></button>
+                </div>
+              </div>
+              <div class="content-block">
+                <h4 class="content-block__title">Publish prompt</h4>
+                <p class="content-block__text">The flow supports smart auto-fill for title, category, subcategory, compatible models, and tags, so creators start from a sensible default rather than a blank form. They can accept, regenerate, or completely override any suggested metadata and enter their own details manually.</p>
+                <div class="video-player"
+                     data-video-src="../assets/videos/case2-add-new-prompt-to-marketplace.mp4"
+                     data-video-poster="../assets/images/case2-preview-add-prompt-to-marketplace.png">
+                  <img class="video-player__poster" src="../assets/images/case2-preview-add-prompt-to-marketplace.png" alt="Publish prompt" loading="lazy">
+                  <button class="video-player__play" type="button" aria-label="Play video"></button>
+                </div>
+              </div>
+              <div class="content-block">
+                <h4 class="content-block__title">Edge case. Saved prompt was hidden or deleted</h4>
+                <ul class="content-block__list">
+                  <li>If the marketplace author hides or deletes a saved prompt, its details page becomes an empty state.</li>
+                  <li>When the prompt was saved without local edits, the user also loses the option to restore that original version.</li>
+                </ul>
+                <div class="image-carousel">
+                  <div class="image-carousel__track">
+                    <div class="image-carousel__slide"><img src="../assets/images/case2-edge-case1.png" alt="Edge case — version history" loading="lazy"></div>
+                    <div class="image-carousel__slide"><img src="../assets/images/case2-edge-case2.png" alt="Edge case — prompt unavailable" loading="lazy"></div>
+                  </div>
+                  <button class="image-carousel__btn image-carousel__btn--prev" type="button" aria-label="Previous"></button>
+                  <button class="image-carousel__btn image-carousel__btn--next" type="button" aria-label="Next"></button>
+                  <div class="image-carousel__dots">
+                    <button class="image-carousel__dot is-active" type="button" aria-label="Slide 1"></button>
+                    <button class="image-carousel__dot" type="button" aria-label="Slide 2"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="case-hero__nav-spacer"></div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Bottom sections — hidden until all nav-items are open ====== -->
+  <div class="case-bottom">
+
+  <!-- ====== More Projects ====== -->
+  <section class="more-projects">
+    <h2 class="more-projects__title h2">More projects</h2>
+    <div class="more-projects__list">
+      <a class="more-projects__card" href="case3.html">
+        <div class="more-projects__card-text">
+          <h3 class="more-projects__card-title h3">Comprehensive AI shift planning for a hotel management SaaS platform</h3>
+          <p class="more-projects__card-body">Designing a modular, multi-agent AI scheduling system that coordinates hotel operations and learns from historical patterns.</p>
+        </div>
+        <div class="more-projects__card-img">
+          <img src="../assets/images/preview-case3.png?v=2" alt="Case 3 preview">
+        </div>
+      </a>
+      <a class="more-projects__card" href="case1.html">
+        <div class="more-projects__card-text">
+          <h3 class="more-projects__card-title h3">Reducing friction in a complex HR B2B management tool</h3>
+          <p class="more-projects__card-body">In 1 month of redesign, I reduced the time to complete the key workflow from X to Y minutes, based on research into users' real needs and behaviors.</p>
+        </div>
+        <div class="more-projects__card-img">
+          <img src="../assets/images/preview-case1.png?v=2" alt="Case 1 preview">
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ====== Email Section ====== -->
+  <section class="email">
+    <div class="email__content">
+      <div class="email__title-block">
+        <h2 class="email__greeting">Hi, I'm</h2>
+        <div class="email__name-row">
+          <img class="email__avatar" src="../assets/images/email-avatar.svg" alt="">
+          <h2 class="email__name">Stacy</h2>
+        </div>
+        <p class="email__subtitle">Your best choice designer.</p>
+      </div>
+      <div class="email__cta">
+        <p class="email__cta-text">I'll help you to make a choice and ready to ansfer for any questions.</p>
+        <div class="email__cta-image-container">
+          <div class="email__cta-image-wrap">
+            <img class="email__cta-image" src="../assets/images/email-small.svg" alt="">
+            <a href="#" class="email__cta-button js-contact-open">
+              <span class="email__cta-label">Contact me</span>
+              <img class="email__cta-arrow" src="../assets/icons/icon-email.svg" alt="" width="48" height="48">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Footer ====== -->
+  <footer class="footer">
+    <div class="footer__content">
+      <div class="footer__left">
+        <button class="footer__back" aria-label="Back to top">
+          <img class="footer__back-icon" src="../assets/icons/icon-arrow-right.svg" alt="">
+        </button>
+        <div class="footer__text">
+          <h2 class="footer__name">Anastasiia Medvid</h2>
+          <p class="footer__role">Crafting thoughtful interfaces for ambitious products</p>
+        </div>
+        <a class="footer__linkedin" href="https://www.linkedin.com/in/anastasiia-medvid" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <img class="footer__linkedin-icon" src="../assets/icon-linkedin.svg" alt="">
+        </a>
+      </div>
+      <nav class="footer__nav">
+        <a class="footer__nav-card" href="#projects">Projects</a>
+        <a class="footer__nav-card" href="#services">Services</a>
+        <a class="footer__nav-card" href="#competences">Competences</a>
+        <a class="footer__nav-card" href="#workflow">Workflow</a>
+      </nav>
+    </div>
+    <div class="footer__copyright">
+      <p class="footer__copyright-text">&copy;2026 Anastasiia Medvid.</p>
+    </div>
+  </footer>
+
+  </div><!-- /.case-bottom -->
+
+  <script src="../js/main.js"></script>
+  <script src="../js/components/header-menu.js"></script>
+  <script src="../js/components/contact-overlay.js"></script>
+  <script src="../js/components/case-hero.js"></script>
+  <script src="../js/components/image-zoom.js"></script>
+  <script src="../js/components/image-carousel.js"></script>
+  <script src="../js/components/video-player.js"></script>
+  <script src="../js/components/grid-overlay.js"></script>
+  <script src="../js/components/resume-overlay.js"></script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+/* ==========================================================================
+   Services Section — services overview
+   ==========================================================================
+   Desktop (>1200px): 3 rows × 2 cards, staircase 120px per row
+   Tablet (834–1200px): 1 column, alternating 0 / 120px offset
+   Mobile (≤834px): 1 column, full width, no hover
+   ========================================================================== */
+
+.services {
+  width: 100%;
+  padding: 24px 0 120px 0;
+}
+
+.services__header {
+  padding-left: calc(90px + 20px);
+  padding-right: 90px;
+}
+
+.services__hint {
+  color: var(--hint-text-color);
+  font-family: var(--hint-text-font-family);
+  font-size: var(--hint-text-font-size);
+  font-style: normal;
+  font-weight: var(--hint-text-font-weight);
+  line-height: var(--hint-text-line-height);
+  margin: 0 0 64px 0;
+}
+
+.services__title {
+  margin: 0 0 24px 0;
+}
+
+/* ==========================================================================
+   Cards wrapper
+   ========================================================================== */
+.services__cards-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* ==========================================================================
+   Rows — desktop: 3 rows with staircase 120px
+   ========================================================================== */
+.services__row {
+  display: flex;
+  padding-left: 90px;
+  padding-right: 90px;
+}
+
+.services__row:nth-child(2) {
+  padding-left: calc(90px + 120px);
+}
+
+.services__row:nth-child(3) {
+  padding-left: calc(90px + 240px);
+}
+
+/* ==========================================================================
+   Single card — 240px height, background image, bottom-left H3
+   ========================================================================== */
+.services__card {
+  width: 50%;
+  height: 240px;
+  padding: 16px;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: background-size 0.3s ease;
+}
+
+/* Hover: zoom background image 10% */
+.services__card:hover {
+  background-size: 110% 110%;
+}
+
+/* Background images */
+.services__card--product-design {
+  background-image: url('../../assets/images/services-productDesign.svg');
+}
+
+.services__card--ux-ui-design {
+  background-image: url('../../assets/images/services-uxUiDesign.svg');
+}
+
+.services__card--prototyping {
+  background-image: url('../../assets/images/services-prototyping.svg');
+}
+
+.services__card--ai-driven {
+  background-image: url('../../assets/images/services-aiDrived.svg');
+}
+
+.services__card--design-systems {
+  background-image: url('../../assets/images/services-ds.svg');
+}
+
+.services__card--user-tests {
+  background-image: url('../../assets/images/services-tests.svg');
+}
+
+/* Card title — bottom-left, max 2 lines */
+.services__card-title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  max-height: calc(var(--h3-line-height) * 2);
+  overflow: hidden;
+}
+
+/* Gradient overlay — text doesn't overlap image >20% */
+.services__card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 48%;
+  background: linear-gradient(to top, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 100%);
+  z-index: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* On hover: remove gradient */
+.services__card:hover::after {
+  opacity: 0;
+}
+
+/* ==========================================================================
+   1200px — Tablet (margin 60px)
+   1 column, alternating: odd at col 1, even +120px offset
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .services__header {
+    padding-left: calc(60px + 20px);
+    padding-right: 60px;
+  }
+
+  .services__row {
+    flex-direction: column;
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .services__row:nth-child(2) {
+    padding-left: 60px;
+  }
+
+  .services__row:nth-child(3) {
+    padding-left: 60px;
+  }
+
+  /* 1 card per row, full width */
+  .services__card {
+    width: 100%;
+  }
+
+  /* Alternating: 1st card in each row at col 1, 2nd card +120px */
+  .services__card:nth-child(2) {
+    margin-left: 120px;
+    width: calc(100% - 120px);
+  }
+}
+
+/* ==========================================================================
+   834px — Mobile (margin 20px)
+   1 column, all full width, no hover
+   ========================================================================== */
+@media (max-width: 834px) {
+  .services__header {
+    padding-left: calc(20px + 20px);
+    padding-right: 20px;
+  }
+
+  .services__hint {
+    margin: 0 0 40px 0;
+  }
+
+  .services__row {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .services__row:nth-child(2),
+  .services__row:nth-child(3) {
+    padding-left: 20px;
+  }
+
+  .services__card {
+    width: 100%;
+  }
+
+  .services__card:nth-child(2) {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .services {
+    padding-bottom: 80px;
+  }
+
+  /* Disable hover */
+  .services__card:hover {
+    background-size: 100% 100%;
+  }
+
+  .services__card:hover::after {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,48 @@
+<!--
+  Video Player — poster preview + fullscreen playback
+
+  Inline preview of a video file. Shows a poster (intro image) with a
+  round Play button overlay in the center. Click/tap anywhere on the
+  preview to open the video in a fullscreen overlay with native HTML5
+  controls (play/pause, volume, progress bar, native fullscreen toggle).
+  A dedicated × close button (top-right) and the Esc key dismiss the
+  overlay; clicking the background does NOT close it, so interacting
+  with the player controls is safe.
+
+  Use it for any video walkthrough, user-flow recording, screen capture,
+  or product demo embedded inside a case page content block.
+
+  Requires:
+    - css/components/video-player.css
+    - js/components/video-player.js
+
+  Structure:
+    .video-player                    preview container (the click target)
+      ├ .video-player__poster        <img> intro frame shown before play
+      └ .video-player__play          round play button overlay (centered)
+
+  Data attributes (on .video-player):
+    data-video-src    — URL of the video file to play (required)
+    data-video-poster — URL of the poster image (optional, native <video> uses it)
+
+  Behavior:
+    - Entire preview is clickable (not only the play button).
+    - Overlay reuses a single <video> element appended to <body> on init.
+    - Autoplay is attempted on open; if blocked by the browser, the user
+      just presses Play on the native controls.
+    - On close: video pauses, src is cleared, scroll lock released.
+
+  Sizing:
+    Preview stretches to 100% of its parent (typically the right column
+    of a case-hero nav-content container). Height follows the intrinsic
+    aspect ratio of the poster image. A 1px #EAEAEA stroke frames it.
+-->
+
+<div class="video-player"
+     data-video-src="../assets/videos/EXAMPLE.mp4"
+     data-video-poster="../assets/images/EXAMPLE.png">
+  <img class="video-player__poster"
+       src="../assets/images/EXAMPLE.png"
+       alt="">
+  <button class="video-player__play" type="button" aria-label="Play video"></button>
+</div>

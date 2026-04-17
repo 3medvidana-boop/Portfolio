@@ -1,0 +1,35 @@
+/* ==========================================================================
+   Components Showcase Page — wrapper styles for live previews
+   Used only by pages/components.html
+   ========================================================================== */
+
+.component-preview {
+  padding: 60px 90px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.component-preview:last-child {
+  border-bottom: none;
+}
+
+.component-preview__label {
+  margin: 0 0 24px 0;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 1200px) {
+  .component-preview {
+    padding: 40px 60px;
+  }
+}
+
+@media (max-width: 834px) {
+  .component-preview {
+    padding: 32px 20px;
+  }
+}

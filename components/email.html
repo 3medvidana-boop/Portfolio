@@ -1,0 +1,68 @@
+<!--
+  Email Section — contact CTA above the footer
+
+  Reusable contact CTA block placed on every page directly above <footer>.
+  Greets the visitor, shows the author's avatar and name, a short pitch line,
+  and a "Contact me" button that opens the contact-overlay form. Acts as the
+  final hook of the page before the footer, unifying the call-to-action
+  across the whole site.
+
+  Requires:
+    - css/components/email.css           (imported via main.css)
+    - components/contact-overlay.html    (the overlay markup must exist on the page)
+    - css/components/contact-overlay.css (imported via main.css)
+    - js/components/contact-overlay.js   (wires .js-contact-open)
+    - assets/images/email-big.svg        (section background)
+    - assets/images/email-small.svg      (CTA inline image)
+    - assets/images/email-avatar.svg     (avatar)
+    - assets/icons/icon-email.svg        (button arrow icon)
+
+  Parent container requirements:
+    - Full viewport width (no horizontal padding on parent)
+    - Direct child of <body> or page-level wrapper (not inside a grid cell)
+    - Placed immediately before <footer>
+    - The page must include the .contact-overlay markup, otherwise the
+      "Contact me" button has nothing to open
+
+  Layout:
+    >= 1200px : flex row, padding 90px, title-block = 2 cols + 1 gutter
+    834-1199  : flex row, padding 60px, button 316x90, arrow 32x32
+    <  834px  : flex column, padding 20px, title-block 100%, button 60px tall
+    Container query (CTA <= 618px): button becomes full-width, sits above the image
+
+  Variants:
+    None at the moment — single canonical markup. Adaptive behavior is
+    fully handled in CSS via media queries and a container query.
+
+  Notes:
+    - The button carries the .js-contact-open class — do NOT rename it,
+      contact-overlay.js looks it up by that selector.
+    - Replace src paths if this partial is dropped into a page that lives
+      at a different folder depth than pages/* (paths shown are relative
+      to pages/, i.e. ../assets/...). For root-level pages use assets/...
+-->
+
+<section class="email">
+  <div class="email__content">
+    <div class="email__title-block">
+      <h2 class="email__greeting">Hi, I'm</h2>
+      <div class="email__name-row">
+        <img class="email__avatar" src="../assets/images/email-avatar.svg" alt="">
+        <h2 class="email__name">Stacy</h2>
+      </div>
+      <p class="email__subtitle">Your best choice designer.</p>
+    </div>
+    <div class="email__cta">
+      <p class="email__cta-text">I'll help you to make a choice and ready to ansfer for any questions.</p>
+      <div class="email__cta-image-container">
+        <div class="email__cta-image-wrap">
+          <img class="email__cta-image" src="../assets/images/email-small.svg" alt="">
+          <a href="#" class="email__cta-button js-contact-open">
+            <span class="email__cta-label">Contact me</span>
+            <img class="email__cta-arrow" src="../assets/icons/icon-email.svg" alt="" width="48" height="48">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

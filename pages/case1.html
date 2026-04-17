@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case — Reducing friction in a complex HR B2B management tool</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Inter:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header header--inner">
+    <a href="../index.html" class="header__home" aria-label="Home">
+      <img class="header__home-icon" src="../assets/images/logo56.svg" alt="Logo" width="56" height="56">
+      <img class="header__menu-icon header__menu-icon--open" src="../assets/icons/icon-manu.svg" alt="Menu" width="48" height="48">
+      <img class="header__menu-icon header__menu-icon--close" src="../assets/icons/icon-close.svg" alt="Close" width="48" height="48">
+    </a>
+    <div class="header__center">
+      <span class="header__name">Anastasiia Medvid</span>
+      <span class="header__role">UX/UI designer</span>
+    </div>
+    <a href="#" class="header__email js-contact-open" aria-label="Email">
+      <img class="header__email-icon" src="../assets/icons/icon-email.svg" alt="Email" width="48" height="48">
+    </a>
+    <a href="#" class="header__resume">
+      <span class="header__resume-label">Resume</span>
+      <img class="header__resume-arrow" src="../assets/icons/icon-arrow-right.svg" alt="" width="48" height="48">
+    </a>
+  </header>
+
+  <!-- Contact Form Overlay -->
+  <div class="contact-overlay" id="contact-overlay">
+    <div class="contact-overlay__backdrop"></div>
+    <div class="contact-overlay__panel">
+      <div class="contact-overlay__content">
+        <div class="contact-overlay__header">
+          <h2 class="contact-overlay__title">Let's break the ice</h2>
+          <button class="contact-overlay__close" aria-label="Close">
+            <img src="../assets/icons/icon-close.svg" alt="" width="48" height="48">
+          </button>
+        </div>
+        <form class="contact-overlay__form" novalidate action="https://formspree.io/f/xvzvbadp" method="POST">
+          <div class="contact-overlay__row">
+            <div class="contact-overlay__field">
+              <input class="contact-overlay__input" type="email" name="email" placeholder="Email" required>
+              <span class="contact-overlay__error"></span>
+            </div>
+            <div class="contact-overlay__field">
+              <input class="contact-overlay__input" type="text" name="name" placeholder="Name" required>
+              <span class="contact-overlay__error"></span>
+            </div>
+          </div>
+          <div class="contact-overlay__field">
+            <textarea class="contact-overlay__textarea" name="message" placeholder="What project can I help you with?" rows="5"></textarea>
+            <span class="contact-overlay__error"></span>
+          </div>
+          <div class="contact-overlay__bottom">
+            <button class="contact-overlay__submit" type="submit">
+              <span class="contact-overlay__submit-label">Send message</span>
+              <img class="contact-overlay__submit-arrow" src="../assets/icons/icon-arrow-right.svg" alt="" width="48" height="48">
+            </button>
+            <img class="contact-overlay__image" src="../assets/images/email-image.svg" alt="">
+          </div>
+        </form>
+        <div class="contact-overlay__success">
+          <p class="contact-overlay__success-text">Thank you! Your message has been sent.</p>
+          <button class="contact-overlay__again" type="button">
+            <span class="contact-overlay__again-label">Send one more</span>
+            <img class="contact-overlay__again-arrow" src="../assets/icons/icon-arrow-right.svg" alt="" width="48" height="48">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile / Tablet menu -->
+  <nav class="header__menu" aria-label="Main menu">
+    <img class="header__menu-left" src="../assets/images/manu-left.svg" alt="">
+    <div class="header__menu-content">
+      <a class="header__menu-link" href="../index.html">Home</a>
+      <a class="header__menu-link" href="../index.html#competences">Competences</a>
+      <a class="header__menu-link" href="../index.html#services">Services</a>
+      <a class="header__menu-link" href="../index.html#projects">Projects</a>
+      <a class="header__menu-link" href="../index.html#workflow">Workflow</a>
+      <a href="#" class="header__menu-email js-contact-open" aria-label="Email">
+        <img src="../assets/icons/icon-email.svg" alt="" width="48" height="48">
+      </a>
+    </div>
+    <img class="header__menu-bottom" src="../assets/images/manu-bottom.svg" alt="">
+  </nav>
+
+  <!-- Case Hero -->
+  <section class="case-hero">
+    <div class="case-hero__left">
+      <img src="../assets/images/case1-hero-left.svg" alt="">
+    </div>
+
+    <div class="case-hero__body">
+      <div class="case-hero__top">
+        <div class="case-hero__title-block">
+          <h1 class="case-hero__title">Reducing friction in a complex HR B2B management tool</h1>
+          <p class="case-hero__subtitle">In 1 month of redesign, I reduced the time to complete the key workflow from X to Y minutes, based on research into users' real needs and behaviors.</p>
+        </div>
+        <div class="case-hero__info" style="background-image: url('../assets/images/case1-hero-right.svg')">
+          <div class="case-hero__info-row">
+            <p class="case-hero__info-label">Project</p>
+            <p class="case-hero__info-value">B2B web SaaS system for HR</p>
+          </div>
+          <div class="case-hero__info-row">
+            <p class="case-hero__info-label">Tools</p>
+            <p class="case-hero__info-value">Figma, Claude, Google workspace</p>
+          </div>
+          <div class="case-hero__info-row">
+            <p class="case-hero__info-label">Contribution</p>
+            <p class="case-hero__info-value">Research, Ideation, User flows, Prototyping, User tests, Design system</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-hero__main">
+        <div class="case-hero__laptop">
+          <img src="../assets/images/case1-hero.png" alt="Case 1 preview">
+        </div>
+        <div class="case-hero__nav">
+        <div class="case-hero__nav-item is-open" id="solution">
+          <div class="case-hero__nav-left">
+            <h3 class="case-hero__nav-title">Solution</h3>
+            <p class="case-hero__nav-body">I designed a B2B web SaaS system for HR and operations managers that brings candidate search and employment management into one place. It helps teams monitor ongoing work, coordinate tasks, and make informed decisions without jumping between multiple tools, while providing a clear, consistent UX/UI tailored to their daily workflows.</p>
+          </div>
+          <div class="case-hero__nav-content">
+            <!-- Solution content here -->
+          </div>
+        </div>
+        <div class="case-hero__nav-item" id="problem">
+          <div class="case-hero__nav-left">
+            <h3 class="case-hero__nav-title">Problem</h3>
+            <p class="case-hero__nav-body">Right now recruiters do not have a single tool to run their work, so they juggle several systems and spreadsheets to drive the hiring process. They lack visibility into what is happening at each stage, how long it will take, and who should react when something goes wrong, so recruitment effectively depends on a few "key people". As a result, the same process can take anywhere from 1 to 3 months.</p>
+          </div>
+          <div class="case-hero__nav-content">
+            <!-- Problem content here -->
+          </div>
+        </div>
+        <div class="case-hero__nav-item" id="design-process">
+          <div class="case-hero__nav-left">
+            <h3 class="case-hero__nav-title">Design process</h3>
+            <p class="case-hero__nav-body">I followed a systematic design process through all project to ensure user-centered and functional outcomes.<br><br>This process includes:</p>
+          </div>
+          <div class="case-hero__nav-content">
+            <ul class="bullet-list">
+              <li class="bullet-list__item">
+                <span class="bullet-list__marker"></span>
+                <h4 class="bullet-list__title">Empathize</h4>
+                <p class="bullet-list__subtitle">Understanding user needs through research.</p>
+              </li>
+              <li class="bullet-list__item">
+                <span class="bullet-list__marker"></span>
+                <h4 class="bullet-list__title">Define</h4>
+                <p class="bullet-list__subtitle">Clarifying the core problem.</p>
+              </li>
+              <li class="bullet-list__item">
+                <span class="bullet-list__marker"></span>
+                <h4 class="bullet-list__title">Ideate</h4>
+                <p class="bullet-list__subtitle">Brainstorming creative solutions.</p>
+              </li>
+              <li class="bullet-list__item">
+                <span class="bullet-list__marker"></span>
+                <h4 class="bullet-list__title">Prototype</h4>
+                <p class="bullet-list__subtitle">Creating wireframes and interactive prototypes.</p>
+              </li>
+              <li class="bullet-list__item">
+                <span class="bullet-list__marker"></span>
+                <h4 class="bullet-list__title">Test</h4>
+                <p class="bullet-list__subtitle">Iterating based on usability testing and feedback.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="case-hero__nav-item" id="research">
+          <div class="case-hero__nav-left">
+            <h3 class="case-hero__nav-title">Research &amp; discovery</h3>
+            <p class="case-hero__nav-body">During my research and exploration, I defined a user group and conducted extensive research, including interviews with potential users (employers and HR managers). As a result, I created a few key user personas to guide the design.</p>
+          </div>
+          <div class="case-hero__nav-content">
+            <div class="content-blocks">
+              <div class="content-block">
+                <h4 class="content-block__title">User group</h4>
+                <p class="content-block__text"><strong>Employers / HR managers</strong><br>Primary users running the process and owning cost and delivery.</p>
+                <p class="content-block__text">Candidates<br>Recipients of the process; their needs influence what Group 1 must deliver.</p>
+              </div>
+              <div class="content-block">
+                <h4 class="content-block__title">Users pain points</h4>
+                <p class="content-block__text"><strong>Fragmented visibility of onboarding progress.</strong> Stakeholders lack a single, consolidated view of where a new hire is in the process, forcing HR to manually gather status updates across tools and teams.</p>
+                <p class="content-block__text"><strong>Unstructured, time-based onboarding journey.</strong> There is no clear 1/3/6-month roadmap for new hires, and managers seldom translate expectations into a concrete onboarding plan.</p>
+                <p class="content-block__text"><strong>Diffuse ownership of onboarding responsibilities.</strong> Boundaries between HR, managers, and the team are blurred, with no formal buddy role; as a result, new hires often self-coordinate key onboarding interactions.</p>
+                <p class="content-block__text"><strong>High manual load in administrative workflows.</strong> Core HR admin involves repeated data entry and paper handling across systems, leading to avoidable effort, latency, and risk of inconsistencies.</p>
+                <div class="content-block__media">
+                  <img class="content-block__media-img" src="../assets/images/case1-research-interview.png" alt="">
+                  <button class="content-block__zoom" type="button" aria-label="Zoom"
+                          data-zoom-src="../assets/images/case1-research-interview.png"
+                          data-zoom-alt="">+</button>
+                </div>
+              </div>
+              <div class="content-block">
+                <h4 class="content-block__title">User personas</h4>
+                <div class="content-block__persona">
+                  <img class="content-block__persona-avatar" src="../assets/images/case1-research-hr1.png" alt="Marta">
+                  <div class="content-block__persona-body">
+                    <h5 class="content-block__persona-name">Marta</h5>
+                    <p class="content-block__persona-role">Role: Recruiter / recruitment consultant.</p>
+                    <p class="content-block__persona-text">As a professional, people-oriented recruiter, Marta focuses on delivering high-quality hires so she is perceived as a "talent magnet" and a reliable partner. She likes to feel needed, but time pressure and process chaos drain her energy, and configuring new tools feels like yet another task on her plate. That's why she needs a solution that saves time and brings structure to recruitment with minimal setup effort.</p>
+                  </div>
+                </div>
+                <div class="content-block__persona">
+                  <img class="content-block__persona-avatar" src="../assets/images/case1-research-hr2.png" alt="Ania">
+                  <div class="content-block__persona-body">
+                    <h5 class="content-block__persona-name">Ania</h5>
+                    <p class="content-block__persona-role">Role: HR Generalist / HR Operations.</p>
+                    <p class="content-block__persona-text">As a structured, detail-oriented HR generalist, Ania is responsible for making sure office employees are formally hired and smoothly onboarded, without gaps between HR, IT, and managers. She dislikes situations where "it's nobody's area" and where new hires experience a chaotic first day with missing access, equipment, or meetings. At the same time, constant manual reminding, chasing dependencies, and closing tasks via email and Teams is exhausting for her. She therefore needs a simple, transparent tool that shows the overall onboarding status in one place, organizes checklists for different stakeholders, and lets her be confident that "everything is ready" before a new hire actually starts.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="content-block">
+                <h4 class="content-block__title">JTBD</h4>
+                <div class="content-block__grid">
+                  <div class="content-block__cell">
+                    <h5 class="content-block__cell-title">Fast, consistent kick-off.</h5>
+                    <p class="content-block__cell-text">When a client opens a new recruitment and I have to react "right now", I want to assemble a coherent starter package (job ad, initial message, basic process steps) in 10–15 minutes, so I can launch without writing everything from scratch or creating inconsistent information.</p>
+                  </div>
+                  <div class="content-block__cell">
+                    <h5 class="content-block__cell-title">Monitoring pre-signature candidates.</h5>
+                    <p class="content-block__cell-text">When several candidates are in the "pre-signature" stage at the same time, I want to see the status of all formalities and blockers in one place, so I can prioritise actions and avoid losing start dates due to missing documents or overlooked steps.</p>
+                  </div>
+                  <div class="content-block__cell">
+                    <h5 class="content-block__cell-title">Handling changing decisions/requirements.</h5>
+                    <p class="content-block__cell-text">When a hiring manager/client delays a decision or changes requirements, I want to quickly capture the final decision in a simple format and update all candidate communications, so the process doesn't stall or trigger unnecessary candidate drop-outs.</p>
+                  </div>
+                  <div class="content-block__cell">
+                    <h5 class="content-block__cell-title">Filtering out mis-fit candidates early.</h5>
+                    <p class="content-block__cell-text">When a client asks for "people ASAP", I want to clearly communicate hard requirements (e.g. physical demands, medical/psychological tests) in the job ad and first contact, so I filter out mis-fit candidates early and do not waste time on late-stage resignations.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="case-hero__nav-item" id="prototyping">
+          <div class="case-hero__nav-left">
+            <h3 class="case-hero__nav-title">Prototyping</h3>
+            <p class="case-hero__nav-body">In this stage, I mapped the key user journeys and used them as a foundation to design two user flows that test the main path of the solution with users: the pre-onboarding flow.</p>
+          </div>
+          <div class="case-hero__nav-content">
+            <div class="content-blocks">
+              <div class="content-block">
+                <h4 class="content-block__title">User flow</h4>
+                <p class="content-block__text">I designed two main user flows: pre-onboarding . I focused on the recruitment project setup and its individual steps, so the process of searching for and hiring a candidate became a single, coherent flow. The user flows account for timely involvement of all key and secondary participants (Buddy, future manager, health and safety specialist, etc.), making responsibilities and handoffs explicit.</p>
+                <div class="content-block__media content-block__media--fit">
+                  <img class="content-block__media-img" src="../assets/images/case1-prototype-userFlow.png" alt="">
+                  <button class="content-block__zoom" type="button" aria-label="Zoom"
+                          data-zoom-src="../assets/images/case1-prototype-userFlow.png"
+                          data-zoom-alt="">+</button>
+                </div>
+              </div>
+              <div class="content-block">
+                <h4 class="content-block__title">Prototypes</h4>
+                <p class="content-block__text">At this stage, I created mid-fidelity layouts that defined the structure, hierarchy, and key states of each screen, making responsibilities and next steps clear at a glance.</p>
+                <p class="content-block__text">I then designed two main flows based on these layouts:</p>
+                <p class="content-block__text"><strong>HR flow:</strong> overseeing pre-onboarding from offer to candidate decision and managing documents, referrals, and communication before day one.</p>
+                <p class="content-block__text"><strong>Candidate flow:</strong> accepting or negotiating the offer in the app and preparing for day one by completing medical checks, forms, and questionnaires.</p>
+                <p class="content-block__text">Together, these flows ensure both sides are ready for the first day with maximum automation and minimal manual steps.</p>
+                <p class="content-block__text">The study aimed to explore how users perceive the logic and completeness of the pre-onboarding flows and to estimate how error-proof these paths are from their perspective.</p>
+              </div>
+              <div class="content-block">
+                <h4 class="content-block__title">User flow 1: The recruiter conducts the candidate's pre-onboarding.</h4>
+                <div class="video-player"
+                     data-video-src="../assets/videos/case1-flowHr.mp4"
+                     data-video-poster="../assets/images/case1-intro-flowHr.png">
+                  <img class="video-player__poster"
+                       src="../assets/images/case1-intro-flowHr.png"
+                       alt="">
+                  <button class="video-player__play" type="button" aria-label="Play video"></button>
+                </div>
+              </div>
+              <div class="content-block">
+                <h4 class="content-block__title">User flow 2: The candidate is going through the pre-onboarding process.</h4>
+                <div class="video-player"
+                     data-video-src="../assets/videos/case1-flowCandidate.mp4"
+                     data-video-poster="../assets/images/case1-intro-flowCandidate.png">
+                  <img class="video-player__poster"
+                       src="../assets/images/case1-intro-flowCandidate.png"
+                       alt="">
+                  <button class="video-player__play" type="button" aria-label="Play video"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="case-hero__nav-item" id="user-tests">
+          <div class="case-hero__nav-left">
+            <h3 class="case-hero__nav-title">User tests</h3>
+            <p class="case-hero__nav-body">This user test evaluated the mid-fidelity flows I designed for the pre-onboarding process.</p>
+          </div>
+          <div class="case-hero__nav-content">
+            <div class="content-blocks">
+              <div class="content-block">
+                <h4 class="content-block__title">Context and methodology</h4>
+                <p class="content-block__text">The study was conducted on a desktop demo prototype of the interface. Video sessions with participants were recorded via Google Meet and transcribed using Firefly. Participants observed a walkthrough of the user journey for a selected role, and each group was shown a dedicated flow. During the session, they were encouraged to ask questions and share comments, and at the end the moderator asked a few follow-up questions.</p>
+              </div>
+              <div class="content-block">
+                <h4 class="content-block__title">Insights</h4>
+                <p class="content-block__text">The key user problems and needs cluster around five main areas:</p>
+                <ul class="content-block__list">
+                  <li>clear separation between the recruitment process and pre-onboarding</li>
+                  <li>unambiguous role assignment for each step</li>
+                  <li>guaranteed automatic updates of document templates and compliance features</li>
+                  <li>more robust support for electronic signatures</li>
+                  <li>secure and transparent handling of sensitive data in line with GDPR</li>
+                </ul>
+                <p class="content-block__text">These elements have the strongest impact on trust in the system, the sense of control, and decisions about implementing the tool in organisations.</p>
+                <p class="content-block__text">Further issues of major and minor importance include:</p>
+                <ul class="content-block__list">
+                  <li>unclear scope of editing rights on the HR side</li>
+                  <li>lack of integration with ATS systems</li>
+                  <li>rigid requirement to choose the contract type at the start</li>
+                  <li>no clear option to contact the recruiter on the offer screen</li>
+                  <li>detailed aspects related to forms, content formatting, and interactions such as address fields, date selection, confirmation when resigning, and visibility of the welcome email</li>
+                </ul>
+                <p class="content-block__text">These problems do not block the main path but they affect work comfort and increase users' cognitive load.</p>
+                <div class="content-block__media content-block__media--fit">
+                  <img class="content-block__media-img" src="../assets/images/case1-test-table.png" alt="">
+                  <button class="content-block__zoom" type="button" aria-label="Zoom"
+                          data-zoom-src="../assets/images/case1-test-table.png"
+                          data-zoom-alt="">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="case-hero__nav-item" id="final-design">
+          <div class="case-hero__nav-left">
+            <h3 class="case-hero__nav-title">Final design</h3>
+            <p class="case-hero__nav-body">Based on the identified issues, I make changes in design that introduces several structural changes.</p>
+          </div>
+          <div class="case-hero__nav-content">
+            <div class="content-blocks">
+              <div class="content-block">
+                <h4 class="content-block__title">Content and communication</h4>
+                <ul class="content-block__list">
+                  <li>Clear role labels were added next to each step (for example "HR step", "Candidate step", "Admin step") together with a concise "Who does what in this flow" legend for recruiters shown via an info icon.</li>
+                  <li>An explicit GDPR consent statement was introduced before collecting sensitive data for recruitment, with a short explanation of the purpose and legal basis.</li>
+                </ul>
+                <div class="content-block__media content-block__media--fit">
+                  <img class="content-block__media-img" src="../assets/images/case1-finalD1.png" alt="">
+                  <button class="content-block__zoom" type="button" aria-label="Zoom"
+                          data-zoom-src="../assets/images/case1-finalD1.png"
+                          data-zoom-alt="">+</button>
+                </div>
+              </div>
+              <div class="content-block">
+                <h4 class="content-block__title">Flow structure and process states</h4>
+                <p class="content-block__text">Two role-handling options were explored and the final flow now shows candidate steps to HR while visually distinguishing them with colours and icons.</p>
+                <p class="content-block__text">Project templates were made more flexible, and this flexibility is clearly communicated.</p>
+                <div class="content-block__media content-block__media--fit">
+                  <img class="content-block__media-img" src="../assets/images/case1-finalD2.png" alt="">
+                  <button class="content-block__zoom" type="button" aria-label="Zoom"
+                          data-zoom-src="../assets/images/case1-finalD2.png"
+                          data-zoom-alt="">+</button>
+                </div>
+              </div>
+              <div class="content-block">
+                <h4 class="content-block__title">Trust and safety enablers</h4>
+                <p class="content-block__text">A "Send for electronic signature" action was added next to ready documents, and the flow was integrated with an e-signature provider.</p>
+                <div class="content-block__media content-block__media--fit">
+                  <img class="content-block__media-img" src="../assets/images/case1-finalD3.png" alt="">
+                  <button class="content-block__zoom" type="button" aria-label="Zoom"
+                          data-zoom-src="../assets/images/case1-finalD3.png"
+                          data-zoom-alt="">+</button>
+                </div>
+              </div>
+              <div class="content-block">
+                <h4 class="content-block__title">User support</h4>
+                <p class="content-block__text">The contract approval screens was extended with a prominent CTA and a confirmation modal when action cannot be undone.</p>
+                <div class="content-block__media content-block__media--fit">
+                  <img class="content-block__media-img" src="../assets/images/case1-finalD4.png" alt="">
+                  <button class="content-block__zoom" type="button" aria-label="Zoom"
+                          data-zoom-src="../assets/images/case1-finalD4.png"
+                          data-zoom-alt="">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="case-hero__nav-spacer"></div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Bottom sections — hidden until all nav-items are open ====== -->
+  <div class="case-bottom">
+
+  <!-- ====== More Projects ====== -->
+  <section class="more-projects">
+    <h2 class="more-projects__title h2">More projects</h2>
+    <div class="more-projects__list">
+      <a class="more-projects__card" href="case2.html">
+        <div class="more-projects__card-text">
+          <h3 class="more-projects__card-title h3">Designing a  Prompt Marketplace</h3>
+          <p class="more-projects__card-body">Prompt workspace for creating, organizing, and reusing personal and public prompts within an AI prompt productivity platform.</p>
+        </div>
+        <div class="more-projects__card-img">
+          <img src="../assets/images/preview-case2.png?v=2" alt="Case 2 preview">
+        </div>
+      </a>
+      <a class="more-projects__card" href="case3.html">
+        <div class="more-projects__card-text">
+          <h3 class="more-projects__card-title h3">Comprehensive AI shift planning for a hotel management SaaS platform</h3>
+          <p class="more-projects__card-body">Designing a modular, multi-agent AI scheduling system that coordinates hotel operations and learns from historical patterns.</p>
+        </div>
+        <div class="more-projects__card-img">
+          <img src="../assets/images/preview-case3.png?v=2" alt="Case 3 preview">
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ====== Email Section ====== -->
+  <section class="email">
+    <div class="email__content">
+      <div class="email__title-block">
+        <h2 class="email__greeting">Hi, I'm</h2>
+        <div class="email__name-row">
+          <img class="email__avatar" src="../assets/images/email-avatar.svg" alt="">
+          <h2 class="email__name">Stacy</h2>
+        </div>
+        <p class="email__subtitle">Your best choice designer.</p>
+      </div>
+      <div class="email__cta">
+        <p class="email__cta-text">I'll help you to make a choice and ready to ansfer for any questions.</p>
+        <div class="email__cta-image-container">
+          <div class="email__cta-image-wrap">
+            <img class="email__cta-image" src="../assets/images/email-small.svg" alt="">
+            <a href="#" class="email__cta-button js-contact-open">
+              <span class="email__cta-label">Contact me</span>
+              <img class="email__cta-arrow" src="../assets/icons/icon-email.svg" alt="" width="48" height="48">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Footer ====== -->
+  <footer class="footer">
+    <div class="footer__content">
+      <div class="footer__left">
+        <button class="footer__back" aria-label="Back to top">
+          <img class="footer__back-icon" src="../assets/icons/icon-arrow-right.svg" alt="">
+        </button>
+        <div class="footer__text">
+          <h2 class="footer__name">Anastasiia Medvid</h2>
+          <p class="footer__role">Crafting thoughtful interfaces for ambitious products</p>
+        </div>
+        <a class="footer__linkedin" href="https://www.linkedin.com/in/anastasiia-medvid" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <img class="footer__linkedin-icon" src="../assets/icon-linkedin.svg" alt="">
+        </a>
+      </div>
+      <nav class="footer__nav">
+        <a class="footer__nav-card" href="#projects">Projects</a>
+        <a class="footer__nav-card" href="#services">Services</a>
+        <a class="footer__nav-card" href="#competences">Competences</a>
+        <a class="footer__nav-card" href="#workflow">Workflow</a>
+      </nav>
+    </div>
+    <div class="footer__copyright">
+      <p class="footer__copyright-text">&copy;2026 Anastasiia Medvid.</p>
+    </div>
+  </footer>
+
+  </div><!-- /.case-bottom -->
+
+  <script src="../js/main.js"></script>
+  <script src="../js/components/header-menu.js"></script>
+  <script src="../js/components/contact-overlay.js"></script>
+  <script src="../js/components/case-hero.js"></script>
+  <script src="../js/components/image-zoom.js"></script>
+  <script src="../js/components/video-player.js"></script>
+  <script src="../js/components/grid-overlay.js"></script>
+  <script src="../js/components/resume-overlay.js"></script>
+</body>
+</html>

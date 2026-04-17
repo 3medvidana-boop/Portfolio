@@ -1,0 +1,396 @@
+/* ==========================================================================
+   Header — main site header component
+   ==========================================================================
+   1920px / 1440px:  90px height, logo, name row, email, resume 370×90
+   1200px (tablet):  90px height, menu icon, name stacked, resume 316×90
+   834px  (mobile):  60px height, menu icon 60×60, resume adapts
+   ========================================================================== */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 90px;
+  margin: 0;
+  padding: 0;
+  background-image: url('../../assets/images/image-header-background.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  z-index: 100;
+}
+
+/* ---- Home button ---- */
+.header__home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  background-color: #000000;
+  flex-shrink: 0;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.header__home-icon {
+  width: 56px;
+  height: 56px;
+  display: block;
+}
+
+.header__menu-icon {
+  display: none;
+}
+
+/* ---- Center area ---- */
+.header__center {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 0 24px;
+  min-width: 0;
+}
+
+.header__name {
+  font-size: 68px;
+  font-weight: 400;
+  color: #FFFFFF;
+  white-space: nowrap;
+}
+
+.header__role {
+  font-size: 36px;
+  font-weight: 400;
+  color: #FFFFFF;
+  opacity: 1;
+  white-space: nowrap;
+}
+
+/* ---- Inner pages modifier ---- */
+.header--inner {
+  background-image: none;
+  background-color: #ffffff;
+  border-bottom: 2px solid #000000;
+}
+
+.header--inner .header__name {
+  font-size: 36px;
+  color: #000000;
+}
+
+.header--inner .header__role {
+  font-size: 24px;
+  color: #000000;
+}
+
+/* ---- Email button ---- */
+.header__email {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  flex-shrink: 0;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.header__email-icon {
+  width: 48px;
+  height: 48px;
+  display: block;
+}
+
+/* ---- Resume button ---- */
+.header__resume {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 370px;
+  height: 90px;
+  background-color: #000000;
+  flex-shrink: 0;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  overflow: hidden;
+}
+
+.header__resume-label {
+  font-family: var(--button-text-font-family);
+  font-size: var(--button-text-font-size);
+  font-weight: var(--button-text-font-weight);
+  line-height: var(--button-text-line-height);
+  letter-spacing: var(--button-text-letter-spacing);
+  color: #FFFFFF;
+  white-space: nowrap;
+}
+
+.header__resume-arrow {
+  width: 48px;
+  height: 48px;
+  display: block;
+  transition: transform 0.3s ease;
+  filter: invert(1);
+}
+
+.header__resume:hover .header__resume-arrow {
+  animation: arrow-bounce 0.5s ease infinite;
+}
+
+@keyframes arrow-bounce {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(8px); }
+  100% { transform: translateX(0); }
+}
+
+/* ---- Mobile menu overlay ---- */
+.header__menu {
+  display: none;
+  position: fixed;
+  top: 90px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 90px);
+  background-image: url('../../assets/images/manu-bkg.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 99;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+}
+
+.header__menu.is-open {
+  transform: translateX(0);
+}
+
+/* Menu layout */
+.header__menu-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.header__menu-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 40px;
+  padding-left: calc(90px + 20px);
+  padding-right: 90px;
+}
+
+.header__menu-link {
+  font-family: var(--button-text-font-family);
+  font-size: var(--button-text-font-size);
+  font-weight: var(--button-text-font-weight);
+  line-height: var(--button-text-line-height);
+  letter-spacing: var(--button-text-letter-spacing);
+  color: #000;
+  text-decoration: none;
+}
+
+.header__menu-email {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  background: #000;
+  flex-shrink: 0;
+  margin-top: 16px;
+}
+
+.header__menu-email img {
+  width: 48px;
+  height: 48px;
+  display: block;
+  filter: invert(1);
+}
+
+.header__menu-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   1440px — Desktop (smaller)
+   ========================================================================== */
+@media (max-width: 1440px) {
+
+  /* Center — stacked layout */
+  .header__center {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    justify-content: center;
+  }
+
+  .header__name {
+    font-size: 36px;
+    line-height: 1.15;
+  }
+
+  .header__role {
+    font-size: 24px;
+    line-height: 1.15;
+  }
+}
+
+/* ==========================================================================
+   1200px — Tablet
+   ========================================================================== */
+@media (max-width: 1200px) {
+
+  /* Home → menu toggle */
+  .header__home-icon {
+    display: none;
+  }
+
+  .header__menu-icon {
+    display: block;
+    width: 48px;
+    height: 48px;
+  }
+
+  .header__menu-icon--close {
+    display: none;
+  }
+
+  .header--menu-open .header__menu-icon--open {
+    display: none;
+  }
+
+  .header--menu-open .header__menu-icon--close {
+    display: block;
+  }
+
+  /* Center — inherited from 1440px breakpoint */
+
+  /* Email — hide on tablet */
+  .header__email {
+    display: none;
+  }
+
+  /* Resume */
+  .header__resume {
+    width: 316px;
+  }
+
+  .header__resume-label {
+    font-size: 32px;
+  }
+
+  .header__resume-arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Menu overlay — enabled */
+  .header__menu {
+    display: block;
+  }
+}
+
+/* ==========================================================================
+   834px — Mobile
+   ========================================================================== */
+@media (max-width: 834px) {
+
+  .header {
+    height: 60px;
+  }
+
+  /* Home button — 60×60, icon 32×32 */
+  .header__home {
+    width: 60px;
+    height: 60px;
+  }
+
+  .header__menu-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Center — smaller text */
+  .header__name {
+    font-size: 24px;
+  }
+
+  .header__role {
+    font-size: 16px;
+  }
+
+  /* Email — stays hidden */
+
+  /* Resume — icon only, 60×60 */
+  .header__resume {
+    width: 60px;
+    height: 60px;
+    gap: 0;
+  }
+
+  .header__resume-label {
+    display: none;
+  }
+
+  .header__resume-arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Menu overlay — adjust top offset */
+  .header__menu {
+    top: 60px;
+    height: calc(100% - 60px);
+  }
+
+  .header__menu-left {
+    width: 60px;
+  }
+
+  .header__menu-content {
+    padding-left: calc(60px + 20px);
+    padding-right: 60px;
+  }
+
+  .header__menu-email {
+    width: 60px;
+    height: 60px;
+  }
+
+  .header__menu-email img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .header__menu-bottom {
+    height: 60px;
+  }
+
+  .header--inner .header__name {
+    font-size: 24px;
+  }
+
+  .header--inner .header__role {
+    font-size: 16px;
+  }
+}

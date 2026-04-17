@@ -1,0 +1,87 @@
+/* ==========================================================================
+   Case Stack — progressive reveal stacked sections
+   Each section is sticky. z-index and top are set via JS based on index.
+   Header height (visible tab): 72px. Sections stack with increasing top.
+   ========================================================================== */
+
+.case-stack {
+  position: relative;
+  padding: 0 0 0 90px;
+}
+
+/* ---------- Single section ---------- */
+.case-stack__section {
+  position: sticky;
+  background-color: #ffffff;
+  border-top: 2px solid #000000;
+  min-height: calc(100vh - 90px);
+  box-sizing: border-box;
+  display: flex;
+}
+
+/* ---------- Content area (left) ---------- */
+.case-stack__content {
+  flex: 1;
+  min-width: 0;
+  padding: 24px 24px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 24px;
+}
+
+/* ---------- Title area (right) ---------- */
+.case-stack__header {
+  width: 280px;
+  flex-shrink: 0;
+  padding: 20px 90px 20px 20px;
+  box-sizing: border-box;
+}
+
+.case-stack__title {
+  margin: 0;
+}
+
+/* ---------- Spacer block at the end (empty white) ---------- */
+.case-stack__section--end {
+  min-height: 200px;
+  height: 200px;
+  display: block;
+}
+
+/* ==========================================================================
+   1200px — Tablet
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .case-stack {
+    padding-left: 90px;
+  }
+
+  .case-stack__header {
+    width: 240px;
+    padding-right: 60px;
+  }
+}
+
+/* ==========================================================================
+   834px — Mobile
+   ========================================================================== */
+@media (max-width: 834px) {
+  .case-stack {
+    padding-left: 0;
+  }
+
+  .case-stack__section {
+    min-height: calc(100vh - 60px);
+    flex-direction: column;
+  }
+
+  .case-stack__header {
+    width: 100%;
+    padding: 16px 20px;
+  }
+
+  .case-stack__content {
+    padding: 20px;
+  }
+}

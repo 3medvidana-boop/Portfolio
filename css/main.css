@@ -1,0 +1,28 @@
+/* ==========================================================================
+   Main stylesheet — imports only, no direct rules
+   ========================================================================== */
+
+@import "base/reset.css";
+@import "base/variables.css";
+@import "base/breakpoints.css";
+@import "base/typography.css";
+
+/* Components */
+@import "components/header.css";
+@import "components/hero.css";
+@import "components/competences.css";
+@import "components/projects.css";
+@import "components/services.css";
+@import "components/workflow.css";
+@import "components/email.css";
+@import "components/footer.css";
+@import "components/contact-overlay.css";
+@import "components/case-hero.css";
+@import "components/bullet-list.css";
+@import "components/content-blocks.css";
+@import "components/image-zoom.css";
+@import "components/video-player.css";
+@import "components/grid-overlay.css";
+@import "components/more-projects.css";
+@import "components/image-carousel.css";
+@import "components/resume-overlay.css";

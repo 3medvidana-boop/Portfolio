@@ -1,0 +1,365 @@
+/* ==========================================================================
+   Contact Form Overlay
+   ========================================================================== */
+
+.contact-overlay {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 200;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.contact-overlay.is-open {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Backdrop — black 34% with blur */
+.contact-overlay__backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.contact-overlay.is-open .contact-overlay__backdrop {
+  opacity: 1;
+}
+
+/* Panel — starts at grid col 3, full height, right side */
+.contact-overlay__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: calc(100% - 90px - 2 * (100vw - 90px * 2 - 24px * 5) / 6 - 2 * 24px);
+  background: #fff;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.contact-overlay.is-open .contact-overlay__panel {
+  transform: translateX(0);
+}
+
+/* Close button */
+.contact-overlay__close {
+  width: 90px;
+  height: 90px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-left: auto;
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-overlay__close img {
+  width: 48px;
+  height: 48px;
+  display: block;
+  filter: invert(1);
+}
+
+/* Content */
+.contact-overlay__content {
+  padding: 120px 90px 40px 90px;
+}
+
+.contact-overlay__header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin: 0 0 40px 0;
+}
+
+.contact-overlay__title {
+  margin: 0;
+}
+
+/* Form */
+.contact-overlay__form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-overlay__row {
+  display: flex;
+  gap: 24px;
+}
+
+.contact-overlay__input,
+.contact-overlay__textarea {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: 0;
+  background: none;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
+  line-height: var(--body-line-height);
+  color: var(--body-color);
+  outline: none;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+}
+
+.contact-overlay__input::placeholder,
+.contact-overlay__textarea::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.contact-overlay__field {
+  width: 100%;
+}
+
+.contact-overlay__textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Error state */
+.contact-overlay__input.is-error,
+.contact-overlay__textarea.is-error {
+  border-color: #E53935 !important;
+}
+
+.contact-overlay__error {
+  display: none;
+  font-family: var(--body-font-family);
+  font-size: 12px;
+  line-height: 1.4;
+  color: #E53935;
+  margin-top: 4px;
+}
+
+.contact-overlay__error.is-visible {
+  display: block;
+}
+
+/* Bottom row — submit + image */
+.contact-overlay__bottom {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* Submit button — same behavior as resume */
+.contact-overlay__submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 90px;
+  padding: 0 32px;
+  background: #000;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.contact-overlay__submit-label {
+  font-family: var(--button-text-font-family);
+  font-size: var(--button-text-font-size);
+  font-weight: var(--button-text-font-weight);
+  line-height: var(--button-text-line-height);
+  letter-spacing: var(--button-text-letter-spacing);
+  color: #fff;
+  white-space: nowrap;
+}
+
+.contact-overlay__submit-arrow {
+  width: 48px;
+  height: 48px;
+  display: block;
+  filter: invert(1);
+  transition: transform 0.3s ease;
+}
+
+.contact-overlay__submit:hover .contact-overlay__submit-arrow {
+  animation: arrow-bounce 0.5s ease infinite;
+}
+
+/* Image — fit screen height, preserve proportions, top-left */
+.contact-overlay__image {
+  flex: 1;
+  min-width: 0;
+  max-height: calc(100vh - 120px - 40px);
+  height: auto;
+  object-fit: contain;
+  object-position: left top;
+  display: block;
+}
+
+/* Success state */
+.contact-overlay__success {
+  display: none;
+}
+
+.contact-overlay__form.is-sent {
+  display: none;
+}
+
+.contact-overlay__form.is-sent + .contact-overlay__success {
+  display: block;
+  padding-top: 24px;
+}
+
+.contact-overlay__again {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 90px;
+  padding: 0 32px;
+  margin-top: 24px;
+  background: #000;
+  border: none;
+  cursor: pointer;
+}
+
+.contact-overlay__again-label {
+  font-family: var(--button-text-font-family);
+  font-size: var(--button-text-font-size);
+  font-weight: var(--button-text-font-weight);
+  line-height: var(--button-text-line-height);
+  letter-spacing: var(--button-text-letter-spacing);
+  color: #fff;
+  white-space: nowrap;
+}
+
+.contact-overlay__again-arrow {
+  width: 48px;
+  height: 48px;
+  display: block;
+  filter: invert(1);
+  transition: transform 0.3s ease;
+}
+
+.contact-overlay__again:hover .contact-overlay__again-arrow {
+  animation: arrow-bounce 0.5s ease infinite;
+}
+
+/* Sending state */
+.contact-overlay__submit.is-sending {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   1440px — Panel starts at col 2 (6-col grid, margin 90px, gutter 24px)
+   col 2 start = 90px + 1col + 1gutter
+   ========================================================================== */
+@media (max-width: 1440px) {
+  .contact-overlay__panel {
+    width: calc(100% - 90px - (100vw - 90px * 2 - 24px * 5) / 6 - 24px);
+  }
+}
+
+/* ==========================================================================
+   1200px — Tablet (margin 60px, 4 cols, gutter 20px)
+   Panel starts at col 2 of 4-col grid
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .contact-overlay__panel {
+    width: calc(100% - 60px - (100vw - 60px * 2 - 20px * 3) / 4 - 20px);
+  }
+
+  .contact-overlay__content {
+    padding: 120px 60px 40px 60px;
+  }
+
+  .contact-overlay__submit-arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  .contact-overlay__close {
+    width: 90px;
+    height: 90px;
+  }
+
+  .contact-overlay__close img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* ==========================================================================
+   834px — Mobile (margin 20px, 2 cols, gutter 16px)
+   Full width panel
+   ========================================================================== */
+@media (max-width: 834px) {
+  .contact-overlay__panel {
+    width: 100%;
+  }
+
+  .contact-overlay__content {
+    padding: 60px 20px 40px 20px;
+  }
+
+  .contact-overlay__row {
+    flex-direction: column;
+  }
+
+  .contact-overlay__bottom {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .contact-overlay__submit {
+    height: 60px;
+  }
+
+  .contact-overlay__submit-arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  .contact-overlay__submit:hover .contact-overlay__submit-arrow {
+    animation: none;
+  }
+
+  .contact-overlay__close {
+    width: 60px;
+    height: 60px;
+  }
+
+  .contact-overlay__close img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .contact-overlay__image {
+    max-height: calc(100vh - 60px - 40px);
+  }
+
+  .contact-overlay__again {
+    height: 60px;
+  }
+
+  .contact-overlay__again-arrow {
+    width: 32px;
+    height: 32px;
+  }
+}

@@ -1,0 +1,420 @@
+/* ==========================================================================
+   Case Hero — project case page hero section
+   ========================================================================== */
+
+.case-hero {
+  padding-top: 0;
+  position: relative;
+  display: flex;
+}
+
+/* ---------- Left decorative image — full height of section ---------- */
+.case-hero__left {
+  width: 90px;
+  flex-shrink: 0;
+}
+
+.case-hero__left img {
+  width: 100%;
+  height: 900px;
+  max-height: 900px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------- Body — everything right of left image ---------- */
+.case-hero__body {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  padding-left: 20px;
+}
+
+/* ---------- Top row: title | info column ---------- */
+.case-hero__top {
+  display: flex;
+  align-items: stretch;
+}
+
+/* Title block */
+.case-hero__title-block {
+  flex: 1;
+  padding: 24px 24px 24px 20px;
+  min-width: 0;
+}
+
+.case-hero__title {
+  margin: 0;
+}
+
+.case-hero__subtitle {
+  margin: 16px 0 0 0;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size);
+  font-weight: 600;
+  line-height: var(--body-line-height);
+  color: #000;
+}
+
+/* Info column — right side with background image
+   Width = from 5th col start to screen edge (2 cols + gutter + margin)
+   Text: 20px from left, ends at col 6 end (padding-right = margin 90px)
+   Background: fills entire container, height 698px */
+.case-hero__info {
+  width: calc(2 * (100vw - 300px) / 6 + 24px + 90px);
+  flex-shrink: 0;
+  padding: 0 90px 24px 20px;
+  box-sizing: border-box;
+  min-height: 698px;
+  background-size: cover;
+  background-position: left top;
+  background-repeat: no-repeat;
+}
+
+.case-hero__info-row {
+  padding: 4px 0;
+  margin-bottom: 16px;
+}
+
+.case-hero__info-row:first-child {
+  padding-top: 24px;
+}
+
+.case-hero__info-row:last-child {
+  margin-bottom: 0;
+}
+
+.case-hero__info-row + .case-hero__info-row {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.case-hero__info-label {
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #000;
+  margin: 0;
+}
+
+.case-hero__info-value {
+  font-family: var(--body-font-family);
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #000;
+  margin: 4px 0 0 0;
+}
+
+/* ---------- Main: laptop (top) + nav (bottom-left) ---------- */
+.case-hero__main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Laptop image — top = 380px from header, right-aligned, clips on shrink */
+.case-hero__laptop {
+  position: absolute;
+  top: 380px;
+  right: 0;
+  width: calc(100% - 2 * (100vw - 90px * 2 - 24px * 5) / 6 - 2 * 24px);
+  overflow: hidden;
+}
+
+.case-hero__laptop img {
+  width: 100%;
+  min-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Nav list — spans from col 1 to right margin edge.
+   Parent (.case-hero__main) width = body width − 110 (left img 90 + body pad 20).
+   Target nav width = body − 180, so nav = parent − 70. Avoids 100vw because
+   100vw includes the scrollbar and would push everything past the right margin. */
+.case-hero__nav {
+  margin-left: -20px; /* cancel body padding-left */
+  width: calc(100% - 70px);
+  box-sizing: border-box;
+}
+
+/* Each nav-item: grid split — left = 2 cols, right = rest
+   Row 1 = title / content top, Row 2 = body / content bottom
+   Using auto rows so left column content hugs its intrinsic height */
+.case-hero__nav-item {
+  background-color: #ffffff;
+  padding: 0 0 20px 0;
+  box-sizing: border-box;
+  display: grid;
+  /* col1 = 2 columns + 1 gutter, derived from container width (not 100vw):
+     single col = (nav width − 120) / 6, where 120 = 5 gutters of 24px. */
+  grid-template-columns: calc((100% - 120px) / 3 + 24px) minmax(0, 1fr);
+  grid-column-gap: 24px;
+  align-items: start;
+}
+
+/* Left wrapper — title + body, top-aligned.
+   Sticky to the top edge of the viewport (just under the sticky header)
+   while the user scrolls through its section. Standard CSS sticky is
+   one-directional by nature within the containing block: as soon as the
+   element reaches its top offset it pins, and scrolling back up inside
+   the section keeps it pinned (it only releases if the user scrolls
+   above the section's original top). The containing block is the grid
+   area of the nav-item, whose height follows the taller column
+   (nav-content), so the left block stays pinned for the whole length of
+   the right-column content. Only active at >= 1201px where the nav-item
+   is a two-column grid; at <= 1200px the layout stacks and sticky is
+   disabled. */
+.case-hero__nav-left {
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  position: sticky;
+  top: 90px; /* clear the sticky site header */
+}
+
+.case-hero__nav-title {
+  margin: 0;
+  padding-top: 22px; /* 2px border + 20px space */
+  padding-left: 20px;
+  border-top: 2px solid rgba(0, 0, 0, 0.2); /* divider spans only left col */
+}
+
+/* First item — no divider */
+.case-hero__nav-item:first-child .case-hero__nav-title {
+  border-top: none;
+}
+
+/* Body text — collapsed by default, max-height driven by JS */
+.case-hero__nav-body {
+  margin: 0;
+  padding-left: 20px;
+  max-height: 0;
+  overflow: hidden;
+  font-family: var(--body-font-family);
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #000;
+}
+
+.case-hero__nav-item.is-open .case-hero__nav-body {
+  max-height: 2000px;
+  margin-top: 8px;
+}
+
+.case-hero__nav-body > :first-child {
+  margin-top: 0;
+}
+
+/* Content container — right column, top-aligned.
+   Fixed width per breakpoint:
+     >= 1441px : 840px
+     <= 1440px : 784px
+     <= 1200px : 546px
+     <= 834px  : 100% (mobile, single column) */
+.case-hero__nav-content {
+  min-width: 0;
+  width: 840px;
+  max-width: 100%;
+  padding-top: 72px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease;
+  align-self: start;
+}
+
+.case-hero__nav-left {
+  min-width: 0;
+}
+
+/* Closed items — completely hidden until JS adds is-active or is-open */
+.case-hero__nav-item:not(.is-open):not(.is-active) {
+  display: none;
+}
+
+/* Active (currently being revealed) OR fully open:
+   content flows at its natural height, pushed below the viewport fold by
+   padding-top equal to (viewport − header), so the right column visually
+   "enters from the bottom of the screen" as the user scrolls the page
+   naturally. The left block stays sticky under the header; once the user
+   scrolls past 100vh of padding, the first content-block reaches the top
+   of the viewport area. Mobile (<=1200px) overrides padding-top below. */
+.case-hero__nav-item.is-active .case-hero__nav-content,
+.case-hero__nav-item.is-open .case-hero__nav-content {
+  max-height: none;
+  min-height: calc(100vh - 90px);
+}
+
+/* End spacer — empty white block */
+.case-hero__nav-spacer {
+  height: 200px;
+  background-color: #ffffff;
+}
+
+
+
+/* ==========================================================================
+   1440px — info block narrows, bg overflows left
+   Text starts at ~half of col 5, bg starts at ~quarter of col 5
+   ========================================================================== */
+@media (max-width: 1440px) {
+  .case-hero__info {
+    width: calc(1.5 * (100vw - 300px) / 6 + 24px + 90px);
+    padding: 0 90px 24px 20px;
+    background-size: cover;
+    background-position: left top;
+  }
+
+  .case-hero__nav-content {
+    width: 784px;
+  }
+}
+
+/* ==========================================================================
+   1200px — Tablet (4-col grid, 60px margin, 20px gutter)
+   Same as 1440, left image 1000px height
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .case-hero__left {
+    width: 90px;
+  }
+
+  .case-hero__left img {
+    height: 900px;
+    max-height: 900px;
+  }
+
+  .case-hero__info {
+    width: calc((100vw - 60px * 2 - 20px * 3) / 4 + 60px);
+    padding: 0 60px 24px 20px;
+    min-height: auto;
+    background-size: cover;
+    background-position: left top;
+  }
+
+  /* Laptop — static, full width, scales down, min-height 445px */
+  .case-hero__laptop {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .case-hero__laptop img {
+    width: 100%;
+    min-width: auto;
+    min-height: 445px;
+    object-fit: cover;
+    object-position: left top;
+  }
+
+  /* Nav — from col 1 to right margin edge
+     Body content starts at: left-image (90) + body padding-left (20) = 110
+     Col1 starts at viewport left margin = 60
+     So margin-left = 60 - 110 = -50
+     Right edge target = viewport - 60 ⇒ width = 100vw - 120 */
+  .case-hero__nav {
+    margin-left: -50px;
+    /* parent (.case-hero__main) = body − 110; target nav width = body − 120
+       ⇒ nav = parent − 10. Parent-relative to dodge the 100vw scrollbar bug. */
+    width: calc(100% - 10px);
+    padding: 0 0 24px 0;
+    box-sizing: border-box;
+  }
+
+  /* Single column layout — no grid split */
+  .case-hero__nav-item {
+    display: block;
+    grid-template-columns: none;
+    grid-template-areas: none;
+  }
+
+  /* Stacked layout — sticky left column makes no sense here */
+  .case-hero__nav-left {
+    position: static;
+    top: auto;
+  }
+
+
+  .case-hero__nav-title {
+    padding-left: 0;
+    padding-right: 0;
+    border-top: 2px solid rgba(0, 0, 0, 0.2);
+  }
+
+  .case-hero__nav-body {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .case-hero__nav-content {
+    width: 100%;
+    padding-top: 0;
+  }
+
+  /* Stacked layout — the desktop "push content below fold" trick does not
+     apply here because the left and right stacks vertically. Reset padding
+     and keep the original 24px gap between left lead and right content. */
+  .case-hero__nav-item.is-active .case-hero__nav-content,
+  .case-hero__nav-item.is-open .case-hero__nav-content {
+    max-height: none;
+    padding-top: 0;
+    margin-top: 24px;
+    min-height: 0;
+  }
+
+}
+
+/* ==========================================================================
+   834px — Mobile
+   ========================================================================== */
+@media (max-width: 834px) {
+  .case-hero__top {
+    flex-direction: column;
+  }
+
+  .case-hero__left {
+    display: none;
+  }
+
+  .case-hero__body {
+    padding-left: 0;
+  }
+
+  .case-hero__title-block {
+    padding: 20px;
+  }
+
+  .case-hero__info {
+    width: 100%;
+    min-height: 400px;
+    height: auto;
+    margin-top: 20px;
+    padding: 20px;
+    background-size: cover;
+    background-position: left top;
+  }
+
+  .case-hero__laptop {
+    padding-left: 20px;
+    margin-top: -24px;
+  }
+
+  .case-hero__nav {
+    margin-left: 0;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .case-hero__nav-body {
+    font-size: 19px;
+  }
+
+  .case-hero__nav-content {
+    width: 100%;
+  }
+}

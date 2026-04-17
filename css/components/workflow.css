@@ -1,0 +1,199 @@
+/* ==========================================================================
+   Workflow Section — collaborative design process
+   ========================================================================== */
+
+.workflow {
+  width: 100%;
+  padding: 24px 0 120px 0;
+}
+
+.workflow__header {
+  padding-left: calc(90px + 20px);
+  padding-right: 90px;
+}
+
+.workflow__hint {
+  color: var(--hint-text-color);
+  font-family: var(--hint-text-font-family);
+  font-size: var(--hint-text-font-size);
+  font-style: normal;
+  font-weight: var(--hint-text-font-weight);
+  line-height: var(--hint-text-line-height);
+  margin: 0 0 64px 0;
+}
+
+.workflow__title {
+  margin: 0 0 24px 0;
+}
+
+/* ==========================================================================
+   Cards — 2 columns (col 1: cards 1-2, col 2: cards 3-4-5)
+   ========================================================================== */
+.workflow__cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-left: 90px;
+  padding-right: 90px;
+}
+
+.workflow__col {
+  display: contents;
+}
+
+/* ==========================================================================
+   Single card
+   ========================================================================== */
+.workflow__card {
+  padding: 20px;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(0, 0, 0, 0.16);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* Grid placement: col 1 cards → column 1, col 2 cards → column 2 */
+.workflow__col:nth-child(1) .workflow__card { grid-column: 1; }
+.workflow__col:nth-child(2) .workflow__card { grid-column: 2; }
+
+/* Card 3 starts at row 1, aligned with card 1 */
+.workflow__col:nth-child(2) .workflow__card:first-child { grid-row-start: 1; }
+
+/* Cards 3, 4, 5 — blue background */
+.workflow__col:nth-child(2) .workflow__card {
+  background: #E1F7FC;
+}
+
+.workflow__card-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 32px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.workflow__card-text {
+  flex: 1;
+}
+
+.workflow__card-title {
+  margin: 0 0 8px 0;
+}
+
+.workflow__card-body {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Bottom — workflow image (fixed 870×210, responsive when space < 870px)
+   ========================================================================== */
+.workflow__bottom {
+  padding-left: 90px;
+  padding-right: 90px;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.workflow__bottom-img {
+  display: block;
+  width: 870px;
+  height: auto;
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   1440px — single column, starts at grid column 3
+   6 cols, margin 90px, gutter 24px
+   col 3 start = 90px + 2 cols + 2 gutters
+   ========================================================================== */
+@media (max-width: 1440px) {
+  .workflow__cards {
+    grid-template-columns: 1fr;
+    padding-left: calc(90px + 2 * (100vw - 180px - 120px) / 6 + 2 * 24px);
+    padding-right: 90px;
+  }
+
+  .workflow__col:nth-child(1) .workflow__card,
+  .workflow__col:nth-child(2) .workflow__card {
+    grid-column: 1;
+  }
+
+  .workflow__col:nth-child(2) .workflow__card:first-child {
+    grid-row-start: auto;
+  }
+
+  /* Correct order: 1, 2, 3, 4, 5 */
+  .workflow__col:nth-child(1) .workflow__card:nth-child(1) { order: 1; }
+  .workflow__col:nth-child(1) .workflow__card:nth-child(2) { order: 2; }
+  .workflow__col:nth-child(2) .workflow__card:nth-child(1) { order: 3; }
+  .workflow__col:nth-child(2) .workflow__card:nth-child(2) { order: 4; }
+  .workflow__col:nth-child(2) .workflow__card:nth-child(3) { order: 5; }
+}
+
+/* ==========================================================================
+   1200px — Tablet (margin 60px, 4 cols, gutter 20px)
+   col 2 start = 60px + 1 col + 1 gutter
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .workflow__header {
+    padding-left: calc(60px + 20px);
+    padding-right: 60px;
+  }
+
+  .workflow__cards {
+    grid-template-columns: 1fr;
+    padding-left: calc(60px + (100vw - 120px - 60px) / 4 + 20px);
+    padding-right: 60px;
+  }
+
+  .workflow__col:nth-child(1) .workflow__card,
+  .workflow__col:nth-child(2) .workflow__card {
+    grid-column: 1;
+  }
+
+  .workflow__bottom {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+/* ==========================================================================
+   834px — Mobile (margin 20px)
+   ========================================================================== */
+@media (max-width: 834px) {
+  .workflow {
+    padding-bottom: 80px;
+  }
+
+  .workflow__header {
+    padding-left: calc(20px + 20px);
+    padding-right: 20px;
+  }
+
+  .workflow__hint {
+    margin: 0 0 40px 0;
+  }
+
+  .workflow__cards {
+    grid-template-columns: 1fr;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .workflow__col:nth-child(1) .workflow__card,
+  .workflow__col:nth-child(2) .workflow__card {
+    grid-column: 1;
+  }
+
+  .workflow__bottom {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

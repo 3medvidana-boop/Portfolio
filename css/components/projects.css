@@ -1,0 +1,488 @@
+/* ==========================================================================
+   Projects Section — case showcase with preview + pagination
+   ==========================================================================
+   Header: H1 title (2.5 cols) | pagination 90×90 | fill #6DF644 | "See all"
+   Content: preview image (left) | case list as staircase (right)
+   ========================================================================== */
+
+.projects {
+  width: 100%;
+  padding-bottom: 120px;
+}
+
+/* ==========================================================================
+   Header row — title, pagination, see-all
+   ========================================================================== */
+.projects__header {
+  display: flex;
+  align-items: center;
+  padding-left: 90px;
+  padding-right: 0;
+  height: 90px;
+}
+
+
+.projects__title-wrap {
+  /* 2.5 columns + 2 gutters */
+  width: calc(2.5 * (100vw - 90px * 2 - 24px * 5) / 6 + 2 * 24px);
+  flex-shrink: 0;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
+
+.projects__title {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.projects__pagination {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+/* ---- Pagination button base 90×90 ---- */
+.projects__page-btn {
+  width: 90px;
+  height: 90px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
+  line-height: var(--body-line-height);
+  color: #000;
+  padding: 0;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ---- Arrow icons: 24×24, centered ---- */
+.projects__page-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+/* ---- Pagination button colors ---- */
+.projects__page-btn--prev {
+  background: #55F8AF;
+}
+
+.projects__page-btn--1 {
+  background: #6DF644;
+}
+
+.projects__page-btn--2 {
+  background: #C095BF;
+}
+
+.projects__page-btn--3 {
+  background: #F1EC14;
+}
+
+.projects__page-btn--next {
+  background: #6DF644;
+}
+
+/* ---- Number buttons hover ---- */
+.projects__page-btn--1:hover,
+.projects__page-btn--2:hover,
+.projects__page-btn--3:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* ---- Active state on number buttons (via JS) ---- */
+.projects__page-btn.is-active {
+  background: #000;
+  color: #fff;
+}
+
+.projects__page-btn.is-active img {
+  filter: invert(1);
+}
+
+/* ---- Focused state: black bg, white icon/text ---- */
+.projects__page-btn:focus {
+  background: #000;
+  color: #fff;
+}
+
+.projects__page-btn:focus img {
+  filter: invert(1);
+}
+
+/* ---- Arrow buttons: hover → black, focused → default color ---- */
+.projects__page-btn--prev:hover,
+.projects__page-btn--next:hover {
+  background: #000;
+}
+
+.projects__page-btn--prev:hover img,
+.projects__page-btn--next:hover img {
+  filter: invert(1);
+}
+
+.projects__page-btn--prev:focus,
+.projects__page-btn--next:focus {
+  background: var(--projects-arrow-default-bg);
+  color: #000;
+}
+
+.projects__page-btn--prev:focus img,
+.projects__page-btn--next:focus img {
+  filter: none;
+}
+
+.projects__page-btn--prev {
+  --projects-arrow-default-bg: #55F8AF;
+}
+
+.projects__page-btn--next {
+  --projects-arrow-default-bg: #6DF644;
+}
+
+/* ---- Fill area between right arrow and "See all" ---- */
+.projects__header-fill {
+  flex: 1;
+  height: 90px;
+  background: #6DF644;
+}
+
+/* ---- "See all" button — identical to header Resume ---- */
+.projects__see-all {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: calc(370px + 90px);
+  height: 90px;
+  padding-right: 90px;
+  background-color: #000000;
+  flex-shrink: 0;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.projects__see-all-label {
+  font-family: var(--button-text-font-family);
+  font-size: var(--button-text-font-size);
+  font-weight: var(--button-text-font-weight);
+  line-height: var(--button-text-line-height);
+  letter-spacing: var(--button-text-letter-spacing);
+  color: #FFFFFF;
+  white-space: nowrap;
+}
+
+.projects__see-all-arrow {
+  width: 48px;
+  height: 48px;
+  display: block;
+  transition: transform 0.3s ease;
+  filter: invert(1);
+}
+
+.projects__see-all:hover .projects__see-all-arrow {
+  animation: arrow-bounce 0.5s ease infinite;
+}
+
+/* ==========================================================================
+   Content — preview image + case list
+   ========================================================================== */
+.projects__content {
+  display: flex;
+  padding-left: 90px;
+}
+
+.projects__preview {
+  flex-shrink: 0;
+  width: calc((100% - 90px) / 2);
+  min-width: 370px;
+  overflow: hidden;
+}
+
+.projects__preview-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  object-position: top right;
+}
+
+/* Hide non-active preview images */
+.projects__preview-img:not(.is-active) {
+  display: none;
+}
+
+.projects__cases {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   Individual case card — staircase layout
+   Case 1: ends at last grid column edge (margin-right: 90px from viewport)
+   Case 2: +60px shorter → margin-right: 90+60
+   Case 3: +120px shorter → margin-right: 90+120
+   Case 4: +180px shorter → margin-right: 90+180
+   Each case has a background image (cover)
+   ========================================================================== */
+.projects__case {
+  display: block;
+  padding: 20px;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  transition: none;
+  border-left: 4px solid transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Background images per case */
+.projects__case:nth-child(1) {
+  background-image: url('../../assets/images/project-case1.svg');
+}
+
+.projects__case:nth-child(2) {
+  background-image: url('../../assets/images/project-case2.svg');
+}
+
+.projects__case:nth-child(3) {
+  background-image: url('../../assets/images/project-case3.svg');
+}
+
+.projects__case:nth-child(4) {
+  background-image: url('../../assets/images/project-case4.svg');
+}
+
+/* Staircase: case 1 ends at last grid column (90px from viewport right),
+   each next case is 60px shorter */
+.projects__case:nth-child(1) {
+  margin-right: 90px;
+}
+
+.projects__case:nth-child(2) {
+  margin-right: 150px;
+}
+
+.projects__case:nth-child(3) {
+  margin-right: 210px;
+}
+
+.projects__case:nth-child(4) {
+  margin-right: 270px;
+}
+
+/* ---- Hover: instant white ---- */
+.projects__case:hover {
+  background-color: #ffffff;
+  background-image: none;
+}
+
+/* ---- Focused state: black left border 4px ---- */
+.projects__case.is-focused {
+  border-left: 4px solid #000;
+}
+
+.projects__case-title {
+  margin: 0;
+}
+
+.projects__case-body {
+  margin: 8px 0 0 0;
+}
+
+/* ---- Case 4 (Coming soon): no interactions, no border offset, hide text ---- */
+.projects__case:nth-child(4) {
+  border-left: none;
+  cursor: default;
+  pointer-events: none;
+}
+
+.projects__case:nth-child(4) .projects__case-title,
+.projects__case:nth-child(4) .projects__case-body {
+  visibility: hidden;
+}
+
+/* ==========================================================================
+   1266px — "See all" switches to icon-only
+   ========================================================================== */
+@media (max-width: 1266px) {
+  .projects__see-all {
+    width: calc(90px + 90px);
+    padding: 0 90px 0 0;
+  }
+
+  .projects__see-all-label {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   1200px — Tablet (margin 60px, 4 cols, gutter 20px)
+   ========================================================================== */
+@media (max-width: 1200px) {
+  /* Header: wrap, margin 60px */
+  .projects__header {
+    flex-wrap: wrap;
+    height: auto;
+    padding-left: 60px;
+  }
+
+  .projects__see-all {
+    width: calc(90px + 60px);
+    padding: 0 60px 0 0;
+  }
+
+  /* Title: recalc for 4-col grid */
+  .projects__title-wrap {
+    width: auto;
+    flex-shrink: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Pagination + fill + see-all can wrap to next row */
+  .projects__pagination {
+    flex-shrink: 0;
+  }
+
+  .projects__header-fill {
+    height: 90px;
+    min-width: 0;
+  }
+
+  .projects__see-all {
+    height: 90px;
+    flex-shrink: 0;
+  }
+
+  /* Content: vertical, full width, cases first then preview */
+  .projects__content {
+    flex-direction: column;
+    padding-left: 0;
+  }
+
+  .projects__cases {
+    order: 1;
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .projects__preview {
+    order: 2;
+    width: 100%;
+    min-width: auto;
+    padding-left: 60px;
+    padding-right: 60px;
+    box-sizing: border-box;
+  }
+
+  /* Cases: only show focused (active) case */
+  .projects__case {
+    display: none;
+    margin-right: 0;
+  }
+
+  .projects__case.is-focused {
+    display: block;
+  }
+
+  /* Body text: 2 lines max */
+  .projects__case-body {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* No staircase on tablet/mobile */
+  .projects__case:nth-child(1),
+  .projects__case:nth-child(2),
+  .projects__case:nth-child(3),
+  .projects__case:nth-child(4) {
+    margin-right: 0;
+  }
+
+  /* Disable hover and focused on cases */
+  .projects__case:hover {
+    background-color: inherit;
+    background-image: inherit;
+  }
+
+  .projects__case.is-focused {
+    border-left-color: transparent;
+  }
+
+}
+
+/* ==========================================================================
+   834px — Mobile (margin 20px, 2 cols, gutter 16px)
+   ========================================================================== */
+@media (max-width: 834px) {
+  .projects__header {
+    padding-left: 20px;
+  }
+
+  .projects__see-all {
+    width: calc(60px + 20px);
+    height: 60px;
+    padding: 0 20px 0 0;
+  }
+
+  .projects__title-wrap {
+    width: auto;
+    padding-left: 20px;
+    height: 60px;
+  }
+
+  /* All buttons 60×60 */
+  .projects__page-btn {
+    width: 60px;
+    height: 60px;
+  }
+
+  .projects__header-fill {
+    height: 60px;
+  }
+
+  .projects {
+    padding-bottom: 80px;
+  }
+
+  .projects__see-all {
+    width: 60px;
+    height: 60px;
+    padding: 0;
+  }
+
+  .projects__see-all-arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  .projects__cases {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .projects__preview {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+}

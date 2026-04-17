@@ -1,0 +1,16 @@
+/* ==========================================================================
+   Breakpoints
+   ==========================================================================
+
+   Fluid behavior between breakpoints:
+
+   >= 1200px        → 6 columns | margin: 90px | gutter: 24px
+   834px – 1199px   → 4 columns | margin: 60px | gutter: 20px
+   < 834px          → 2 columns | margin: 20px | gutter: 16px
+
+   Transition flow:
+   1920 → fluid → 1440 → fluid → 1200 → switch
+   1200 → fluid →  834 → switch
+    834 → fluid →  390
+
+   ========================================================================== */

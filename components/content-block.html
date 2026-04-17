@@ -1,0 +1,55 @@
+<!--
+  Content Block — base titled block with divider
+
+  Atomic content unit used to group a heading with one or more text
+  paragraphs inside the right column of a case-hero section (or any
+  long-form content area). When several blocks are stacked inside a
+  .content-blocks wrapper, a thin divider appears between them and
+  visually separates topics without extra markup.
+
+  Use it whenever you need a "titled chunk of text" — research findings,
+  problem statements, design decisions, lessons learned, etc. Composite
+  variants (persona card, 2-column grid, media with zoom) are built on
+  top of this same skeleton by adding extra elements inside .content-block.
+
+  Requires:
+    - css/components/content-blocks.css
+
+  Structure:
+    .content-blocks            wrapper, vertical stack with 24px gap
+      └ .content-block          single titled block, 16px inner gap
+          ├ .content-block__title   heading (h4)
+          └ .content-block__text    paragraph (one or more)
+
+  Spacing:
+    Between blocks (.content-blocks gap)   : 24px
+    Inside a block (title → text, etc.)    : 16px
+    Block padding-top                      : 24px (creates space above divider)
+    Divider                                : 2px solid rgba(0,0,0,0.4) on
+                                             border-top of every block
+    First block                            : no divider, no padding-top
+                                             (handled automatically via :first-child)
+
+  Typography:
+    Title  : 28px bold, line-height 1.2  (mobile <834px: 19px)
+    Text   : 19px regular, line-height 1.4 (mobile <834px: 16px)
+
+  Notes:
+    - The wrapper .content-blocks is required for the divider rhythm to
+      look right; a lone .content-block outside it will still render but
+      will not show its border-top (it becomes the only :first-child).
+    - .content-block__text accepts inline <strong> for lead-in phrases.
+    - For richer variants see: content-block-media.html (image + zoom),
+      and the persona / grid variants in content-blocks.css.
+-->
+
+<div class="content-blocks">
+  <div class="content-block">
+    <h4 class="content-block__title">Block title</h4>
+    <p class="content-block__text">First paragraph of the block. Use one or more <code>.content-block__text</code> elements to stack paragraphs inside the same block.</p>
+  </div>
+  <div class="content-block">
+    <h4 class="content-block__title">Second block</h4>
+    <p class="content-block__text"><strong>Lead-in phrase.</strong> The divider above this block is rendered automatically by <code>.content-block</code>'s border-top — the first block in the wrapper has it suppressed.</p>
+  </div>
+</div>

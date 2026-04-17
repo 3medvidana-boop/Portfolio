@@ -1,0 +1,40 @@
+<!--
+  Content Block — Media (image with zoom trigger)
+
+  Inline preview image used inside a content block (e.g. research artifacts,
+  screenshots, photos). Stretches to 100% of its parent and preserves the
+  image's natural aspect ratio (no cropping), so the layout adapts to the
+  source dimensions instead of forcing a fixed frame. A small zoom button
+  overlays the top-right corner and opens the full-resolution source in the
+  Image Zoom overlay — tidy preview in-flow, full detail on demand.
+
+  Requires:
+    - css/components/content-blocks.css
+    - css/components/image-zoom.css
+    - js/components/image-zoom.js
+
+  Sizing:
+    All breakpoints : width 100% of parent, height auto (natural ratio).
+
+  Variants:
+    .content-block__media--fit
+      Adds a 1px #EAEAEA stroke around the image. Use it when the image
+      needs a framed look (e.g. screenshots on a white background).
+
+  Zoom button:
+    - 48x48 round, rgba(0,0,0,0.6)
+    - position: absolute, top: 20px, right: 20px (sits on the image)
+    - data-zoom-src points to the full-resolution image
+    - data-zoom-alt provides accessible alt text for the lightbox
+-->
+
+<div class="content-block__media">
+  <img class="content-block__media-img"
+       src="../assets/images/EXAMPLE.png"
+       alt="">
+  <button class="content-block__zoom"
+          type="button"
+          aria-label="Zoom"
+          data-zoom-src="../assets/images/EXAMPLE.png"
+          data-zoom-alt="">+</button>
+</div>

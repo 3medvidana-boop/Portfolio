@@ -1,0 +1,85 @@
+/* ==========================================================================
+   Resume Overlay — fullscreen overlay with embedded Google Doc and download
+   ========================================================================== */
+
+.resume-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  display: none;
+  flex-direction: column;
+  background: #fff;
+}
+
+.resume-overlay.is-open {
+  display: flex;
+}
+
+.resume-overlay__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 12px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+  background: #fff;
+}
+
+.resume-overlay__download {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 20px;
+  height: 44px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.resume-overlay__download:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.resume-overlay__close {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.08);
+  color: #000;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.resume-overlay__close:hover {
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.resume-overlay__frame-wrap {
+  flex: 1;
+  overflow-y: auto;
+  background: #f5f5f5;
+  display: flex;
+  justify-content: center;
+}
+
+.resume-overlay__frame {
+  width: 100%;
+  max-width: 900px;
+  border: none;
+  background: #fff;
+}

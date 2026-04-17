@@ -1,0 +1,125 @@
+/* ==========================================================================
+   Grid Overlay — responsive visual column grid for development
+   ==========================================================================
+   >= 1200px:    6 columns | margin: 90px | gutter: 24px
+   834–1199px:   4 columns | margin: 60px | gutter: 20px
+   < 834px:      2 columns | margin: 20px | gutter: 16px
+   Color:        #000096 / 9%
+   ========================================================================== */
+
+.grid-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  display: none;
+  padding: 0 90px;
+  box-sizing: border-box;
+}
+
+.grid-overlay.is-visible {
+  display: block;
+}
+
+.grid-overlay__columns {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+  height: 100%;
+  width: 100%;
+}
+
+.grid-overlay__column {
+  position: relative;
+  background-color: rgba(0, 0, 150, 0.09);
+  height: 100%;
+}
+
+.grid-overlay__label {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: monospace;
+  font-size: 11px;
+  line-height: 1;
+  color: rgba(0, 0, 150, 0.4);
+  user-select: none;
+}
+
+/* ---- Tablet: 834 – 1200px → 4 columns ---- */
+@media (max-width: 1200px) {
+  .grid-overlay {
+    padding: 0 60px;
+  }
+
+  .grid-overlay__columns {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  /* Hide columns 5 & 6 */
+  .grid-overlay__column:nth-child(n+5) {
+    display: none;
+  }
+}
+
+/* ---- Mobile: <= 834px → 2 columns ---- */
+@media (max-width: 834px) {
+  .grid-overlay {
+    padding: 0 20px;
+  }
+
+  .grid-overlay__columns {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* Hide columns 3, 4, 5 & 6 */
+  .grid-overlay__column:nth-child(n+3) {
+    display: none;
+  }
+}
+
+/* ---- Toggle button ---- */
+.grid-toggle {
+  display: none;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 10000;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(0, 0, 150, 0.25);
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background-color 0.15s;
+}
+
+.grid-toggle:hover {
+  background-color: rgba(0, 0, 150, 0.08);
+}
+
+.grid-toggle.is-active {
+  background-color: rgba(0, 0, 150, 0.12);
+  border-color: rgba(0, 0, 150, 0.45);
+}
+
+.grid-toggle__icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+.grid-toggle__icon line {
+  stroke: rgba(0, 0, 150, 0.55);
+  stroke-width: 1.5;
+}

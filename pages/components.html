@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Components — Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Inter:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/pages/components.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="/" class="header__home" aria-label="Home">
+      <img class="header__home-icon" src="../assets/images/logo56.svg" alt="Logo" width="56" height="56">
+      <img class="header__menu-icon header__menu-icon--open" src="../assets/icons/icon-manu.svg" alt="Menu" width="48" height="48">
+      <img class="header__menu-icon header__menu-icon--close" src="../assets/icons/icon-close.svg" alt="Close" width="48" height="48">
+    </a>
+    <div class="header__center">
+      <span class="header__name">Anastasiia Medvid</span>
+      <span class="header__role">UX/UI designer</span>
+    </div>
+    <a href="mailto:" class="header__email" aria-label="Email">
+      <img class="header__email-icon" src="../assets/icons/icon-email.svg" alt="Email" width="48" height="48">
+    </a>
+    <a href="#" class="header__resume">
+      <span class="header__resume-label">Resume</span>
+      <img class="header__resume-arrow" src="../assets/icons/icon-arrow-right.svg" alt="" width="48" height="48">
+    </a>
+  </header>
+
+  <!-- Mobile / Tablet menu -->
+  <nav class="header__menu" aria-label="Main menu"></nav>
+
+  <!--
+    Component Showcase / Sandbox
+    Add each component here for visual review and testing.
+    Structure:
+      <section class="component-preview" data-component="component-name">
+        <p class="component-preview__label">component-name</p>
+        — include component markup here —
+      </section>
+    Rule: every new HTML partial in components/ must also appear here.
+  -->
+
+  <!-- ==================== content-block (basic) ==================== -->
+  <section class="component-preview" data-component="content-block">
+    <p class="component-preview__label">content-block</p>
+    <div class="content-blocks">
+      <div class="content-block">
+        <h4 class="content-block__title">Block title</h4>
+        <p class="content-block__text">First paragraph of the block. Use one or more <code>.content-block__text</code> elements to stack paragraphs inside the same block.</p>
+      </div>
+      <div class="content-block">
+        <h4 class="content-block__title">Second block</h4>
+        <p class="content-block__text"><strong>Lead-in phrase.</strong> The divider above this block is rendered automatically by <code>.content-block</code>'s border-top — the first block in the wrapper has it suppressed.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== content-block — persona variant ==================== -->
+  <section class="component-preview" data-component="content-block-persona">
+    <p class="component-preview__label">content-block — persona variant</p>
+    <div class="content-blocks">
+      <div class="content-block">
+        <h4 class="content-block__title">User personas</h4>
+        <div class="content-block__persona">
+          <img class="content-block__persona-avatar" src="../assets/images/case1-research-hr1.png" alt="Marta">
+          <div class="content-block__persona-body">
+            <h5 class="content-block__persona-name">Marta</h5>
+            <p class="content-block__persona-role">Role: Recruiter / recruitment consultant.</p>
+            <p class="content-block__persona-text">As a professional, people-oriented recruiter, Marta focuses on delivering high-quality hires so she is perceived as a "talent magnet" and a reliable partner.</p>
+          </div>
+        </div>
+        <div class="content-block__persona">
+          <img class="content-block__persona-avatar" src="../assets/images/case1-research-hr2.png" alt="Ania">
+          <div class="content-block__persona-body">
+            <h5 class="content-block__persona-name">Ania</h5>
+            <p class="content-block__persona-role">Role: HR Generalist / HR Operations.</p>
+            <p class="content-block__persona-text">As a structured, detail-oriented HR generalist, Ania is responsible for making sure office employees are formally hired and smoothly onboarded.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== content-block — 2x2 grid (JTBD) ==================== -->
+  <section class="component-preview" data-component="content-block-grid">
+    <p class="component-preview__label">content-block — 2x2 grid variant</p>
+    <div class="content-blocks">
+      <div class="content-block">
+        <h4 class="content-block__title">JTBD</h4>
+        <div class="content-block__grid">
+          <div class="content-block__cell">
+            <h5 class="content-block__cell-title">Fast, consistent kick-off.</h5>
+            <p class="content-block__cell-text">When a client opens a new recruitment and I have to react "right now", I want to assemble a coherent starter package in 10–15 minutes.</p>
+          </div>
+          <div class="content-block__cell">
+            <h5 class="content-block__cell-title">Monitoring pre-signature candidates.</h5>
+            <p class="content-block__cell-text">When several candidates are in the "pre-signature" stage, I want to see the status of all formalities and blockers in one place.</p>
+          </div>
+          <div class="content-block__cell">
+            <h5 class="content-block__cell-title">Handling changing decisions.</h5>
+            <p class="content-block__cell-text">When a hiring manager delays a decision or changes requirements, I want to quickly capture the final decision in a simple format.</p>
+          </div>
+          <div class="content-block__cell">
+            <h5 class="content-block__cell-title">Filtering out mis-fit candidates early.</h5>
+            <p class="content-block__cell-text">When a client asks for "people ASAP", I want to clearly communicate hard requirements in the job ad and first contact.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== content-block-media + image-zoom ==================== -->
+  <section class="component-preview" data-component="content-block-media">
+    <p class="component-preview__label">content-block-media (with image-zoom trigger)</p>
+    <div class="content-blocks">
+      <div class="content-block">
+        <h4 class="content-block__title">Users' pain points</h4>
+        <p class="content-block__text"><strong>Inline preview image</strong> with a zoom button in the top-right corner. Click <code>+</code> to open the full-resolution version in the Image Zoom overlay.</p>
+        <div class="content-block__media">
+          <img class="content-block__media-img" src="../assets/images/case1-research-interview.png" alt="">
+          <button class="content-block__zoom" type="button" aria-label="Zoom"
+                  data-zoom-src="../assets/images/case1-research-interview.png"
+                  data-zoom-alt="">+</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== video-player ==================== -->
+  <section class="component-preview" data-component="video-player">
+    <p class="component-preview__label">video-player (poster preview + fullscreen playback)</p>
+    <div class="content-blocks">
+      <div class="content-block">
+        <h4 class="content-block__title">User flow 1: The recruiter conducts the candidate's pre-onboarding.</h4>
+        <div class="video-player"
+             data-video-src="../assets/videos/case1-flowHr.mp4"
+             data-video-poster="../assets/images/case1-intro-flowHr.png">
+          <img class="video-player__poster"
+               src="../assets/images/case1-intro-flowHr.png"
+               alt="">
+          <button class="video-player__play" type="button" aria-label="Play video"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== email ==================== -->
+  <section class="component-preview" data-component="email">
+    <p class="component-preview__label">email</p>
+    <section class="email">
+      <div class="email__content">
+        <div class="email__title-block">
+          <h2 class="email__greeting">Hi, I'm</h2>
+          <div class="email__name-row">
+            <img class="email__avatar" src="../assets/images/email-avatar.svg" alt="">
+            <h2 class="email__name">Stacy</h2>
+          </div>
+          <p class="email__subtitle">Your best choice designer.</p>
+        </div>
+        <div class="email__cta">
+          <p class="email__cta-text">I'll help you to make a choice and ready to ansfer for any questions.</p>
+          <div class="email__cta-image-container">
+            <div class="email__cta-image-wrap">
+              <img class="email__cta-image" src="../assets/images/email-small.svg" alt="">
+              <a href="#" class="email__cta-button js-contact-open">
+                <span class="email__cta-label">Contact me</span>
+                <img class="email__cta-arrow" src="../assets/icons/icon-email.svg" alt="" width="48" height="48">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ==================== bullet-list ==================== -->
+  <section class="component-preview" data-component="bullet-list">
+    <p class="component-preview__label">bullet-list</p>
+    <ul class="bullet-list">
+      <li class="bullet-list__item">
+        <span class="bullet-list__marker"></span>
+        <h4 class="bullet-list__title">Empathize</h4>
+        <p class="bullet-list__subtitle">Understanding user needs through research.</p>
+      </li>
+      <li class="bullet-list__item">
+        <span class="bullet-list__marker"></span>
+        <h4 class="bullet-list__title">Define</h4>
+        <p class="bullet-list__subtitle">Clarifying the core problem.</p>
+      </li>
+      <li class="bullet-list__item">
+        <span class="bullet-list__marker"></span>
+        <h4 class="bullet-list__title">Ideate</h4>
+        <p class="bullet-list__subtitle">Brainstorming creative solutions.</p>
+      </li>
+      <li class="bullet-list__item">
+        <span class="bullet-list__marker"></span>
+        <h4 class="bullet-list__title">Prototype</h4>
+        <p class="bullet-list__subtitle">Creating wireframes and interactive prototypes.</p>
+      </li>
+      <li class="bullet-list__item">
+        <span class="bullet-list__marker"></span>
+        <h4 class="bullet-list__title">Test</h4>
+        <p class="bullet-list__subtitle">Iterating based on usability testing and feedback.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ====== More Projects ====== -->
+  <section class="more-projects">
+    <h2 class="more-projects__title h2">More projects</h2>
+    <div class="more-projects__list">
+      <a class="more-projects__card" href="case2.html">
+        <div class="more-projects__card-text">
+          <h3 class="more-projects__card-title">Designing a  Prompt Marketplace</h3>
+          <p class="more-projects__card-body">Prompt workspace for creating, organizing, and reusing personal and public prompts within an AI prompt productivity platform.</p>
+        </div>
+        <div class="more-projects__card-img">
+          <img src="../assets/images/preview-case2.png?v=2" alt="Case 2 preview">
+        </div>
+      </a>
+      <a class="more-projects__card" href="case3.html">
+        <div class="more-projects__card-text">
+          <h3 class="more-projects__card-title">Comprehensive AI shift planning for a hotel management SaaS platform</h3>
+          <p class="more-projects__card-body">Designing a modular, multi-agent AI scheduling system that coordinates hotel operations and learns from historical patterns.</p>
+        </div>
+        <div class="more-projects__card-img">
+          <img src="../assets/images/preview-case3.png?v=2" alt="Case 3 preview">
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/components/grid-overlay.js"></script>
+  <script src="../js/components/resume-overlay.js"></script>
+  <script src="../js/components/header-menu.js"></script>
+  <script src="../js/components/image-zoom.js"></script>
+  <script src="../js/components/video-player.js"></script>
+</body>
+</html>

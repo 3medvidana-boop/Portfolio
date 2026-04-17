@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Index</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Inter:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="/" class="header__home" aria-label="Home">
+      <img class="header__home-icon" src="assets/images/logo56.svg" alt="Logo" width="56" height="56">
+      <img class="header__menu-icon header__menu-icon--open" src="assets/icons/icon-manu.svg" alt="Menu" width="48" height="48">
+      <img class="header__menu-icon header__menu-icon--close" src="assets/icons/icon-close.svg" alt="Close" width="48" height="48">
+    </a>
+    <div class="header__center">
+      <span class="header__name">Anastasiia Medvid</span>
+      <span class="header__role">UX/UI designer</span>
+    </div>
+    <a href="#" class="header__email js-contact-open" aria-label="Email">
+      <img class="header__email-icon" src="assets/icons/icon-email.svg" alt="Email" width="48" height="48">
+    </a>
+    <a href="#" class="header__resume">
+      <span class="header__resume-label">Resume</span>
+      <img class="header__resume-arrow" src="assets/icons/icon-arrow-right.svg" alt="" width="48" height="48">
+    </a>
+  </header>
+
+  <!-- Contact Form Overlay -->
+  <div class="contact-overlay" id="contact-overlay">
+    <div class="contact-overlay__backdrop"></div>
+    <div class="contact-overlay__panel">
+      <div class="contact-overlay__content">
+        <div class="contact-overlay__header">
+          <h2 class="contact-overlay__title">Let's break the ice</h2>
+          <button class="contact-overlay__close" aria-label="Close">
+            <img src="assets/icons/icon-close.svg" alt="" width="48" height="48">
+          </button>
+        </div>
+        <form class="contact-overlay__form" novalidate action="https://formspree.io/f/xvzvbadp" method="POST">
+          <div class="contact-overlay__row">
+            <div class="contact-overlay__field">
+              <input class="contact-overlay__input" type="email" name="email" placeholder="Email" required>
+              <span class="contact-overlay__error"></span>
+            </div>
+            <div class="contact-overlay__field">
+              <input class="contact-overlay__input" type="text" name="name" placeholder="Name" required>
+              <span class="contact-overlay__error"></span>
+            </div>
+          </div>
+          <div class="contact-overlay__field">
+            <textarea class="contact-overlay__textarea" name="message" placeholder="What project can I help you with?" rows="5"></textarea>
+            <span class="contact-overlay__error"></span>
+          </div>
+          <div class="contact-overlay__bottom">
+            <button class="contact-overlay__submit" type="submit">
+              <span class="contact-overlay__submit-label">Send message</span>
+              <img class="contact-overlay__submit-arrow" src="assets/icons/icon-arrow-right.svg" alt="" width="48" height="48">
+            </button>
+            <img class="contact-overlay__image" src="assets/images/email-image.svg" alt="">
+          </div>
+        </form>
+        <div class="contact-overlay__success">
+          <p class="contact-overlay__success-text">Thank you! Your message has been sent.</p>
+          <button class="contact-overlay__again" type="button">
+            <span class="contact-overlay__again-label">Send one more</span>
+            <img class="contact-overlay__again-arrow" src="assets/icons/icon-arrow-right.svg" alt="" width="48" height="48">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile / Tablet menu -->
+  <nav class="header__menu" aria-label="Main menu">
+    <img class="header__menu-left" src="assets/images/manu-left.svg" alt="">
+    <div class="header__menu-content">
+      <a class="header__menu-link" href="/">Home</a>
+      <a class="header__menu-link" href="#competences">Competences</a>
+      <a class="header__menu-link" href="#services">Services</a>
+      <a class="header__menu-link" href="#projects">Projects</a>
+      <a class="header__menu-link" href="#workflow">Workflow</a>
+      <a href="#" class="header__menu-email js-contact-open" aria-label="Email">
+        <img src="assets/icons/icon-email.svg" alt="" width="48" height="48">
+      </a>
+    </div>
+    <img class="header__menu-bottom" src="assets/images/manu-bottom.svg" alt="">
+  </nav>
+
+  <!-- Hero Section — 4 vertical panels -->
+  <section class="hero">
+
+    <!-- Panel 1: Left gradient strip -->
+    <div class="hero__panel-left">
+      <img class="hero__panel-left-img" src="assets/images/hero-screen-left-side.svg" alt="">
+    </div>
+
+    <!-- Panel 2: Main content -->
+    <div class="hero__panel-content">
+      <div class="hero__ticker">
+        <div class="hero__ticker-track">
+          <span class="hero__ticker-text">10x growth • 60+ B2B partnerships • ~ 0% revenue loss</span>
+          <span class="hero__ticker-text">10x growth • 60+ B2B partnerships • ~ 0% revenue loss</span>
+        </div>
+      </div>
+      <div class="hero__text">
+        <h1 class="hero__title">I make complex software feel like it was always obvious</h1>
+        <p class="hero__subtitle">I design so people can work — without thinking about how</p>
+      </div>
+    </div>
+
+    <!-- Panel 3: Central visual -->
+    <div class="hero__panel-center">
+      <picture>
+        <source media="(max-width: 1200px)" srcset="assets/images/hero-circle1200.svg">
+        <source media="(max-width: 1919px)" srcset="assets/images/hero-circle1440.svg">
+        <img class="hero__circle-img" src="assets/images/hero-circle.svg" alt="">
+      </picture>
+    </div>
+
+    <!-- Panel 4: Right navigation -->
+    <nav class="hero__panel-nav">
+      <a href="#competences" class="hero__nav-link">
+        <img class="hero__nav-arrow" src="assets/icons/icon-arrow-right.svg" alt="" width="48" height="48">
+        <span class="hero__nav-label">Competences</span>
+      </a>
+      <a href="#services" class="hero__nav-link">
+        <img class="hero__nav-arrow" src="assets/icons/icon-arrow-right.svg" alt="" width="48" height="48">
+        <span class="hero__nav-label">Services</span>
+      </a>
+      <a href="#projects" class="hero__nav-link">
+        <img class="hero__nav-arrow" src="assets/icons/icon-arrow-right.svg" alt="" width="48" height="48">
+        <span class="hero__nav-label">Projects</span>
+      </a>
+      <a href="#workflow" class="hero__nav-link">
+        <img class="hero__nav-arrow" src="assets/icons/icon-arrow-right.svg" alt="" width="48" height="48">
+        <span class="hero__nav-label">Workflow</span>
+      </a>
+    </nav>
+
+    <!-- Bottom row -->
+    <div class="hero__bottom-left"></div>
+    <a href="mailto:" class="hero__bottom-contact">
+      <span class="hero__bottom-contact-label">Contact me</span>
+      <img class="hero__bottom-contact-arrow" src="assets/icons/icon-arrow-right.svg" alt="" width="48" height="48">
+    </a>
+    <div class="hero__bottom-visual">
+      <img class="hero__bottom-visual-img" src="assets/images/hero-circle-bottom.svg" alt="">
+    </div>
+
+  </section>
+
+  <!-- Competences Section -->
+  <section class="competences" id="competences">
+    <div class="competences__header">
+      <p class="competences__hint">What makes my skill set the perfect fit?</p>
+      <h2 class="competences__title">Core competences</h2>
+    </div>
+
+    <!-- Cards -->
+    <div class="competences__cards">
+      <div class="competences__card is-open">
+        <img class="competences__card-icon" src="assets/images/shape-1-orange.svg" alt="">
+        <div class="competences__card-head">
+          <h3 class="competences__card-title">MVP & Growth</h3>
+          <button class="competences__card-toggle" aria-label="Toggle description">
+            <img class="competences__card-chevron" src="assets/icons/icon-chevron-down.svg" alt="" width="24" height="24">
+          </button>
+        </div>
+        <p class="competences__card-body">Focusing on rapid idea validation through minimal viable products, guiding early builds and using data to drive growth and user engagement.</p>
+      </div>
+      <div class="competences__card">
+        <img class="competences__card-icon" src="assets/images/shape-2-green.svg" alt="">
+        <div class="competences__card-head">
+          <h3 class="competences__card-title">SaaS system & Business Platform Management</h3>
+          <button class="competences__card-toggle" aria-label="Toggle description">
+            <img class="competences__card-chevron" src="assets/icons/icon-chevron-down.svg" alt="" width="24" height="24">
+          </button>
+        </div>
+        <p class="competences__card-body">Designing cloud-based solutions that deliver scalable apps while integrating tools to streamline business operations and collaboration.</p>
+      </div>
+      <div class="competences__card">
+        <img class="competences__card-icon" src="assets/images/shape-3-pink.svg" alt="">
+        <div class="competences__card-head">
+          <h3 class="competences__card-title">Dedicated UX/UI Designer</h3>
+          <button class="competences__card-toggle" aria-label="Toggle description">
+            <img class="competences__card-chevron" src="assets/icons/icon-chevron-down.svg" alt="" width="24" height="24">
+          </button>
+        </div>
+        <p class="competences__card-body">Dedicated UX/UI designer offering long-term remote growth and support for your product team, available for full-time, part-time, or embedded contract engagements.</p>
+      </div>
+      <div class="competences__card">
+        <img class="competences__card-icon" src="assets/images/shape-4-bly.svg" alt="">
+        <div class="competences__card-head">
+          <h3 class="competences__card-title">Cross-platform App</h3>
+          <button class="competences__card-toggle" aria-label="Toggle description">
+            <img class="competences__card-chevron" src="assets/icons/icon-chevron-down.svg" alt="" width="24" height="24">
+          </button>
+        </div>
+        <p class="competences__card-body">Creating seamless user experiences by designing and optimizing applications that function smoothly across multiple devices and operating systems.</p>
+      </div>
+    </div>
+
+    <!-- Bottom visual -->
+    <div class="competences__bottom">
+      <img class="competences__bottom-img" src="assets/images/competencess-bottom.svg" alt="">
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects" id="projects">
+    <div class="projects__header">
+      <div class="projects__title-wrap">
+        <h1 class="projects__title">Projects</h1>
+      </div>
+      <div class="projects__pagination">
+        <button class="projects__page-btn projects__page-btn--prev" aria-label="Previous">
+          <img src="assets/icons/icon-arrow-left.svg" alt="" width="48" height="48">
+        </button>
+        <button class="projects__page-btn projects__page-btn--1 is-active" data-page="1">1</button>
+        <button class="projects__page-btn projects__page-btn--2" data-page="2">2</button>
+        <button class="projects__page-btn projects__page-btn--3" data-page="3">3</button>
+        <button class="projects__page-btn projects__page-btn--next" aria-label="Next">
+          <img src="assets/icons/icon-arrow-right1.svg" alt="" width="48" height="48">
+        </button>
+      </div>
+      <div class="projects__header-fill"></div>
+      <a href="#" class="projects__see-all">
+        <span class="projects__see-all-label">See all</span>
+        <img class="projects__see-all-arrow" src="assets/icons/icon-arrow-right.svg" alt="" width="48" height="48">
+      </a>
+    </div>
+
+    <div class="projects__content">
+      <div class="projects__preview">
+        <img class="projects__preview-img is-active" data-case="1" src="assets/images/preview-case1.png?v=2" alt="Case 1 preview">
+        <img class="projects__preview-img" data-case="2" src="assets/images/preview-case2.png?v=2" alt="Case 2 preview">
+        <img class="projects__preview-img" data-case="3" src="assets/images/preview-case3.png?v=2" alt="Case 3 preview">
+      </div>
+
+      <div class="projects__cases">
+        <a class="projects__case is-focused" data-case="1" href="pages/case1.html">
+          <h3 class="projects__case-title">Reducing friction in a complex HR B2B management tool</h3>
+          <p class="projects__case-body">In 1 month of redesign, I reduced the time to complete the key workflow from X to Y minutes, based on research into users' real needs and behaviors.</p>
+        </a>
+        <a class="projects__case" data-case="2" href="pages/case2.html">
+          <h3 class="projects__case-title">Designing a Prompt Marketplace</h3>
+          <p class="projects__case-body">Prompt workspace for creating, organizing, and reusing personal and public prompts within an AI prompt productivity platform.</p>
+        </a>
+        <a class="projects__case" data-case="3" href="pages/case3.html">
+          <h3 class="projects__case-title">Comprehensive AI shift planning for a hotel management SaaS platform</h3>
+          <p class="projects__case-body">Designing a modular, multi-agent AI scheduling system that coordinates hotel operations and learns from historical patterns.</p>
+        </a>
+        <div class="projects__case" data-case="4">
+          <h3 class="projects__case-title">Coming soon</h3>
+          <p class="projects__case-body">Coming soon</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <div class="services__header">
+      <p class="services__hint">What can I deliver to support your project goals?</p>
+      <h2 class="services__title">Services provided</h2>
+    </div>
+
+    <div class="services__cards-wrapper">
+      <!-- Row 1: offset 0 -->
+      <div class="services__row">
+        <div class="services__card services__card--product-design">
+          <h3 class="services__card-title">Product design</h3>
+        </div>
+        <div class="services__card services__card--ux-ui-design">
+          <h3 class="services__card-title">UX/UI design</h3>
+        </div>
+      </div>
+      <!-- Row 2: offset +120px -->
+      <div class="services__row">
+        <div class="services__card services__card--prototyping">
+          <h3 class="services__card-title">Prototyping & tools</h3>
+        </div>
+        <div class="services__card services__card--ai-driven">
+          <h3 class="services__card-title">AI‑driven workflows & processes</h3>
+        </div>
+      </div>
+      <!-- Row 3: offset +240px -->
+      <div class="services__row">
+        <div class="services__card services__card--design-systems">
+          <h3 class="services__card-title">Design systems & libraries</h3>
+        </div>
+        <div class="services__card services__card--user-tests">
+          <h3 class="services__card-title">User tests</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Workflow Section -->
+  <section class="workflow" id="workflow">
+    <div class="workflow__header">
+      <p class="workflow__hint">How I Guide Complex Products from Idea to Launch. My Collaborative Design Process</p>
+      <h2 class="workflow__title">Workflow</h2>
+    </div>
+
+    <div class="workflow__cards">
+      <div class="workflow__col">
+        <div class="workflow__card">
+          <div class="workflow__card-number">1</div>
+          <div class="workflow__card-text">
+            <h3 class="workflow__card-title">Context & Insight Alignment</h3>
+            <p class="workflow__card-body">I immerse myself in your product's context to uncover key user needs and competitor insights, aligning goals and priorities to create a clear foundation for informed, evidence-driven design decisions</p>
+          </div>
+        </div>
+        <div class="workflow__card">
+          <div class="workflow__card-number">2</div>
+          <div class="workflow__card-text">
+            <h3 class="workflow__card-title">Roadmap & Structure</h3>
+            <p class="workflow__card-body">Next, I produce a clear architecture: how features connect, what technical boundaries exist, and where milestones fall. I share this plan with you—not as a guarantee of perfection, but as our practical reference point. Together, we define priorities and get ready for the unpredictable moments every big project brings.</p>
+          </div>
+        </div>
+      </div>
+      <div class="workflow__col">
+        <div class="workflow__card">
+          <div class="workflow__card-number">3</div>
+          <div class="workflow__card-text">
+            <h3 class="workflow__card-title">Prototyping Together & Iterative Refinement</h3>
+            <p class="workflow__card-body">I create wireframes and interactive prototypes that invite collaboration and critique, then refine the final UI through reusable design systems, accessibility checks, and continuous feedback—ensuring every component is tested, approved, and adaptable without delays or last-minute changes.</p>
+          </div>
+        </div>
+        <div class="workflow__card">
+          <div class="workflow__card-number">4</div>
+          <div class="workflow__card-text">
+            <h3 class="workflow__card-title">Concept Review & Risk Check</h3>
+            <p class="workflow__card-body">I craft wireframes and interactive demos. These are meant to be challenged and refined: we walk through scenarios, usability tests, and adapt the flow. I expect questions, and active decision-making from your side. This is the groundwork for robust, user-centric foundations.</p>
+          </div>
+        </div>
+        <div class="workflow__card">
+          <div class="workflow__card-number">5</div>
+          <div class="workflow__card-text">
+            <h3 class="workflow__card-title">Handoff, Prep & Support</h3>
+            <p class="workflow__card-body">I transfer assets with usage guidelines, specs, and direct support for your development team. I stay engaged throughout implementation—helping to ensure the design intent survives development and real-world issues are solved quickly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="workflow__bottom">
+      <img class="workflow__bottom-img" src="assets/images/workflow-image.svg" alt="">
+    </div>
+  </section>
+
+  <!-- Email Section -->
+  <section class="email">
+    <div class="email__content">
+      <div class="email__title-block">
+        <h2 class="email__greeting">Hi, I'm</h2>
+        <div class="email__name-row">
+          <img class="email__avatar" src="assets/images/email-avatar.svg" alt="">
+          <h2 class="email__name">Stacy</h2>
+        </div>
+        <p class="email__subtitle">Your best choice designer.</p>
+      </div>
+      <div class="email__cta">
+        <p class="email__cta-text">I'll help you to make a choice and ready to ansfer for any questions.</p>
+        <div class="email__cta-image-container">
+          <div class="email__cta-image-wrap">
+            <img class="email__cta-image" src="assets/images/email-small.svg?v=2" alt="">
+            <a href="#" class="email__cta-button js-contact-open">
+              <span class="email__cta-label">Contact me</span>
+              <img class="email__cta-arrow" src="assets/icons/icon-email.svg" alt="" width="48" height="48">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__content">
+      <div class="footer__left">
+        <button class="footer__back" aria-label="Back to top">
+          <img class="footer__back-icon" src="assets/icons/icon-arrow-right.svg" alt="">
+        </button>
+        <div class="footer__text">
+          <h2 class="footer__name">Anastasiia Medvid</h2>
+          <p class="footer__role">Crafting thoughtful interfaces for ambitious products</p>
+        </div>
+        <a class="footer__linkedin" href="https://www.linkedin.com/in/anastasiia-medvid" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <img class="footer__linkedin-icon" src="assets/icon-linkedin.svg" alt="">
+        </a>
+      </div>
+      <nav class="footer__nav">
+        <a class="footer__nav-card" href="#projects">Projects</a>
+        <a class="footer__nav-card" href="#services">Services</a>
+        <a class="footer__nav-card" href="#competences">Competences</a>
+        <a class="footer__nav-card" href="#workflow">Workflow</a>
+      </nav>
+    </div>
+    <div class="footer__copyright">
+      <p class="footer__copyright-text">&copy;2026 Anastasiia Medvid.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/components/grid-overlay.js"></script>
+  <script src="js/components/resume-overlay.js"></script>
+  <script src="js/components/header-menu.js"></script>
+  <script src="js/components/competences.js"></script>
+  <script src="js/components/projects.js"></script>
+  <script src="js/components/services.js"></script>
+  <script src="js/components/footer.js"></script>
+  <script src="js/components/contact-overlay.js"></script>
+</body>
+</html>

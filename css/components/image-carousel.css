@@ -1,0 +1,122 @@
+/* ==========================================================================
+   Image Carousel — inline slideable image gallery with prev/next buttons
+   ========================================================================== */
+
+.image-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #EAEAEA;
+}
+
+.image-carousel__track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.image-carousel__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.image-carousel__slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---- Navigation buttons ---- */
+.image-carousel__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  z-index: 2;
+}
+
+.image-carousel__btn::after {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+}
+
+.image-carousel__btn--prev::after {
+  transform: rotate(-135deg);
+  margin-left: 4px;
+}
+
+.image-carousel__btn--next::after {
+  transform: rotate(45deg);
+  margin-right: 4px;
+}
+
+.image-carousel__btn:hover {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.image-carousel__btn:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.image-carousel__btn--prev {
+  left: 12px;
+}
+
+.image-carousel__btn--next {
+  right: 12px;
+}
+
+/* ---- Dots indicator ---- */
+.image-carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 0;
+}
+
+.image-carousel__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0;
+  cursor: pointer;
+}
+
+.image-carousel__dot.is-active {
+  background: #000;
+}
+
+/* ==========================================================================
+   834px — Mobile
+   ========================================================================== */
+@media (max-width: 834px) {
+  .image-carousel__btn {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .image-carousel__btn--prev {
+    left: 8px;
+  }
+
+  .image-carousel__btn--next {
+    right: 8px;
+  }
+}

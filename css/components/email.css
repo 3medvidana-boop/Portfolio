@@ -1,0 +1,207 @@
+/* ==========================================================================
+   Email Section — contact CTA with background image
+   ========================================================================== */
+
+.email {
+  width: 100%;
+  background-image: url('../../assets/images/email-big.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 120px 0;
+}
+
+.email__content {
+  display: flex;
+  gap: 24px;
+  padding-left: 90px;
+  padding-right: 90px;
+}
+
+/* ==========================================================================
+   Title block — starts at col 1, spans 2 columns
+   width = 2 cols + 1 gutter (6-col grid, margin 90px, gutter 24px)
+   ========================================================================== */
+.email__title-block {
+  width: calc(2 * (100vw - 90px * 2 - 24px * 5) / 6 + 24px);
+  flex-shrink: 0;
+  box-sizing: border-box;
+  padding-left: 20px;
+}
+
+.email__greeting {
+  margin: 0;
+}
+
+.email__name-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.email__avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: block;
+}
+
+.email__name {
+  margin: 0;
+}
+
+.email__subtitle {
+  margin: 16px 0 0 0;
+  color: var(--hint-text-color);
+  font-family: var(--hint-text-font-family);
+  font-size: var(--hint-text-font-size);
+  font-weight: var(--hint-text-font-weight);
+  line-height: var(--hint-text-line-height);
+}
+
+/* ==========================================================================
+   CTA block — starts at col 3, ends at grid edge
+   ========================================================================== */
+.email__cta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.email__cta-text {
+  margin: 0 0 16px 0;
+  color: var(--body-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
+  line-height: var(--body-line-height);
+  letter-spacing: var(--body-letter-spacing);
+}
+
+.email__cta-image-container {
+  width: 100%;
+  container-type: inline-size;
+}
+
+.email__cta-image-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.email__cta-image {
+  display: block;
+  width: 100%;
+  height: 218px;
+  object-fit: cover;
+  object-position: left top;
+}
+
+/* Contact me button — top-right corner of image */
+.email__cta-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 370px;
+  height: 90px;
+  background-color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  overflow: hidden;
+}
+
+.email__cta-label {
+  font-family: var(--button-text-font-family);
+  font-size: var(--button-text-font-size);
+  font-weight: var(--button-text-font-weight);
+  line-height: var(--button-text-line-height);
+  letter-spacing: var(--button-text-letter-spacing);
+  color: #fff;
+  white-space: nowrap;
+}
+
+.email__cta-arrow {
+  width: 48px;
+  height: 48px;
+  display: block;
+  filter: invert(1);
+  transition: transform 0.3s ease;
+}
+
+.email__cta-button:hover .email__cta-arrow {
+  animation: arrow-bounce 0.5s ease infinite;
+}
+
+/* ==========================================================================
+   1200px — Tablet (margin 60px, 4 cols, gutter 20px)
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .email__content {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .email__title-block {
+    width: calc(2 * (100vw - 60px * 2 - 20px * 3) / 4 + 20px);
+    padding-left: 20px;
+  }
+
+  .email__cta-button {
+    width: 316px;
+  }
+
+  .email__cta-arrow {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* ==========================================================================
+   834px — Mobile (margin 20px, 2 cols, gutter 16px)
+   ========================================================================== */
+@media (max-width: 834px) {
+  .email {
+    height: auto;
+    padding: 80px 0;
+  }
+
+  .email__content {
+    flex-direction: column;
+    height: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .email__title-block {
+    width: 100%;
+    padding-left: 20px;
+  }
+
+  .email__cta-button {
+    height: 60px;
+  }
+}
+
+/* ==========================================================================
+   Container query — button becomes full width when container <= 618px
+   ========================================================================== */
+@container (max-width: 618px) {
+  .email__cta-image-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .email__cta-button {
+    position: static;
+    width: 100%;
+    order: -1;
+  }
+
+  .email__cta-image {
+    order: 1;
+  }
+}

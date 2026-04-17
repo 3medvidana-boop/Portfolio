@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m http.server --help)",
+      "Bash(where node:*)",
+      "Bash(where npx:*)",
+      "Bash(where npm:*)",
+      "Bash(/c/Users/48578/AppData/Local/Microsoft/WindowsApps/python3 --version)",
+      "Bash(/c/Users/48578/AppData/Local/Microsoft/WindowsApps/python --version)",
+      "Bash(pip --version)",
+      "Bash(pip3 --version)",
+      "Bash(py --version)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(ls C:/Portfolio/assets/icons/icon-menu* C:/Portfolio/assets/icons/icon-close*)",
+      "Bash(ls C:/Portfolio/assets/images/panel-nav*)",
+      "Bash(ls C:/Portfolio/assets/images/hero-circle*)",
+      "Bash(where python:*)",
+      "Bash(where python3:*)",
+      "Bash(python -c \"print\\(''ok''\\)\")",
+      "Bash(python -c \"print\\(''works''\\)\")",
+      "Bash(\"C:\\\\Users\\\\48578\\\\AppData\\\\Local\\\\Microsoft\\\\WindowsApps\\\\python.exe\" --version)",
+      "Bash(\"C:\\\\Program Files\\\\Git\\\\usr\\\\bin\\\\perl.exe\" -c server.pl)",
+      "Bash(netstat -ano)",
+      "Bash(npx --version)",
+      "Bash(perl --version)",
+      "Bash(npx -y http-server -p 8080 --cors -c-1)",
+      "Bash(where perl:*)",
+      "Bash(\"C:\\\\Program Files\\\\Git\\\\usr\\\\bin\\\\perl.exe\" --version)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8080/pages/case1.html)",
+      "Bash(\"C:\\\\Program Files\\\\Git\\\\usr\\\\bin\\\\perl.exe\" server.pl)",
+      "Bash(taskkill //F //IM perl.exe)",
+      "Bash(ls -la assets/images/preview-case*.png)"
+    ]
+  }
+}

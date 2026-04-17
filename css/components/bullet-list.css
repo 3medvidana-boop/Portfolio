@@ -1,0 +1,68 @@
+/* ==========================================================================
+   Bullet List — vertical list with bullet marker, title and subtitle
+   ========================================================================== */
+
+.bullet-list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+.bullet-list__item {
+  padding: 20px 0;
+  border-top: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.bullet-list__item:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.bullet-list__marker {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #000000;
+  margin-right: 12px;
+  vertical-align: middle;
+}
+
+.bullet-list__title {
+  display: inline-block;
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #000;
+  vertical-align: middle;
+}
+
+.bullet-list__subtitle {
+  margin: 8px 0 0 28px;
+  font-family: var(--body-font-family);
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #000;
+}
+
+/* ==========================================================================
+   834px — Mobile
+   ========================================================================== */
+@media (max-width: 834px) {
+  .bullet-list {
+    margin-top: 40px;
+  }
+
+  .bullet-list__title {
+    font-size: 19px;
+  }
+
+  .bullet-list__subtitle {
+    font-size: 16px;
+  }
+}

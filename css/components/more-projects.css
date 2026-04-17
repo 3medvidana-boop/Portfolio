@@ -1,0 +1,103 @@
+/* ==========================================================================
+   More Projects — two clickable cards linking to other case studies
+   ========================================================================== */
+
+.more-projects {
+  padding: 120px 90px;
+  background-color: #ffffff;
+}
+
+/* Wrapper for all sections below case-hero — hidden until gate reveal completes */
+.case-bottom {
+  display: none;
+}
+
+.case-bottom.is-visible {
+  display: block;
+}
+
+.more-projects__title {
+  margin: 0 0 40px 0;
+}
+
+.more-projects__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 400px;
+}
+
+.more-projects__card {
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
+  gap: 16px;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+}
+
+.more-projects__card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.more-projects__card-title {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.more-projects__card-body {
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-size: 19px;
+  font-weight: var(--body-font-weight);
+  line-height: 1.4;
+  color: #000;
+}
+
+.more-projects__card-img {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.more-projects__card-img img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ==========================================================================
+   1200px — Tablet (margin 60px)
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .more-projects {
+    padding: 120px 60px;
+  }
+}
+
+/* ==========================================================================
+   834px — Mobile (margin 20px)
+   ========================================================================== */
+@media (max-width: 834px) {
+  .more-projects {
+    padding: 80px 20px;
+  }
+
+  .more-projects__list {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .more-projects__card {
+    height: auto;
+    grid-row: auto;
+    grid-template-rows: auto 340px;
+  }
+}

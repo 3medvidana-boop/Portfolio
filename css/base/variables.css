@@ -1,0 +1,95 @@
+/* ==========================================================================
+   CSS Custom Properties (Design Tokens)
+   ========================================================================== */
+
+:root {
+  /* Colors — define here */
+
+  /* Spacing — define here */
+
+  /* Border radius — define here */
+
+  /* Shadows — define here */
+
+  /* ---- Typography: H1 ---- */
+  --h1-color: #000;
+  --h1-font-family: "Roboto", sans-serif;
+  --h1-font-size: 64.6px;
+  --h1-font-weight: 600;
+  --h1-line-height: 68px;
+  --h1-letter-spacing: -0.969px;
+
+  /* ---- Typography: H2 ---- */
+  --h2-color: #000;
+  --h2-font-family: "Roboto", sans-serif;
+  --h2-font-size: 57px;
+  --h2-font-weight: 600;
+  --h2-line-height: 64px;
+  --h2-letter-spacing: -0.855px;
+
+  /* ---- Typography: H3 ---- */
+  --h3-color: #000;
+  --h3-font-family: "Roboto", sans-serif;
+  --h3-font-size: 36px;
+  --h3-font-weight: 600;
+  --h3-line-height: 36px;
+  --h3-letter-spacing: -0.5px;
+
+  /* ---- Typography: Body ---- */
+  --body-color: #000;
+  --body-font-family: "Roboto", sans-serif;
+  --body-font-size: 28px;
+  --body-font-weight: 400;
+  --body-line-height: 34px;
+  --body-letter-spacing: normal;
+
+  /* ---- Typography: Hint Text ---- */
+  --hint-text-color: rgba(0, 0, 0, 0.70);
+  --hint-text-font-family: "Roboto", sans-serif;
+  --hint-text-font-size: 22px;
+  --hint-text-font-weight: 400;
+  --hint-text-line-height: 34px;
+
+  /* ---- Typography: Button Text ---- */
+  --button-text-color: #000;
+  --button-text-font-family: "Roboto", sans-serif;
+  --button-text-font-size: 36px;
+  --button-text-font-weight: 600;
+  --button-text-line-height: 36px;
+  --button-text-letter-spacing: -0.5px;
+}
+
+/* ---- 834px: H1 ---- */
+@media (max-width: 834px) {
+  :root {
+    --h1-font-size: 36px;
+    --h1-line-height: 36px;
+    --h1-letter-spacing: -0.5px;
+
+    /* H2 */
+    --h2-font-size: 36px;
+    --h2-line-height: 36px;
+    --h2-letter-spacing: -0.5px;
+
+    /* H3 */
+    --h3-font-size: 24px;
+    --h3-line-height: 135%;
+    --h3-letter-spacing: normal;
+
+    /* Body */
+    --body-font-family: "Roboto", sans-serif;
+    --body-font-size: 19px;
+    --body-font-weight: 400;
+    --body-line-height: normal;
+    --body-letter-spacing: -0.6px;
+
+    /* Hint Text */
+    --hint-text-font-size: 16px;
+    --hint-text-line-height: 28px;
+
+    /* Button Text */
+    --button-text-font-size: 24px;
+    --button-text-line-height: 34px;
+    --button-text-letter-spacing: normal;
+  }
+}

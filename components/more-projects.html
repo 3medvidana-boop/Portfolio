@@ -1,0 +1,71 @@
+<!--
+  More Projects — two clickable preview cards linking to other case studies
+
+  Standalone section placed after case-hero on each case page.
+  Shows two sibling project cards; each card is a full-area link
+  with a title, body text, and a cropped preview image.
+
+  The text container height is synchronised across both cards via
+  CSS subgrid so the images always start at the same vertical position.
+
+  Requires:
+    - css/components/more-projects.css
+
+  Structure:
+    section.more-projects
+      ├ h2.more-projects__title
+      └ div.more-projects__list                     grid 2-col, subgrid rows
+          └ a.more-projects__card                    full-area link, grid-row: span 2
+              ├ div.more-projects__card-text          title + body wrapper (auto row)
+              │   ├ h3.more-projects__card-title
+              │   └ p.more-projects__card-body
+              └ div.more-projects__card-img           cropped image (fixed row)
+                  └ img
+
+  Spacing:
+    Section padding top / bottom       : 120px (834px: 80px)
+    Section horizontal padding         : 90px / 60px / 20px per breakpoint
+    Card padding                       : 20px
+    Gap between card children          : 16px
+    Gap between title and body text    : 8px
+    Gap between cards                  : 0
+
+  Card:
+    Border                             : 1px solid rgba(0,0,0,0.2)
+    Image height                       : 400px (834px: 340px)
+    Image fit                          : object-fit: cover, object-position: center
+
+  Typography:
+    Section title                      : h2
+    Card title                         : 24px
+    Card body                          : 19px
+
+  Customisation per case page:
+    - Replace href values (case2.html, case3.html, etc.)
+    - Replace img src paths and alt text
+    - Replace card title and body text
+-->
+
+<section class="more-projects">
+  <h2 class="more-projects__title h2">More projects</h2>
+  <div class="more-projects__list">
+    <a class="more-projects__card" href="case2.html">
+      <div class="more-projects__card-text">
+        <h3 class="more-projects__card-title">Card title</h3>
+        <p class="more-projects__card-body">Card description text.</p>
+      </div>
+      <div class="more-projects__card-img">
+        <img src="../assets/images/preview-case2.png" alt="Case 2 preview">
+      </div>
+    </a>
+    <a class="more-projects__card" href="case3.html">
+      <div class="more-projects__card-text">
+        <h3 class="more-projects__card-title">Card title</h3>
+        <p class="more-projects__card-body">Card description text.</p>
+      </div>
+      <div class="more-projects__card-img">
+        <img src="../assets/images/preview-case3.png" alt="Case 3 preview">
+      </div>
+    </a>
+  </div>
+</section>

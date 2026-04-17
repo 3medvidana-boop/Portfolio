@@ -1,0 +1,183 @@
+/* ==========================================================================
+   Competences Section — skill set overview
+   ==========================================================================
+   Layout: full-width block, content aligned to grid column 1
+   Padding: 24px top/bottom, 20px left from column edge
+   Hint text → 64px gap → H2
+   ========================================================================== */
+
+.competences {
+  width: 100%;
+  padding: 24px 0 0 0;
+}
+
+.competences__header {
+  padding-left: calc(90px + 20px);
+  padding-right: 90px;
+}
+
+.competences__hint {
+  color: var(--hint-text-color);
+  font-family: var(--hint-text-font-family);
+  font-size: var(--hint-text-font-size);
+  font-style: normal;
+  font-weight: var(--hint-text-font-weight);
+  line-height: var(--hint-text-line-height);
+  margin: 0 0 64px 0;
+}
+
+.competences__title {
+  margin: 0 0 24px 0;
+}
+
+/* ==========================================================================
+   Cards grid — 2 columns of competence cards
+   ========================================================================== */
+.competences__cards {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 90px;
+  padding-right: 90px;
+}
+
+/* ---- Single card ---- */
+.competences__card {
+  display: flex;
+  width: 50%;
+  padding: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+.competences__card-icon {
+  width: 120px;
+  height: 120px;
+  display: block;
+}
+
+/* ---- Card head (title + chevron) ---- */
+.competences__card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.competences__card-title {
+  margin: 0;
+}
+
+.competences__card-toggle {
+  display: none;
+}
+
+.competences__card-chevron {
+  width: 24px;
+  height: 24px;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.competences__card-body {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Bottom visual — gradient strip
+   ========================================================================== */
+.competences__bottom {
+  height: 120px;
+  margin-top: 24px;
+  padding: 0;
+  padding-left: 90px;
+  padding-right: calc(90px + (100vw - 90px * 2 - 24px * 5) / 6 + 24px);
+}
+
+.competences__bottom-img {
+  width: 100%;
+  height: 120px;
+  display: block;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   1200px — Tablet: vertical accordion cards
+   ========================================================================== */
+@media (max-width: 1200px) {
+  /* Header: margin 60px */
+  .competences__header {
+    padding-left: calc(60px + 20px);
+    padding-right: 60px;
+  }
+
+  .competences__cards {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .competences__card {
+    width: 100%;
+    padding: 16px;
+    gap: 8px;
+  }
+
+  /* Show chevron toggle */
+  .competences__card-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  /* Body hidden by default */
+  .competences__card-body {
+    display: none;
+  }
+
+  /* Open state — body visible, chevron rotated */
+  .competences__card.is-open .competences__card-body {
+    display: block;
+  }
+
+  .competences__card.is-open .competences__card-chevron {
+    transform: rotate(180deg);
+  }
+
+  .competences__bottom {
+    padding-left: 60px;
+    padding-right: calc(60px + (100vw - 60px * 2 - 20px * 3) / 4 + 20px);
+  }
+}
+
+/* ==========================================================================
+   834px — Mobile (margin 20px, 2 cols, gutter 16px)
+   ========================================================================== */
+@media (max-width: 834px) {
+  .competences__header {
+    padding-left: calc(20px + 20px);
+    padding-right: 20px;
+  }
+
+  .competences__hint {
+    margin: 0 0 40px 0;
+  }
+
+  .competences__cards {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .competences__bottom {
+    padding-left: 20px;
+    padding-right: calc(20px + (100vw - 20px * 2 - 16px) / 2 + 16px);
+  }
+}

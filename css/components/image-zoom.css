@@ -1,0 +1,209 @@
+/* ==========================================================================
+   Image Zoom — fullscreen lightbox overlay with zoom + pan controls
+   ========================================================================== */
+
+.image-zoom {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.image-zoom.is-open {
+  display: block;
+}
+
+.image-zoom__viewport {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+  cursor: grab;
+}
+
+.image-zoom__viewport.is-grabbing {
+  cursor: grabbing;
+}
+
+.image-zoom__stage {
+  min-width: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+  padding: 80px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  height: max-content;
+}
+
+.image-zoom__img {
+  display: block;
+  flex-shrink: 0;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+  max-width: none;
+  max-height: none;
+}
+
+.image-zoom__controls {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  padding: 8px;
+  border-radius: 32px;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+.image-zoom__btn {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.image-zoom__btn:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.image-zoom__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.image-zoom__close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+}
+
+/* ---- Gallery prev/next (visible only when has-gallery) ---- */
+.image-zoom__gallery-prev,
+.image-zoom__gallery-next {
+  display: none;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 56px;
+  height: 56px;
+  background: rgba(0, 0, 0, 0.7);
+  font-size: 0;
+}
+
+.image-zoom__gallery-prev:hover,
+.image-zoom__gallery-next:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.image-zoom__gallery-prev::after,
+.image-zoom__gallery-next::after {
+  content: '';
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-top: 2.5px solid #fff;
+  border-right: 2.5px solid #fff;
+}
+
+.image-zoom__gallery-prev::after {
+  transform: rotate(-135deg);
+  margin-left: 5px;
+}
+
+.image-zoom__gallery-next::after {
+  transform: rotate(45deg);
+  margin-right: 5px;
+}
+
+.image-zoom.has-gallery .image-zoom__gallery-prev,
+.image-zoom.has-gallery .image-zoom__gallery-next {
+  display: flex;
+}
+
+.image-zoom__gallery-prev {
+  left: 20px;
+}
+
+.image-zoom__gallery-next {
+  right: 20px;
+}
+
+/* ---- Pan navigation (arrows, bottom-right) ---- */
+.image-zoom__pan {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  display: none;
+  grid-template-columns: 48px 48px 48px;
+  grid-template-rows: 48px 48px 48px;
+  gap: 4px;
+  z-index: 2;
+}
+
+.image-zoom.has-overflow .image-zoom__pan {
+  display: grid;
+}
+
+.image-zoom__pan-btn {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.image-zoom__pan-btn:hover {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.image-zoom__pan-btn--up    { grid-column: 2; grid-row: 1; }
+.image-zoom__pan-btn--left  { grid-column: 1; grid-row: 2; }
+.image-zoom__pan-btn--right { grid-column: 3; grid-row: 2; }
+.image-zoom__pan-btn--down  { grid-column: 2; grid-row: 3; }
+
+/* ==========================================================================
+   834px — Mobile
+   ========================================================================== */
+@media (max-width: 834px) {
+  .image-zoom__viewport {
+    padding: 60px 20px;
+  }
+
+  .image-zoom__close {
+    top: 12px;
+    right: 12px;
+  }
+
+  .image-zoom__controls {
+    bottom: 16px;
+  }
+
+  .image-zoom__pan {
+    right: 12px;
+    bottom: 80px;
+  }
+}
