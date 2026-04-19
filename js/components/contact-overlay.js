@@ -26,6 +26,11 @@
     function closeOverlay() {
       overlay.classList.remove('is-open');
       document.body.style.overflow = '';
+      // Wait for the panel slide-out transition to finish, then hide from compositor
+      panel.addEventListener('transitionend', function handler(e) {
+        if (e.target !== panel) return;
+        overlay.classList.remove('is-animating');
+      }, { once: true });
     }
 
     function openOverlay() {
@@ -35,7 +40,14 @@
         header.classList.remove('header--menu-open');
         menu.classList.remove('is-open');
       }
-      overlay.classList.add('is-open');
+      // Step 1: make element display:flex so transitions can fire
+      overlay.classList.add('is-animating');
+      // Step 2: one frame later add is-open to trigger CSS transitions
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          overlay.classList.add('is-open');
+        });
+      });
       document.body.style.overflow = 'hidden';
       if (panel) {
         panel.scrollTop = 0;
