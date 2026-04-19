@@ -37,7 +37,8 @@
       "Bash(find /c/Portfolio -type f \\\\\\( -name \"*.html\" -o -name \"*.css\" -o -name \"*.js\" \\\\\\) ! -path \"*/.git/*\" -exec wc -l {} +)",
       "Bash(Remove-Item \"C:\\\\Portfolio\\\\css\\\\components\\\\case-stack.css\" -Force)",
       "Bash(Remove-Item \"C:\\\\Portfolio\\\\js\\\\components\\\\case-stack.js\" -Force)",
-      "Bash(Remove-Item \"C:\\\\Portfolio\\\\pages\\\\article.html\" -Force)"
+      "Bash(Remove-Item \"C:\\\\Portfolio\\\\pages\\\\article.html\" -Force)",
+      "Bash([ ! -f \"/c/Portfolio/assets/images/$f\" ])"
     ]
   }
 }

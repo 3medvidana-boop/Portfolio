@@ -72,7 +72,8 @@ Portfolio/
 │       ├── image-carousel.js
 │       ├── video-player.js
 │       └── grid-overlay.js
-├── components/                 # Component HTML partials
+├── components/                 # Component HTML partials + reference docs
+│   ├── components.md           # Component inventory, properties, creation guide
 │   ├── header.html             # Site header partial
 │   ├── hero.html               # Hero section partial
 │   ├── content-block.html      # Base titled block + divider
@@ -92,6 +93,8 @@ Portfolio/
 4. **Showcase-driven** — every component is rendered on the Components page for isolated review
 5. **Desktop-first** — `max-width` media queries, four defined breakpoints
 6. **Minimum width** — `body { min-width: 375px }` prevents content collapse below 375px
+
+> **Component reference:** full inventory of all 18 components with BEM structure, state classes, JS contracts, breakpoints, and creation/implementation guide → [`components/components.md`](components/components.md)
 
 ---
 
@@ -1384,6 +1387,16 @@ On case pages, More Projects + Email + Footer are wrapped in a `.case-bottom` di
 - **Grid toggle button hidden.** `document.body.appendChild(btn)` commented out — never added to DOM.
 - **New `resume-overlay` component.** Fullscreen overlay with embedded Google Doc iframe + "Download PDF" button. Wired to all pages.
 - **Published to GitHub Pages.** Repo: `github.com/3medvidana-boop/Portfolio` (public). GitHub Pages enabled on `main` branch.
+
+---
+
+## Session retrospective (Codebase audit & component docs)
+
+- **Full codebase audit.** All 95 assets (78 images, 10 videos, 7 icons) verified — zero broken references across all HTML, CSS, and JS files.
+- **Case 3 info-box corrected.** `pages/case3.html` had "Prompt optimization platform for LLMs" (copy-pasted from case2). Fixed to "AI hotel management SaaS".
+- **`components/components.md` created.** Comprehensive component reference: 18 components documented with BEM block + elements table, modifiers, state classes, JS trigger contracts, breakpoints, and pages used. Includes component creation checklist, CSS/JS file templates, and a unified state-class conventions table.
+- **`readme.md` project structure updated.** `components/components.md` added to the file tree; Principles section now links to it as the component reference.
+- **Deployed to Vercel** in addition to GitHub Pages.
 
 ---
 
