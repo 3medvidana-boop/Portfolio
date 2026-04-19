@@ -27,14 +27,18 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.34);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   opacity: 0;
   transition: opacity var(--transition-panel);
+  /* backdrop-filter is intentionally omitted here —
+     applying it in the closed state creates a GPU compositing layer
+     on iOS Safari even when opacity is 0, causing other fixed/sticky
+     elements (header, hero) to paint as solid black. */
 }
 
 .contact-overlay.is-open .contact-overlay__backdrop {
   opacity: 1;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 /* Panel — starts at grid col 3, full height, right side */

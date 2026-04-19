@@ -793,6 +793,7 @@ On viewports > 1200px, when the staircase pushes cards beyond the viewport, `ser
 | Trigger | Action |
 |---------|--------|
 | Header email button (`.js-contact-open`) | Opens overlay |
+| Hero "Contact me" button (`.js-contact-open`) | Opens overlay |
 | Email section "Contact me" button (`.js-contact-open`) | Opens overlay |
 | Menu email button (`.js-contact-open`) | Closes menu, opens overlay |
 | Backdrop click | Closes overlay |
@@ -805,7 +806,7 @@ On viewports > 1200px, when the staircase pushes cards beyond the viewport, `ser
 |----------|-------|
 | Panel slide-in | `transform: translateX(100%)` → `translateX(0)` |
 | Transition | `var(--transition-panel)` |
-| Backdrop | `opacity: 0` → `1`, same transition |
+| Backdrop | `opacity: 0` → `1`, same transition; `backdrop-filter: blur(12px)` added **only** on `.is-open` (iOS compositing fix) |
 | Visibility | `visibility: hidden` / `pointer-events: none` → visible/auto |
 
 #### Panel Width
@@ -1414,6 +1415,14 @@ On case pages, More Projects + Email + Footer are wrapped in a `.case-bottom` di
 - **Video player overlay fill fixed.** `<video>` changed from `width/height: 100%` (flex-height unreliable) to `position: absolute; inset: 0; object-fit: contain` — video now fills the entire overlay at maximum size regardless of aspect ratio.
 - **Mobile landscape playback added.** Opening a video on ≤ 834 px portrait: JS attempts `screen.orientation.lock('landscape')` (Android Chrome); CSS `@media (orientation: portrait)` rotates the overlay 90° and swaps vh/vw dimensions as a universal iOS/fallback. Orientation unlocked on close.
 - **Contact overlay image constrained.** `max-height` reduced from `calc(100vh - 120px - 40px)` (~920 px) to `120 px`. Form now fits on screen without scroll; scroll appears only when textarea content overflows.
+
+---
+
+## Session retrospective (Hero contact button & iOS rendering fix)
+
+- **Hero "Contact me" button wired to overlay.** `hero__bottom-contact` was `<a href="mailto:">` with no JS trigger — clicking did nothing. Changed to `<a href="#" class="hero__bottom-contact js-contact-open">` so it opens the contact overlay like all other `.js-contact-open` triggers (header, email section, menu).
+- **Hero circle clipping direction fixed.** `.hero__panel-center` changed from `align-items: center` to `align-items: flex-end` — image is now anchored to the bottom of the panel, clipping happens at the top only.
+- **iOS Safari black rendering bug fixed.** Random elements (header, hero, email section) painted as solid black on iOS due to `backdrop-filter: blur(12px)` being applied to `.contact-overlay__backdrop` even when the overlay was closed (opacity: 0 but still GPU-composited). Fixed by removing `backdrop-filter` from the base rule and adding it only to `.contact-overlay.is-open .contact-overlay__backdrop`. GPU compositing layer is now created only when the overlay actually opens.
 
 ---
 

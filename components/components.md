@@ -242,7 +242,7 @@ Full-height landing section. CSS Grid, 4 panels + 90px bottom row.
 | `__nav-label` | Link label (slides right on hover) |
 | `__nav-arrow` | Arrow icon (slides in on hover) |
 | `__bottom-left` | Cyan block below panel 1 |
-| `__bottom-contact` | "Contact me" button below panel 2 |
+| `__bottom-contact` | "Contact me" button below panel 2 — has `.js-contact-open`, opens contact overlay |
 | `__bottom-contact-label` | Button label |
 | `__bottom-contact-arrow` | Arrow icon |
 | `__bottom-visual` | Image strip below panels 3–4 |
@@ -513,7 +513,9 @@ Slide-in side panel with contact form. Submits to Formspree.
 - `.is-sending` on `__submit` — disabled opacity state
 - `.is-sent` on `__form` — hides form, shows success
 
-**Trigger:** Any `.js-contact-open` element opens the overlay.
+**Trigger:** Any `.js-contact-open` element opens the overlay. Current triggers: header email button, hero "Contact me" button (`hero__bottom-contact`), email section CTA button, menu email button.
+
+**Backdrop note:** `backdrop-filter: blur(12px)` is applied **only** inside `.contact-overlay.is-open` — not on the base backdrop rule. This prevents iOS Safari from creating a GPU compositing layer when the overlay is closed, which would cause other `position: fixed` / sticky elements (header, hero panels) to paint as solid black.
 
 **Breakpoints:** 1440px (panel from col 2), 1200px (panel from col 2 of 4-col grid), 834px (full-width panel, stacked fields)
 
