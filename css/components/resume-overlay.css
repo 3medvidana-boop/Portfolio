@@ -5,10 +5,10 @@
 .resume-overlay {
   position: fixed;
   inset: 0;
-  z-index: 1001;
+  z-index: var(--z-resume);
   display: none;
   flex-direction: column;
-  background: #fff;
+  background: var(--color-white);
 }
 
 .resume-overlay.is-open {
@@ -23,7 +23,7 @@
   padding: 12px 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   flex-shrink: 0;
-  background: #fff;
+  background: var(--color-white);
 }
 
 .resume-overlay__download {
@@ -32,10 +32,10 @@
   gap: 8px;
   padding: 0 20px;
   height: 44px;
-  background: #000;
-  color: #fff;
+  background: var(--color-black);
+  color: var(--color-white);
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   font-family: var(--body-font-family);
   font-size: 16px;
   font-weight: 600;
@@ -45,16 +45,16 @@
 }
 
 .resume-overlay__download:hover {
-  background: rgba(0, 0, 0, 0.8);
+  background: var(--color-black-85);
 }
 
 .resume-overlay__close {
   width: 44px;
   height: 44px;
   border: none;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.08);
-  color: #000;
+  border-radius: var(--radius-full);
+  background: var(--color-black-08);
+  color: var(--color-black);
   font-size: 24px;
   line-height: 1;
   cursor: pointer;
@@ -66,7 +66,7 @@
 }
 
 .resume-overlay__close:hover {
-  background: rgba(0, 0, 0, 0.16);
+  background: var(--color-black-16);
 }
 
 .resume-overlay__frame-wrap {
@@ -81,5 +81,5 @@
   width: 100%;
   max-width: 900px;
   border: none;
-  background: #fff;
+  background: var(--color-white);
 }

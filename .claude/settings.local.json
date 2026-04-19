@@ -29,7 +29,15 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8080/pages/case1.html)",
       "Bash(\"C:\\\\Program Files\\\\Git\\\\usr\\\\bin\\\\perl.exe\" server.pl)",
       "Bash(taskkill //F //IM perl.exe)",
-      "Bash(ls -la assets/images/preview-case*.png)"
+      "Bash(ls -la assets/images/preview-case*.png)",
+      "Bash(xargs wc *)",
+      "Bash(find /c/Portfolio -name \"*.html\" -not -path \"*/.git/*\" -exec grep -l \"script\" {} \\\\;)",
+      "Bash(xargs grep *)",
+      "Bash(find /c/Portfolio/pages -name \"*.html\" -exec basename {} \\\\;)",
+      "Bash(find /c/Portfolio -type f \\\\\\( -name \"*.html\" -o -name \"*.css\" -o -name \"*.js\" \\\\\\) ! -path \"*/.git/*\" -exec wc -l {} +)",
+      "Bash(Remove-Item \"C:\\\\Portfolio\\\\css\\\\components\\\\case-stack.css\" -Force)",
+      "Bash(Remove-Item \"C:\\\\Portfolio\\\\js\\\\components\\\\case-stack.js\" -Force)",
+      "Bash(Remove-Item \"C:\\\\Portfolio\\\\pages\\\\article.html\" -Force)"
     ]
   }
 }

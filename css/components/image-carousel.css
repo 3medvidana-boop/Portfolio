@@ -6,7 +6,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  border: 1px solid #EAEAEA;
+  border: 1px solid var(--color-border);
 }
 
 .image-carousel__track {
@@ -33,9 +33,9 @@
   width: 48px;
   height: 48px;
   border: none;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
+  border-radius: var(--radius-full);
+  background: var(--color-black-60);
+  color: var(--color-white);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -49,8 +49,8 @@
   display: block;
   width: 12px;
   height: 12px;
-  border-top: 2px solid #fff;
-  border-right: 2px solid #fff;
+  border-top: 2px solid var(--color-white);
+  border-right: 2px solid var(--color-white);
 }
 
 .image-carousel__btn--prev::after {
@@ -64,7 +64,7 @@
 }
 
 .image-carousel__btn:hover {
-  background: rgba(0, 0, 0, 0.85);
+  background: var(--color-black-85);
 }
 
 .image-carousel__btn:disabled {
@@ -91,15 +91,15 @@
 .image-carousel__dot {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   border: none;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--color-black-20);
   padding: 0;
   cursor: pointer;
 }
 
 .image-carousel__dot.is-active {
-  background: #000;
+  background: var(--color-black);
 }
 
 /* ==========================================================================

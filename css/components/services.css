@@ -63,7 +63,7 @@
   height: 240px;
   padding: 16px;
   box-sizing: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.16);
+  border: 1px solid var(--color-black-16);
   background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -72,7 +72,7 @@
   overflow: hidden;
   position: relative;
   cursor: pointer;
-  transition: background-size 0.3s ease;
+  transition: background-size var(--transition-base);
 }
 
 /* Hover: zoom background image 10% */
@@ -125,7 +125,7 @@
   background: linear-gradient(to top, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 100%);
   z-index: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-base);
 }
 
 /* On hover: remove gradient */

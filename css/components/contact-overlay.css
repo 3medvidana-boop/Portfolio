@@ -9,7 +9,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 200;
+  z-index: var(--z-overlay);
   visibility: hidden;
   pointer-events: none;
 }
@@ -30,7 +30,7 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   opacity: 0;
-  transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: opacity var(--transition-panel);
 }
 
 .contact-overlay.is-open .contact-overlay__backdrop {
@@ -44,10 +44,10 @@
   right: 0;
   height: 100%;
   width: calc(100% - 90px - 2 * (100vw - 90px * 2 - 24px * 5) / 6 - 2 * 24px);
-  background: #fff;
+  background: var(--color-white);
   overflow-y: auto;
   transform: translateX(100%);
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform var(--transition-panel);
 }
 
 .contact-overlay.is-open .contact-overlay__panel {
@@ -109,7 +109,7 @@
 .contact-overlay__textarea {
   width: 100%;
   padding: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.16);
+  border: 1px solid var(--color-black-16);
   border-radius: 0;
   background: none;
   font-family: var(--body-font-family);
@@ -139,7 +139,7 @@
 /* Error state */
 .contact-overlay__input.is-error,
 .contact-overlay__textarea.is-error {
-  border-color: #E53935 !important;
+  border-color: var(--color-error) !important;
 }
 
 .contact-overlay__error {
@@ -147,7 +147,7 @@
   font-family: var(--body-font-family);
   font-size: 12px;
   line-height: 1.4;
-  color: #E53935;
+  color: var(--color-error);
   margin-top: 4px;
 }
 
@@ -170,7 +170,7 @@
   gap: 12px;
   height: 90px;
   padding: 0 32px;
-  background: #000;
+  background: var(--color-black);
   border: none;
   cursor: pointer;
   flex-shrink: 0;
@@ -184,7 +184,7 @@
   font-weight: var(--button-text-font-weight);
   line-height: var(--button-text-line-height);
   letter-spacing: var(--button-text-letter-spacing);
-  color: #fff;
+  color: var(--color-white);
   white-space: nowrap;
 }
 
@@ -193,19 +193,19 @@
   height: 48px;
   display: block;
   filter: invert(1);
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-base);
 }
 
 .contact-overlay__submit:hover .contact-overlay__submit-arrow {
   animation: arrow-bounce 0.5s ease infinite;
 }
 
-/* Image — fit screen height, preserve proportions, top-left */
+/* Image — decorative, constrained so the form fits on screen without scroll */
 .contact-overlay__image {
   flex: 1;
   min-width: 0;
-  max-height: calc(100vh - 120px - 40px);
   height: auto;
+  max-height: 120px;
   object-fit: contain;
   object-position: left top;
   display: block;
@@ -233,7 +233,7 @@
   height: 90px;
   padding: 0 32px;
   margin-top: 24px;
-  background: #000;
+  background: var(--color-black);
   border: none;
   cursor: pointer;
 }
@@ -244,7 +244,7 @@
   font-weight: var(--button-text-font-weight);
   line-height: var(--button-text-line-height);
   letter-spacing: var(--button-text-letter-spacing);
-  color: #fff;
+  color: var(--color-white);
   white-space: nowrap;
 }
 
@@ -253,7 +253,7 @@
   height: 48px;
   display: block;
   filter: invert(1);
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-base);
 }
 
 .contact-overlay__again:hover .contact-overlay__again-arrow {
@@ -348,10 +348,6 @@
   .contact-overlay__close img {
     width: 32px;
     height: 32px;
-  }
-
-  .contact-overlay__image {
-    max-height: calc(100vh - 60px - 40px);
   }
 
   .contact-overlay__again {

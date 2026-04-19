@@ -4,7 +4,7 @@
 
 .more-projects {
   padding: 120px 90px;
-  background-color: #ffffff;
+  background-color: var(--color-white);
 }
 
 /* Wrapper for all sections below case-hero — hidden until gate reveal completes */
@@ -33,7 +33,7 @@
   gap: 16px;
   padding: 20px;
   box-sizing: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--color-black-20);
   text-decoration: none;
   color: inherit;
   overflow: hidden;
@@ -57,7 +57,7 @@
   font-size: 19px;
   font-weight: var(--body-font-weight);
   line-height: 1.4;
-  color: #000;
+  color: var(--color-black);
 }
 
 .more-projects__card-img {

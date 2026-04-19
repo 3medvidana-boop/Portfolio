@@ -12,7 +12,7 @@
 
 .bullet-list__item {
   padding: 20px 0;
-  border-top: 2px solid rgba(0, 0, 0, 0.2);
+  border-top: 2px solid var(--color-black-20);
 }
 
 .bullet-list__item:first-child {
@@ -24,8 +24,8 @@
   display: inline-block;
   width: 16px;
   height: 16px;
-  border-radius: 50%;
-  background-color: #000000;
+  border-radius: var(--radius-full);
+  background-color: var(--color-black);
   margin-right: 12px;
   vertical-align: middle;
 }
@@ -37,7 +37,7 @@
   font-size: 28px;
   font-weight: 700;
   line-height: 1.2;
-  color: #000;
+  color: var(--color-black);
   vertical-align: middle;
 }
 
@@ -47,7 +47,7 @@
   font-size: 19px;
   font-weight: 400;
   line-height: 1.4;
-  color: #000;
+  color: var(--color-black);
 }
 
 /* ==========================================================================

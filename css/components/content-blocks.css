@@ -15,7 +15,7 @@
   flex-direction: column;
   gap: 16px;
   padding-top: 24px;
-  border-top: 2px solid rgba(0, 0, 0, 0.2);
+  border-top: 2px solid var(--color-black-20);
 }
 
 .content-block:first-child {
@@ -35,7 +35,7 @@
   font-size: 28px;
   font-weight: 700;
   line-height: 1.2;
-  color: #000;
+  color: var(--color-black);
 }
 
 .content-block__text {
@@ -44,7 +44,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
-  color: #000;
+  color: var(--color-black);
 }
 
 .content-block__list {
@@ -54,7 +54,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
-  color: #000;
+  color: var(--color-black);
   list-style: disc;
 }
 
@@ -75,13 +75,13 @@
 .content-block__pill {
   display: inline-block;
   padding: 4px 12px;
-  background: rgba(0, 0, 0, 0.08);
-  border-radius: 8px;
+  background: var(--color-black-08);
+  border-radius: var(--radius-md);
   font-family: var(--body-font-family);
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
-  color: #000;
+  color: var(--color-black);
 }
 
 .content-block__media {
@@ -100,11 +100,11 @@
   height: auto;
 }
 
-/* Fit variant — adds a 1px #EAEAEA stroke around the image (still
+/* Fit variant — adds a 1px stroke around the image (still
    preserves natural proportions, kept as a separate modifier so blocks
    that need a framed look can opt in). */
 .content-block__media--fit .content-block__media-img {
-  border: 1px solid #EAEAEA;
+  border: 1px solid var(--color-border);
   box-sizing: border-box;
 }
 
@@ -115,9 +115,9 @@
   width: 48px;
   height: 48px;
   border: none;
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.6);
-  color: #fff;
+  border-radius: var(--radius-full);
+  background-color: var(--color-black-60);
+  color: var(--color-white);
   font-size: 24px;
   line-height: 1;
   cursor: pointer;
@@ -158,7 +158,7 @@
   font-size: 19px;
   font-weight: 700;
   line-height: 1.2;
-  color: #000;
+  color: var(--color-black);
 }
 
 .content-block__persona-role {
@@ -167,7 +167,7 @@
   font-size: 16px;
   font-weight: 700;
   line-height: 1.2;
-  color: #000;
+  color: var(--color-black);
 }
 
 .content-block__persona-text {
@@ -176,7 +176,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
-  color: #000;
+  color: var(--color-black);
 }
 
 /* ---- 2x2 grid of small text blocks (JTBD) ---- */
@@ -202,7 +202,7 @@
   font-size: 16px;
   font-weight: 700;
   line-height: 1.2;
-  color: #000;
+  color: var(--color-black);
 }
 
 .content-block__cell-text {
@@ -211,7 +211,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
-  color: #000;
+  color: var(--color-black);
 }
 
 /* ==========================================================================
@@ -230,7 +230,6 @@
   .content-block__title {
     font-size: 19px;
   }
-
 
   .content-block__media-img {
     width: 100%;

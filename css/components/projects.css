@@ -55,9 +55,9 @@
   font-size: var(--body-font-size);
   font-weight: var(--body-font-weight);
   line-height: var(--body-line-height);
-  color: #000;
+  color: var(--color-black);
   padding: 0;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background var(--transition-base), color var(--transition-base);
 }
 
 /* ---- Arrow icons: 24×24, centered ---- */
@@ -68,11 +68,11 @@
 
 /* ---- Pagination button colors ---- */
 .projects__page-btn--prev {
-  background: #55F8AF;
+  background: var(--color-accent-mint);
 }
 
 .projects__page-btn--1 {
-  background: #6DF644;
+  background: var(--color-accent-green);
 }
 
 .projects__page-btn--2 {
@@ -84,21 +84,21 @@
 }
 
 .projects__page-btn--next {
-  background: #6DF644;
+  background: var(--color-accent-green);
 }
 
 /* ---- Number buttons hover ---- */
 .projects__page-btn--1:hover,
 .projects__page-btn--2:hover,
 .projects__page-btn--3:hover {
-  background: #000;
-  color: #fff;
+  background: var(--color-black);
+  color: var(--color-white);
 }
 
 /* ---- Active state on number buttons (via JS) ---- */
 .projects__page-btn.is-active {
-  background: #000;
-  color: #fff;
+  background: var(--color-black);
+  color: var(--color-white);
 }
 
 .projects__page-btn.is-active img {
@@ -107,8 +107,8 @@
 
 /* ---- Focused state: black bg, white icon/text ---- */
 .projects__page-btn:focus {
-  background: #000;
-  color: #fff;
+  background: var(--color-black);
+  color: var(--color-white);
 }
 
 .projects__page-btn:focus img {
@@ -118,7 +118,7 @@
 /* ---- Arrow buttons: hover → black, focused → default color ---- */
 .projects__page-btn--prev:hover,
 .projects__page-btn--next:hover {
-  background: #000;
+  background: var(--color-black);
 }
 
 .projects__page-btn--prev:hover img,
@@ -129,7 +129,7 @@
 .projects__page-btn--prev:focus,
 .projects__page-btn--next:focus {
   background: var(--projects-arrow-default-bg);
-  color: #000;
+  color: var(--color-black);
 }
 
 .projects__page-btn--prev:focus img,
@@ -138,18 +138,18 @@
 }
 
 .projects__page-btn--prev {
-  --projects-arrow-default-bg: #55F8AF;
+  --projects-arrow-default-bg: var(--color-accent-mint);
 }
 
 .projects__page-btn--next {
-  --projects-arrow-default-bg: #6DF644;
+  --projects-arrow-default-bg: var(--color-accent-green);
 }
 
 /* ---- Fill area between right arrow and "See all" ---- */
 .projects__header-fill {
   flex: 1;
   height: 90px;
-  background: #6DF644;
+  background: var(--color-accent-green);
 }
 
 /* ---- "See all" button — identical to header Resume ---- */
@@ -161,7 +161,7 @@
   width: calc(370px + 90px);
   height: 90px;
   padding-right: 90px;
-  background-color: #000000;
+  background-color: var(--color-black);
   flex-shrink: 0;
   text-decoration: none;
   cursor: pointer;
@@ -175,7 +175,7 @@
   font-weight: var(--button-text-font-weight);
   line-height: var(--button-text-line-height);
   letter-spacing: var(--button-text-letter-spacing);
-  color: #FFFFFF;
+  color: var(--color-white);
   white-space: nowrap;
 }
 
@@ -183,7 +183,7 @@
   width: 48px;
   height: 48px;
   display: block;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-base);
   filter: invert(1);
 }
 
@@ -286,13 +286,13 @@
 
 /* ---- Hover: instant white ---- */
 .projects__case:hover {
-  background-color: #ffffff;
+  background-color: var(--color-white);
   background-image: none;
 }
 
 /* ---- Focused state: black left border 4px ---- */
 .projects__case.is-focused {
-  border-left: 4px solid #000;
+  border-left: 4px solid var(--color-black);
 }
 
 .projects__case-title {

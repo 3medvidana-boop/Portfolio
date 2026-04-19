@@ -11,7 +11,6 @@
 | Page | File | Purpose |
 |------|------|---------|
 | Index Blog | `index.html` | Main blog listing page |
-| Open Article | `pages/article.html` | Individual article/case page |
 | Case 1 | `pages/case1.html` | Project case page (HR B2B) |
 | Case 2 | `pages/case2.html` | Project case page (Prompt Marketplace) |
 | Case 3 | `pages/case3.html` | Project case page (AI Hotel Management) |
@@ -23,16 +22,14 @@
 Portfolio/
 ├── index.html                  # Index Blog page
 ├── pages/
-│   ├── article.html            # Open Article page
 │   ├── case1.html              # Project case page
 │   ├── case2.html              # Project case page
 │   ├── case3.html              # Project case page
 │   └── components.html         # Component showcase / sandbox
 ├── assets/
-│   ├── icons/
-│   ├── fonts/
-│   ├── images/
-│   └── videos/                    # Case-page video walkthroughs (mp4)
+│   ├── icons/                  # SVG icon set
+│   ├── images/                 # All raster and vector images
+│   └── videos/                 # Case-page video walkthroughs (mp4)
 ├── css/
 │   ├── main.css                # Entry point — imports only
 │   ├── base/
@@ -50,38 +47,40 @@ Portfolio/
 │   │   ├── email.css
 │   │   ├── footer.css
 │   │   ├── contact-overlay.css
+│   │   ├── resume-overlay.css
 │   │   ├── case-hero.css
 │   │   ├── bullet-list.css
 │   │   ├── content-blocks.css
 │   │   ├── image-zoom.css
+│   │   ├── image-carousel.css
 │   │   ├── video-player.css
 │   │   ├── more-projects.css
-│   │   ├── image-carousel.css
 │   │   └── grid-overlay.css
-│   ├── pages/                  # Page-specific overrides
-│   └── utils/                  # Helpers, mixins
+│   └── pages/                  # Page-specific overrides
 ├── js/
 │   ├── main.js                 # Entry point
-│   ├── components/             # JS per component
-│   │   ├── competences.js
-│   │   ├── projects.js
-│   │   ├── services.js
-│   │   ├── footer.js
-│   │   ├── header-menu.js
-│   │   ├── contact-overlay.js
-│   │   ├── case-hero.js
-│   │   ├── image-zoom.js
-│   │   ├── video-player.js
-│   │   ├── image-carousel.js
-│   │   └── grid-overlay.js
-│   ├── pages/                  # Page-specific scripts
-│   └── utils/                  # Shared helpers
+│   └── components/             # JS per component
+│       ├── competences.js
+│       ├── projects.js
+│       ├── services.js
+│       ├── footer.js
+│       ├── header-menu.js
+│       ├── contact-overlay.js
+│       ├── resume-overlay.js
+│       ├── case-hero.js
+│       ├── image-zoom.js
+│       ├── image-carousel.js
+│       ├── video-player.js
+│       └── grid-overlay.js
 ├── components/                 # Component HTML partials
+│   ├── header.html             # Site header partial
+│   ├── hero.html               # Hero section partial
 │   ├── content-block.html      # Base titled block + divider
 │   ├── content-block-media.html# Image preview + zoom trigger
 │   ├── video-player.html       # Poster preview + fullscreen video overlay
 │   ├── email.html              # Reusable email/contact CTA section
-│   └── more-projects.html      # Two-card "More projects" section
+│   ├── more-projects.html      # Two-card "More projects" section
+│   └── grid-overlay.html       # Dev grid overlay partial
 └── readme.md
 ```
 
@@ -137,9 +136,72 @@ Additional breakpoints:
 
 ## CSS Design Tokens
 
-All tokens defined in `css/base/variables.css`. Mobile overrides at `@media (max-width: 834px)`.
+All tokens defined in `css/base/variables.css`. All component CSS files use these tokens — no hardcoded color, z-index, border-radius or transition values in components.
+
+### Color Tokens
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--color-black` | `#000` | Primary text, backgrounds, buttons |
+| `--color-white` | `#fff` | Backgrounds, text on dark |
+| `--color-surface` | `#f7f7f7` | Video player bg, subtle backgrounds |
+| `--color-black-08` | `rgba(0,0,0,0.08)` | Card borders, pill backgrounds |
+| `--color-black-16` | `rgba(0,0,0,0.16)` | Borders, form fields |
+| `--color-black-20` | `rgba(0,0,0,0.20)` | Dividers (content-blocks, bullet-list, case-hero) |
+| `--color-black-60` | `rgba(0,0,0,0.60)` | Play button, zoom button, close button |
+| `--color-black-85` | `rgba(0,0,0,0.85)` | Hover state for overlaid buttons |
+| `--color-border` | `#EAEAEA` | Image carousel border, video-player border |
+| `--color-accent-green` | `#6DF644` | Projects fill, pagination btn 1 + next |
+| `--color-accent-mint` | `#55F8AF` | Projects pagination prev button |
+| `--color-error` | `#E53935` | Form validation errors |
+
+### Spacing Tokens
+
+| Token | Value | Notes |
+|-------|-------|-------|
+| `--page-margin` | `90px` / `60px` / `20px` | Updates via media query at 1200px and 834px |
+| `--section-gap-lg` | `120px` | Large section padding (projects bottom, email, more-projects) |
+| `--section-gap-md` | `80px` | Medium section padding (mobile) |
+| `--section-gap-sm` | `40px` | Small gaps (hint margin on mobile) |
+| `--space-4` | `4px` | |
+| `--space-8` | `8px` | |
+| `--space-12` | `12px` | |
+| `--space-16` | `16px` | |
+| `--space-20` | `20px` | |
+| `--space-24` | `24px` | |
+
+### Border-radius Tokens
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--radius-sm` | `4px` | Resume overlay download button |
+| `--radius-md` | `8px` | Pills, image-zoom pan buttons |
+| `--radius-full` | `50%` | All circular buttons and markers |
+
+### Transition Tokens
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--transition-fast` | `0.2s ease` | Video/image button hover states |
+| `--transition-base` | `0.3s ease` | General hover transitions (arrows, backgrounds) |
+| `--transition-slow` | `0.5s ease` | (available, not currently used) |
+| `--transition-panel` | `0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)` | Contact overlay slide-in, header menu |
+| `--transition-spring` | `0.6s cubic-bezier(0.34, 1.56, 0.64, 1)` | Hero nav label/arrow, footer back icon |
+
+### Z-index Tokens
+
+| Token | Value | Layer |
+|-------|-------|-------|
+| `--z-header-menu` | `99` | Mobile menu overlay |
+| `--z-header` | `100` | Sticky header |
+| `--z-overlay` | `200` | Contact overlay |
+| `--z-modal` | `1000` | Video player + image zoom fullscreen |
+| `--z-resume` | `1001` | Resume overlay (above modal) |
+| `--z-dev-grid` | `9999` | Dev grid overlay |
 
 ### Typography Tokens
+
+Mobile overrides at `@media (max-width: 834px)`.
 
 #### `--h1-*`
 
@@ -150,7 +212,7 @@ All tokens defined in `css/base/variables.css`. Mobile overrides at `@media (max
 | font-weight | 600 | 600 |
 | line-height | 68px | 36px |
 | letter-spacing | -0.969px | -0.5px |
-| color | #000 | #000 |
+| color | `var(--color-black)` | `var(--color-black)` |
 
 **Used in:** `h1` (global), `.hero__title`, `.projects__title`
 
@@ -163,7 +225,7 @@ All tokens defined in `css/base/variables.css`. Mobile overrides at `@media (max
 | font-weight | 600 | 600 |
 | line-height | 64px | 36px |
 | letter-spacing | -0.855px | -0.5px |
-| color | #000 | #000 |
+| color | `var(--color-black)` | `var(--color-black)` |
 
 **Used in:** `h2` (global), `.competences__title`, `.services__title`, `.workflow__title`, `.email__greeting`, `.email__name`, `.footer__name`
 
@@ -176,7 +238,7 @@ All tokens defined in `css/base/variables.css`. Mobile overrides at `@media (max
 | font-weight | 600 | 600 |
 | line-height | 36px | 135% |
 | letter-spacing | -0.5px | normal |
-| color | #000 | #000 |
+| color | `var(--color-black)` | `var(--color-black)` |
 
 **Used in:** `h3` (global), `.competences__card-title`, `.projects__case-title`, `.services__card-title`, `.workflow__card-title`
 
@@ -189,7 +251,7 @@ All tokens defined in `css/base/variables.css`. Mobile overrides at `@media (max
 | font-weight | 400 | 400 |
 | line-height | 34px | normal |
 | letter-spacing | normal | -0.6px |
-| color | #000 | #000 |
+| color | `var(--color-black)` | `var(--color-black)` |
 
 **Used in:** `body` (global), `.hero__subtitle`, `.competences__card-body`, `.projects__case-body`, `.projects__page-btn`, `.email__cta-text`, `.footer__role`
 
@@ -214,7 +276,7 @@ All tokens defined in `css/base/variables.css`. Mobile overrides at `@media (max
 | font-weight | 600 | 600 |
 | line-height | 36px | 34px |
 | letter-spacing | -0.5px | normal |
-| color | #000 | #000 |
+| color | `var(--color-black)` | `var(--color-black)` |
 
 **Used in:** `.header__resume-label`, `.hero__nav-link`, `.hero__bottom-contact-label`, `.projects__see-all-label`, `.email__cta-label`, `.footer__nav-card`
 
@@ -253,7 +315,7 @@ Single SVG source (`icon-arrow-right.svg`, fill: `#000000`) used in two color co
 
 | Property | >= 1200px | 834-1199px | < 834px |
 |----------|-----------|------------|---------|
-| Position | sticky, top: 0, z-index: 100 | same | same |
+| Position | sticky, top: 0, z-index: var(--z-header) | same | same |
 | Height | 90px | 90px | 60px |
 | Home button | 90x90, logo56 | 90x90, menu icon 48x48 | 60x60, menu icon 32x32 |
 | Name font | 68px inline | 36px stacked | 24px stacked |
@@ -382,7 +444,7 @@ Hover:       [->  Label text      ]
 ```
 
 - Duration: **600ms**
-- Easing: `cubic-bezier(0.34, 1.56, 0.64, 1)` (ease in and out back)
+- Easing: `var(--transition-spring)` = `cubic-bezier(0.34, 1.56, 0.64, 1)`
 - Arrow: absolute positioned, slides in from left
 - Label: shifts right by 56px
 
@@ -409,7 +471,7 @@ Hover:       [->  Label text      ]
 | Card width | 50% | 100% | 100% |
 | Card padding | 20px | 16px | 16px |
 | Card gap | 16px | 8px | 8px |
-| Card border | 1px solid rgba(0,0,0,0.08) | same | same |
+| Card border | 1px solid var(--color-black-08) | same | same |
 | Icon size | 120x120 | 120x120 | 120x120 |
 | Chevron toggle | hidden | visible | visible |
 | Body text | always visible | accordion (hidden by default) | accordion (hidden by default) |
@@ -444,14 +506,14 @@ Hover:       [->  Label text      ]
 | Property | >= 1200px | 834-1199px | < 834px |
 |----------|-----------|------------|---------|
 | Button size | 90x90 | 90x90 | 60x60 |
-| Colors: prev | #55F8AF | #55F8AF | #55F8AF |
-| Colors: btn 1 | #6DF644 | #6DF644 | #6DF644 |
-| Colors: btn 2 | #C095BF | #C095BF | #C095BF |
-| Colors: btn 3 | #F1EC14 | #F1EC14 | #F1EC14 |
-| Colors: next | #6DF644 | #6DF644 | #6DF644 |
-| Number hover | bg #000, color #FFF | bg #000, color #FFF | bg #000, color #FFF |
-| Active state | bg #000, color #FFF (JS) | same | same |
-| Fill area bg | #6DF644 | #6DF644 | #6DF644 |
+| Colors: prev | var(--color-accent-mint) | same | same |
+| Colors: btn 1 | var(--color-accent-green) | same | same |
+| Colors: btn 2 | #C095BF | same | same |
+| Colors: btn 3 | #F1EC14 | same | same |
+| Colors: next | var(--color-accent-green) | same | same |
+| Number hover | bg var(--color-black), color white | same | same |
+| Active state | bg var(--color-black), color white (JS) | same | same |
+| Fill area bg | var(--color-accent-green) | same | same |
 
 #### "See all" Button
 
@@ -461,7 +523,7 @@ Hover:       [->  Label text      ]
 | Height | 90px | 90px | 90px | 60px |
 | Padding-right | 90px (= grid margin) | 90px | 60px | 0 |
 | Label | visible | hidden | hidden | hidden |
-| Background | #000 | #000 | #000 | #000 |
+| Background | var(--color-black) | same | same | same |
 | Arrow | 48x48 | 48x48 | 48x48 | 32x32 |
 
 #### Content
@@ -482,9 +544,9 @@ Hover:       [->  Label text      ]
 |----------|--------|--------|--------|--------|
 | margin-right | 90px | 150px | 210px | 270px |
 | Background image | project-case1.svg | project-case2.svg | project-case3.svg | project-case4.svg |
-| border-left | 4px solid transparent | 4px solid transparent | 4px solid transparent | none |
-| Focused border-left | 4px solid #000 | 4px solid #000 | 4px solid #000 | — |
-| Hover | bg white, no image | same | same | disabled (`pointer-events: none`) |
+| border-left | 4px solid transparent | same | same | none |
+| Focused border-left | 4px solid var(--color-black) | same | same | — |
+| Hover | bg var(--color-white), no image | same | same | disabled |
 | Text | visible | visible | visible | `visibility: hidden` |
 
 #### Case Cards (Tablet/Mobile <= 1200px)
@@ -554,7 +616,7 @@ Each row becomes a column. 1st card is full width, 2nd card has 120px left offse
 | Card width | 50% | 100% (1st), calc(100% - 120px) (2nd) | 100% |
 | Card height | 240px | 240px | 240px |
 | Card padding | 16px | 16px | 16px |
-| Border | 1px solid rgba(0,0,0,0.16) | same | same |
+| Border | 1px solid var(--color-black-16) | same | same |
 | Background-size | 100% 100% | 100% 100% | 100% 100% |
 | Hover bg-size | 110% 110% (10% zoom) | 110% 110% | disabled (stays 100% 100%) |
 | Gradient overlay | 48% height, white gradient | same | same (stays visible) |
@@ -612,9 +674,9 @@ On viewports > 1200px, when the staircase pushes cards beyond the viewport, `ser
 | Property | Value |
 |----------|-------|
 | Padding | 20px |
-| Border | top + bottom only, 1px solid rgba(0,0,0,0.16) |
+| Border | top + bottom only, 1px solid var(--color-black-16) |
 | Layout | flex row, number + text, gap 16px |
-| Number | 32px circle, black bg, white text, 16px font |
+| Number | 32px circle, var(--color-black) bg, white text, 16px font |
 | Cards 3-4-5 background | #E1F7FC |
 
 #### Bottom Image
@@ -649,7 +711,7 @@ On viewports > 1200px, when the staircase pushes cards beyond the viewport, `ser
 | Width | 2 cols + 1 gutter (6-col) | 2 cols + 1 gutter (4-col) | 100% |
 | Padding-left | 20px | 20px | 20px |
 | Greeting | H2 | H2 | H2 |
-| Avatar | 72x72, round | same | same |
+| Avatar | 72x72, var(--radius-full) | same | same |
 | Name | H2 | H2 | H2 |
 | Subtitle | hint-text, 16px gap from name | same | same |
 
@@ -674,8 +736,8 @@ On viewports > 1200px, when the staircase pushes cards beyond the viewport, `ser
 
 | Property | Value |
 |----------|-------|
-| Background | #000 |
-| Color | #fff |
+| Background | var(--color-black) |
+| Color | var(--color-white) |
 | Content padding | 24px (all sides) |
 | Content layout | flex row, gap 24px |
 | Min gap between blocks | 24px |
@@ -687,9 +749,9 @@ On viewports > 1200px, when the staircase pushes cards beyond the viewport, `ser
 | Gap between elements | 45px | 45px |
 | Text gap | 8px | 8px |
 | Back button size | 90x90 | 60x60 |
-| Back button bg | #fff | #fff |
+| Back button bg | var(--color-white) | same |
 | Back icon | arrow-right rotated -90deg, black | same, 32x32 |
-| Back hover | bounce animation | same |
+| Back hover | bounce animation (var(--transition-spring)) | same |
 | Name | H2, white | H2, white |
 | Role | body text, rgba(255,255,255,0.7) | same |
 | LinkedIn icon | 32x32, `filter: invert(1)` | same |
@@ -700,8 +762,7 @@ On viewports > 1200px, when the staircase pushes cards beyond the viewport, `ser
 |----------|----------|-----------|---------|
 | Layout | 2x2 grid | single column | single column |
 | Card size | 290x190px | 290x82px | 100% x 82px |
-| Text align | flex-start | center | center |
-| Position | margin-left: auto | same | under left block |
+| Text align | flex-start | center | under left block |
 | Border | none | none | none |
 | Font | button-text tokens, white | same | same |
 | Hover | rgba(255,255,255,0.05) bg | same | same |
@@ -714,15 +775,6 @@ On viewports > 1200px, when the staircase pushes cards beyond the viewport, `ser
 | Padding | 8px 24px 24px 24px |
 | Text | ©2026 Anastasiia Medvid. |
 | Font | body tokens, white |
-
-#### LinkedIn Icon
-
-| Property | Value |
-|----------|-------|
-| Size | 60x60 |
-| Color | #ffffff (solid fill in SVG) |
-| Link | linkedin.com/in/anastasiia-medvid |
-| Target | _blank |
 
 #### Back Button Behavior
 
@@ -749,7 +801,7 @@ On viewports > 1200px, when the staircase pushes cards beyond the viewport, `ser
 | Property | Value |
 |----------|-------|
 | Panel slide-in | `transform: translateX(100%)` → `translateX(0)` |
-| Transition | `0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)` |
+| Transition | `var(--transition-panel)` |
 | Backdrop | `opacity: 0` → `1`, same transition |
 | Visibility | `visibility: hidden` / `pointer-events: none` → visible/auto |
 
@@ -800,9 +852,8 @@ On viewports > 1200px, when the staircase pushes cards beyond the viewport, `ser
 | Name > 100 chars | input (live) | "Name must be 100 characters or less" |
 | Message > 500 chars | input (live) | "Message must be 500 characters or less" |
 
-- Error state: border `#E53935`, error text `#E53935` 12px below input
+- Error state: border `var(--color-error)`, error text `var(--color-error)` 12px below input
 - Errors clear on input when value returns within limits
-- No `maxlength` HTML attribute — user can type beyond limit, sees error
 
 #### Form Submission (Formspree)
 
@@ -827,8 +878,26 @@ On viewports > 1200px, when the staircase pushes cards beyond the viewport, `ser
 | Property | Value |
 |----------|-------|
 | Source | email-image.svg |
-| Max height | `calc(100vh - 120px - 40px)`, mobile: `calc(100vh - 60px - 40px)` |
-| Fit | `object-fit: contain`, `object-position: left top` |
+| Max height | `120px` (all breakpoints) — keeps the form fully visible without scroll by default |
+| Fit | `object-fit: contain`, `object-position: left top` — proportional scale, no crop |
+
+---
+
+### Resume Overlay
+
+`css/components/resume-overlay.css` + `js/components/resume-overlay.js`. Clicking the Resume button in any header opens a fullscreen overlay with an embedded Google Doc preview and a "Download PDF" button.
+
+| Property | Value |
+|----------|-------|
+| z-index | `var(--z-resume)` (1001) |
+| Embed URL | Google Doc "Publish to web" `?embedded=true` |
+| Download URL | Original doc ID `/export?format=pdf` |
+| iframe max-width | 900px, centered in a flex wrapper |
+| Close | × button (var(--radius-full)) or Esc key |
+| Body scroll lock | `overflow: hidden` while open |
+| Download button | border-radius: var(--radius-sm) |
+
+The document is editable in Google Docs — changes appear immediately in the overlay without any site updates. Wired to all pages: `index.html`, `case1–3.html`, `components.html`.
 
 ---
 
@@ -844,6 +913,7 @@ On viewports > 1200px, when the staircase pushes cards beyond the viewport, `ser
 | Content padding-left | 90px + 20px | 60px + 20px |
 | Content padding-top | 40px | 40px |
 | Links font | button-text tokens | same |
+| Slide transition | var(--transition-panel) | same |
 
 #### Email Button in Menu
 
@@ -852,7 +922,7 @@ On viewports > 1200px, when the staircase pushes cards beyond the viewport, `ser
 | >= 834px | 90x90 | 48x48 |
 | < 834px | 60x60 | 32x32 |
 
-- Background: #000, icon white (`filter: invert(1)`)
+- Background: var(--color-black), icon white (`filter: invert(1)`)
 - Class: `.js-contact-open` — opens contact form, closes menu
 
 ---
@@ -902,7 +972,7 @@ Width is parent-relative (`calc(100% - 70px)`), not `100vw`, to avoid the scroll
 | Layout | grid 2 cols + minmax(0,1fr) | display: block |
 | Col 1 width | `calc((100% - 120px)/3 + 24px)` (= 2 cols + 1 gutter) | full width |
 | Col gap | 24px | — |
-| Title divider | `border-top: 2px solid rgba(0,0,0,0.2)` on title element only (left col), 22px padding-top | full-width border-top |
+| Title divider | `border-top: 2px solid var(--color-black-20)` on title element only (left col) | full-width border-top |
 | Title padding-left | 20px | 0 |
 | Body padding-left | 20px | 0 |
 | Body collapsed | `max-height: 0; overflow: hidden` | same |
@@ -915,8 +985,6 @@ Width is parent-relative (`calc(100% - 70px)`), not `100vw`, to avoid the scroll
 First nav-item title has no border-top divider.
 
 #### Right column (`.case-hero__nav-content`) width
-
-The right-column container has a fixed width per breakpoint so the content area never extends past the design grid. `max-width: 100%` is always applied as a safety net.
 
 | Breakpoint | width |
 |------------|-------|
@@ -937,7 +1005,7 @@ The right-column container has a fixed width per breakpoint so the content area 
 - Left column is `position: sticky; top: 90px` — sticks under the header as the user scrolls through the right column's content
 - Right column has `min-height: calc(100vh - 90px)` so each section fills at least one viewport height
 - All listeners are passive — page scroll is never prevented
-- Click on a closed section's title (via original DOM elements) opens all sections up to that index and smooth-scrolls to it
+- Click on a closed section's title opens all sections up to that index and smooth-scrolls to it
 
 **Tablet & mobile (≤1200px):**
 - JS adds `.is-open` to every nav-item on load — all sections are static, stacked vertically
@@ -949,14 +1017,14 @@ The right-column container has a fixed width per breakpoint so the content area 
 
 ### Bullet List
 
-`css/components/bullet-list.css`. Vertical list with circular markers and dividers. Used inside the Design process content block.
+`css/components/bullet-list.css`. Vertical list with circular markers and dividers.
 
 | Property | Value |
 |----------|-------|
 | Container | `width: 100%; margin: 0; padding: 0` |
-| Item | `padding: 20px 0; border-top: 2px solid rgba(0,0,0,0.2)` |
+| Item | `padding: 20px 0; border-top: 2px solid var(--color-black-20)` |
 | First item | no border-top, padding-top: 0 |
-| Marker | 16x16 black circle, margin-right 12px |
+| Marker | 16x16, var(--radius-full), var(--color-black), margin-right 12px |
 | Title | 28px bold, inline-block |
 | Subtitle | 19px regular, margin: 8px 0 0 28px |
 
@@ -964,7 +1032,7 @@ The right-column container has a fixed width per breakpoint so the content area 
 
 ### Content Blocks
 
-`css/components/content-blocks.css`. Generic stack of titled content blocks separated by dividers. Used inside `.case-hero__nav-content` to compose every right-column section of a case page (Research & discovery, Prototyping, User tests, Final design, etc.).
+`css/components/content-blocks.css`. Generic stack of titled content blocks separated by dividers. Used inside `.case-hero__nav-content` to compose every right-column section of a case page.
 
 #### Stack
 
@@ -972,37 +1040,33 @@ The right-column container has a fixed width per breakpoint so the content area 
 |----------|----------|---------|
 | `.content-blocks` gap | 24px | 24px |
 | `.content-block` padding-top | 24px | 24px |
-| `.content-block` border-top | 2px solid rgba(0,0,0,0.2) | same |
+| `.content-block` border-top | 2px solid var(--color-black-20) | same |
 | `.content-block` first-child | no border, no padding-top | same |
 | `.content-block` inner gap | 16px | 16px |
 
 #### Title / Text
 
-All right-column body text shares one typography (16px / 400 / 1.4 / #000) so paragraphs, lists, persona descriptions and JTBD cells read as a single voice.
-
 | Element | Font |
 |---------|------|
 | `.content-block__title` | 28px bold, line-height 1.2 (mobile <834px: 19px) |
-| `.content-block__text` | 16px regular, line-height 1.4, #000 |
+| `.content-block__text` | 16px regular, line-height 1.4, var(--color-black) |
 | `.content-block__list`  | 16px regular, line-height 1.4, `list-style: disc`, `padding-left: 20px`, 4px gap between items |
 
-`<strong>` is used inline for lead-in phrases inside `.content-block__text`.
-
 #### Media (image with zoom trigger)
-
-Inline preview image used inside a content block (research artifacts, screenshots, prototype frames, etc.). Stretches to **100% of its parent** and preserves the image's **natural aspect ratio** (no cropping), so the layout adapts to the source dimensions instead of forcing a fixed frame. A small zoom button overlays the top-right corner and opens the full-resolution source in the Image Zoom overlay — tidy preview in-flow, full detail on demand.
 
 | Property | All breakpoints |
 |----------|-----------------|
 | `.content-block__media` | width 100%, position relative |
 | `.content-block__media-img` | width 100%, height auto (natural ratio, no crop) |
-| `.content-block__zoom` button | absolute top:20 right:20, 48x48 round, rgba(0,0,0,0.6) |
-
-The button carries `data-zoom-src` / `data-zoom-alt` and is wired to the Image Zoom overlay.
+| `.content-block__zoom` button | absolute top:20 right:20, 48x48, var(--radius-full), var(--color-black-60) |
 
 ##### `--fit` modifier
 
-`.content-block__media--fit` adds a 1px `#EAEAEA` stroke around the image. Use it when a screenshot needs a framed look against a white background (e.g. user-flow diagrams, prototype mockups). The base media component already preserves natural proportions — the modifier only adds the border.
+`.content-block__media--fit` adds a 1px `var(--color-border)` stroke around the image.
+
+#### Pills
+
+`.content-block__pill`: `var(--color-black-08)` background, `var(--radius-md)`, gap 12px. Used for tag/label lists (e.g. success criteria).
 
 #### Persona card
 
@@ -1028,20 +1092,16 @@ The button carries `data-zoom-src` / `data-zoom-alt` and is wired to the Image Z
 
 ### Image Zoom
 
-`css/components/image-zoom.css` + `js/components/image-zoom.js`. Fullscreen lightbox with discrete-step zoom and pan navigation. Triggered by any element carrying `[data-zoom-src]`.
+`css/components/image-zoom.css` + `js/components/image-zoom.js`. Fullscreen lightbox with discrete-step zoom and pan navigation.
 
 #### Overlay
 
 | Property | Value |
 |----------|-------|
-| Position | fixed inset 0, z-index 1000 |
+| Position | fixed inset 0, z-index: var(--z-modal) |
 | Background | rgba(0,0,0,0.9) |
 | Display | none → `block` on `.is-open` |
 | Body lock | `document.body.style.overflow = 'hidden'` while open |
-
-#### Stage / image sizing
-
-The image is rendered at an explicit pixel size (`naturalWidth × pct/100`, same for height), so its aspect ratio is preserved and pan-overflow is real layout (not transform). The stage wrapper uses `min-width: 100%; min-height: 100%; width: max-content; height: max-content` so it grows beyond the viewport when needed and the scrollable area reaches every edge.
 
 #### Zoom controls
 
@@ -1050,26 +1110,22 @@ The image is rendered at an explicit pixel size (`naturalWidth × pct/100`, same
 | Range | 10% – 100% of natural size |
 | Step | 10% per click |
 | Default open scale | 50% |
-| `−` button | disabled at 10% |
-| `+` button | disabled at 100% |
-| Position | fixed bottom-center, in a rounded rgba(0,0,0,0.6) bar |
-| Close button | fixed top-right, 48x48 |
+| Position | fixed bottom-center, in a rounded var(--color-black-60) bar |
+| Close button | fixed top-right, 48x48, var(--radius-full) |
 
 #### Pan navigation
 
-When `viewport.scrollWidth/Height > clientWidth/Height + 1`, overlay gets `.has-overflow` and the 4-arrow pan cluster appears in the bottom-right (3x3 grid with arrows on the cross). Each click scrolls the viewport by 120px, smooth. Drag with the mouse or finger is the alternative to the arrow buttons — same navigation, anywhere on the viewport.
+When `viewport.scrollWidth/Height > clientWidth/Height + 1`, overlay gets `.has-overflow` and the 4-arrow pan cluster appears (bottom-right, 3x3 grid). Each click scrolls the viewport 120px. Pan buttons use `var(--radius-md)`.
 
 | Trigger | Action |
 |---------|--------|
 | `+` / `−` button | zoom in/out by 10% |
-| Drag (pointer events) | pans the viewport (cursor `grab` / `grabbing`); alternative to arrow buttons |
-| Click on backdrop | **does not** close (intentional — only the close button or Esc) |
+| Drag (pointer events) | pans the viewport |
 | Close button | closes |
 | Keys: `+` / `=` | zoom in |
 | Key: `−` | zoom out |
 | Keys: arrow keys | pan |
 | Key: Esc | close |
-| `resize` event | re-evaluates `has-overflow` |
 
 #### Trigger contract
 
@@ -1077,22 +1133,19 @@ When `viewport.scrollWidth/Height > clientWidth/Height + 1`, overlay gets `.has-
 <button data-zoom-src="path/to/image.png" data-zoom-alt="...">+</button>
 ```
 
-A single overlay is created on first script run and reused for all triggers on the page.
-
 ---
 
 ### Video Player
 
-`css/components/video-player.css` + `js/components/video-player.js`. Inline poster preview that opens a fullscreen video overlay with stripped-down native HTML5 controls. Used for case-page user-flow walkthroughs (silent screen recordings, no audio).
+`css/components/video-player.css` + `js/components/video-player.js`. Inline poster preview that opens a fullscreen video overlay.
 
 #### Inline preview
 
 | Property | Value |
 |----------|-------|
-| `.video-player` | width 100% of parent, position relative, 1px `#EAEAEA` stroke, `cursor: pointer` |
+| `.video-player` | width 100%, 1px var(--color-border) stroke, var(--color-surface) bg |
 | `.video-player__poster` | `<img>` 100% width, height auto, `object-fit: contain` |
-| `.video-player__play` | absolute center, 88x88 round, rgba(0,0,0,0.6), white CSS-triangle play glyph (mobile <834px: 64x64) |
-| Click target | the entire `.video-player` container, not only the button |
+| `.video-player__play` | absolute center, 88x88 var(--radius-full), var(--color-black-60), white CSS-triangle |
 
 #### Trigger contract
 
@@ -1105,31 +1158,13 @@ A single overlay is created on first script run and reused for all triggers on t
 </div>
 ```
 
-`js/components/video-player.js` collects every `.video-player` on init and wires the click handler. A single overlay is appended to `<body>` and reused for all players.
-
 #### Fullscreen overlay
 
 | Property | Value |
 |----------|-------|
-| `.video-player-overlay` | fixed inset 0, z-index 1000, background `#000`, hidden until `.is-open` |
-| `<video>` | 100% width/height, `controls playsinline muted`, `controlslist="nodownload nofullscreen noplaybackrate noremoteplayback"`, `disablepictureinpicture`, `disableremoteplayback` |
-| Close button | fixed top-right, 48x48, rgba(0,0,0,0.6), × glyph |
-| Body lock | `document.body.style.overflow = 'hidden'` while open |
-| Autoplay | attempted on open (silent + muted, so the browser allows it); if blocked the user just presses Play |
-
-#### Stripped controls
-
-The case videos have no audio and are already shown inside our own fullscreen overlay, so the native player UI is reduced to **Play/Pause + the progress bar** only.
-
-| Removed via attribute | Removed via CSS pseudo-element |
-|-----------------------|--------------------------------|
-| Download (`controlslist nodownload`) | Mute button |
-| Native fullscreen toggle (`controlslist nofullscreen`) | Volume slider / volume container |
-| Playback speed (`controlslist noplaybackrate`) | Fullscreen button (belt-and-braces) |
-| Remote playback / cast (`controlslist noremoteplayback`, `disableremoteplayback`) | Overflow ("three dots") menu button |
-| Picture-in-picture (`disablepictureinpicture`) | Picture-in-picture button, cast button, captions toggle |
-
-CSS targets WebKit/Blink media-control pseudo-elements (`::-webkit-media-controls-mute-button`, `…-volume-slider`, `…-overflow-menu-button`, etc.) so the overflow button is hidden entirely — no empty menu can appear.
+| `.video-player-overlay` | fixed inset 0, z-index: var(--z-modal), background var(--color-black) |
+| `<video>` | `position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain` — fills overlay exactly, scales video to maximum size while keeping ratio |
+| Close button | fixed top-right, 48x48, var(--radius-full), var(--color-black-60) |
 
 #### Close behavior
 
@@ -1137,15 +1172,23 @@ CSS targets WebKit/Blink media-control pseudo-elements (`::-webkit-media-control
 |---------|--------|
 | × Close button | closes |
 | Esc | closes |
-| Click on overlay background | **does not** close (so native controls are safe to interact with) |
+| Click on overlay background | does not close |
 
-On close: video pauses, `src` is cleared, scroll lock released.
+#### Mobile landscape (≤ 834px)
+
+On portrait-mode phones the overlay rotates 90° so landscape video fills the screen:
+
+| Layer | Mechanism |
+|-------|-----------|
+| **JS — primary** | `screen.orientation.lock('landscape')` on open; `unlock()` on close. Works on Android Chrome; silently ignored on iOS. |
+| **CSS — fallback** | `@media (max-width: 834px) and (orientation: portrait)` swaps overlay dimensions (`width: 100vh; height: 100vw`) and applies `rotate(90deg)`. Effective on iOS and any browser that denies the lock. |
+| Close button | Counter-rotated `rotate(-90deg)` to stay upright; physically maps to bottom-right corner of the portrait screen. |
 
 ---
 
 ### More Projects
 
-`css/components/more-projects.css`. Two clickable preview cards linking to other case studies. Reusable across all case pages — each page customises card titles, descriptions, images and hrefs.
+`css/components/more-projects.css`. Two clickable preview cards linking to other case studies.
 
 #### Layout
 
@@ -1154,168 +1197,105 @@ On close: video pauses, `src` is cleared, scroll lock released.
 | Section padding top/bottom | 120px | 120px | 80px |
 | Section padding left/right | 90px | 60px | 20px |
 | Cards layout | grid 2 columns | grid 2 columns | grid 1 column |
-| Cards gap | 0 | 0 | 24px |
 
 #### Cards
 
 | Property | >= 1200px | < 834px |
 |----------|-----------|---------|
 | Padding | 20px | 20px |
-| Border | 1px solid rgba(0,0,0,0.2) | same |
+| Border | 1px solid var(--color-black-20) | same |
 | Internal gap | 16px | 16px |
 | Image height | 400px | 340px |
 | Image fit | object-fit: cover, object-position: center | same |
 | Title font-size | 24px | 24px |
 | Body font-size | 19px | 19px |
 
-Text container height is synchronised across both cards via CSS subgrid (`grid-template-rows: auto <img-height>`, card uses `grid-row: span 2; grid-template-rows: subgrid`). This ensures the image row always starts at the same vertical position regardless of text length.
-
 #### Visibility (`.case-bottom` wrapper)
 
-On case pages, More Projects + Email + Footer are wrapped in a `.case-bottom` div that is `display: none` by default. `case-hero.js` adds `.is-visible` (`display: block`) only after all nav-items receive `.is-open`. This prevents the bottom sections from flashing into the viewport while closed nav-items are still hidden (`display: none`) and the page is temporarily shorter.
-
-On tablet/mobile (≤1200px) `.is-visible` is added immediately since all nav-items are open at load.
+On case pages, More Projects + Email + Footer are wrapped in a `.case-bottom` div (`display: none` by default). `case-hero.js` adds `.is-visible` only after all nav-items receive `.is-open`.
 
 ---
 
 ## Case 1 — Content Map
 
-`pages/case1.html` is the first finished case study. It uses the Case Hero gate-driven reveal (`.case-hero__nav`) with **7 sections**, each rendered as a `.case-hero__nav-item` (left column = title + lead, right column = `.case-hero__nav-content` populated by `.content-blocks`). Sections are hidden by default (`display: none`) and appear one by one as the user scrolls past the previous section. Below the case-hero, a `.case-bottom` wrapper holds More Projects, Email and Footer — hidden until all nav-items are open.
+`pages/case1.html`. 7 gate-driven sections + `.case-bottom` wrapper.
 
 | # | Section (id) | Left lead | Right column content |
 |---|--------------|-----------|----------------------|
 | 1 | Solution (`#solution`) | short framing line | — (placeholder, opens instantly) |
 | 2 | Problem (`#problem`) | short framing line | text block(s) |
-| 3 | Design process (`#design-process`) | short framing line | `bullet-list` of the 5 design-thinking phases |
-| 4 | Research & discovery (`#research`) | short framing line | 4 content blocks: **User group**, **Users pain points** (text + media), **User personas** (2 persona cards), **JTBD** (2x2 cell grid) |
-| 5 | Prototyping (`#prototyping`) | short framing line | 4 content blocks: **User flow** (text + `--fit` media), **Prototypes** (multi-paragraph text), **User flow 1** (`video-player`, HR walkthrough), **User flow 2** (`video-player`, candidate walkthrough) |
-| 6 | User tests (`#user-tests`) | short framing line | 2 content blocks: **Context and methodology** (text), **Insights** (text + 2 bulleted lists + `--fit` media of `case1-test-table`) |
-| 7 | Final design (`#final-design`) | short framing line | 4 content blocks, each with text + `--fit` media: **Content and communication** (`case1-finalD1`), **Flow structure and process states** (`case1-finalD2`), **Trust and safety enablers** (`case1-finalD3`), **User support** (`case1-finalD4`) |
+| 3 | Design process (`#design-process`) | short framing line | `bullet-list` of 5 design-thinking phases |
+| 4 | Research & discovery (`#research`) | short framing line | 4 content blocks: User group, Users pain points (text + media), User personas (2 persona cards), JTBD (2x2 cell grid) |
+| 5 | Prototyping (`#prototyping`) | short framing line | 4 content blocks: User flow (text + `--fit` media), Prototypes (text), User flow 1 (video-player), User flow 2 (video-player) |
+| 6 | User tests (`#user-tests`) | short framing line | 2 content blocks: Context and methodology (text), Insights (text + bullets + `--fit` media) |
+| 7 | Final design (`#final-design`) | short framing line | 4 content blocks with text + `--fit` media: case1-finalD1–4 |
 
-#### Bottom sections (`.case-bottom` wrapper)
+#### Bottom sections
 
 | # | Section | Content |
 |---|---------|---------|
-| 8 | More Projects | Two preview cards: Case 2 (preview-case2.png → case2.html), Case 3 (preview-case3.png → case3.html) |
-| 9 | Email | Reusable contact CTA (same as index.html) |
-| 10 | Footer | Reusable footer (same as index.html) |
+| 8 | More Projects | Case 2 + Case 3 |
+| 9 | Email | Reusable contact CTA |
+| 10 | Footer | Reusable footer |
 
 #### Asset map
 
-| Folder | Files used by Case 1 |
-|--------|----------------------|
+| Folder | Files |
+|--------|-------|
 | `assets/images/` | `case1-hero-left.svg`, `case1-hero-right.svg`, `case1-hero.png`, `case1-research-interview.png`, `case1-research-hr1.png`, `case1-research-hr2.png`, `case1-prototype-userFlow.png`, `case1-intro-flowHr.png`, `case1-intro-flowCandidate.png`, `case1-test-table.png`, `case1-finalD1.png` … `case1-finalD4.png`, `preview-case2.png`, `preview-case3.png` |
 | `assets/videos/` | `case1-flowHr.mp4`, `case1-flowCandidate.mp4` |
 
-#### Components used
-
-| Component | Where |
-|-----------|-------|
-| `case-hero` | The whole page hero + accordion shell |
-| `bullet-list` | Design process phases |
-| `content-blocks` (base) | Every right-column section |
-| `content-block` (persona variant) | User personas card |
-| `content-block` (grid variant) | JTBD 2x2 cells |
-| `content-block` (media + zoom) | Research interview screenshot |
-| `content-block` (media `--fit` + zoom) | Prototype flow, user-tests table, all final-design screens |
-| `content-block__list` | User-tests Insights bullets, Final design "Content and communication" bullets |
-| `image-zoom` (overlay) | Triggered by every `data-zoom-src` button on the page |
-| `video-player` | User flow 1 + User flow 2 in Prototyping |
-| `more-projects` | Bottom: two preview cards to Case 2 and Case 3 |
-| `email` | Bottom: contact CTA |
-| `footer` | Bottom: site footer |
-
-#### Scripts wired in `case1.html`
+#### Scripts
 
 ```html
 <script src="../js/main.js"></script>
 <script src="../js/components/grid-overlay.js"></script>
 <script src="../js/components/header-menu.js"></script>
 <script src="../js/components/contact-overlay.js"></script>
+<script src="../js/components/resume-overlay.js"></script>
 <script src="../js/components/case-hero.js"></script>
 <script src="../js/components/image-zoom.js"></script>
 <script src="../js/components/video-player.js"></script>
 ```
 
-### Image Carousel
-
-`css/components/image-carousel.css` + `js/components/image-carousel.js`. Inline slideable image gallery with prev/next buttons and dot indicators. Used inside case-page content blocks when multiple images need to be browsable in a single slot.
-
-#### Layout
-
-| Property | Value |
-|----------|-------|
-| `.image-carousel` | width 100%, `overflow: hidden`, 1px `#EAEAEA` border |
-| `.image-carousel__track` | flex row, `transition: transform 0.4s ease` |
-| `.image-carousel__slide` | `flex: 0 0 100%` |
-| Slide image | width 100%, height auto |
-
-#### Navigation
-
-| Property | >= 834px | < 834px |
-|----------|----------|---------|
-| Prev/Next button | 48x48 round, `rgba(0,0,0,0.6)` | 36x36 |
-| Icon | CSS chevron via `::after` (`border-top` + `border-right` rotated) | same |
-| Disabled state | `opacity: 0; pointer-events: none` | same |
-| Dots | 8px circles, gap 8px, `rgba(0,0,0,0.2)`, active = `#000` | same |
-
-#### Zoom integration
-
-Clicking a slide image opens the Image Zoom overlay in gallery mode via `window.imageZoomOpenGallery(srcs, alts, index)`. The zoom overlay shows gallery prev/next buttons (`.has-gallery`) so the user can navigate between images at full resolution.
-
 ---
 
 ## Case 2 — Content Map
 
-`pages/case2.html`. Second case study (Prompt Marketplace). Same structure as Case 1: Case Hero gate-driven reveal with **7 sections**, `.case-bottom` wrapper with More Projects + Email + Footer.
+`pages/case2.html`. 7 gate-driven sections + `.case-bottom` wrapper.
 
 | # | Section (id) | Left lead | Right column content |
 |---|--------------|-----------|----------------------|
-| 1 | Solution (`#solution`) | Prompt marketplace framing | — (placeholder, opens instantly) |
-| 2 | Context & problem (`#context-problem`) | Two-paragraph context | 1 content block: **Public prompt marketplace as a foundation** (text + `--fit` media `case2-context.png`) |
-| 3 | Goals & success criteria (`#goals-success`) | "Objectives and how success will be measured" | 3 content blocks: **Product goals** (list), **UX goals** (text paragraphs), **Success criteria** (pills) |
-| 4 | Scope of this iteration (`#scope`) | — | `bullet-list` with 3 items (Prompt lifecycle, Grouping/moderation, Navigation) |
-| 5 | Constraints & inputs (`#constraints`) | "What shaped the solution…" | 2 content blocks: **Inputs** (text), **Constraints** (text) |
-| 6 | Competitive & best-practice analysis (`#competitive-analysis`) | Adopted patterns intro | 1 content block: **Patterns** (list) + `--fit` media `case2-research.png` |
-| 7 | Key user flow (`#key-user-flow`) | "After several iterations…" | 5 content blocks: **Prompt marketplace** (4-image carousel), **Save prompt from marketplace** (video), **Prompt details** (video), **Publish prompt** (video), **Edge case** (2-image carousel) |
+| 1 | Solution (`#solution`) | Prompt marketplace framing | — (opens instantly) |
+| 2 | Context & problem (`#context-problem`) | Two-paragraph context | 1 content block: Public prompt marketplace (text + `--fit` media `case2-context.png`) |
+| 3 | Goals & success criteria (`#goals-success`) | "Objectives and how success will be measured" | 3 content blocks: Product goals (list), UX goals (text), Success criteria (pills) |
+| 4 | Scope of this iteration (`#scope`) | — | `bullet-list` with 3 items |
+| 5 | Constraints & inputs (`#constraints`) | "What shaped the solution…" | 2 content blocks: Inputs (text), Constraints (text) |
+| 6 | Competitive & best-practice analysis (`#competitive-analysis`) | Adopted patterns intro | 1 content block: Patterns (list) + `--fit` media `case2-research.png` |
+| 7 | Key user flow (`#key-user-flow`) | "After several iterations…" | 5 content blocks: Prompt marketplace (4-image carousel), Save prompt (video), Prompt details (video), Publish prompt (video), Edge case (2-image carousel) |
 
-#### Bottom sections (`.case-bottom` wrapper)
+#### Bottom sections
 
 | # | Section | Content |
 |---|---------|---------|
-| 8 | More Projects | Two preview cards: Case 3 (preview-case3.png → case3.html), Case 1 (preview-case1.png → case1.html) |
+| 8 | More Projects | Case 3 + Case 1 |
 | 9 | Email | Reusable contact CTA |
 | 10 | Footer | Reusable footer |
 
 #### Asset map
 
-| Folder | Files used by Case 2 |
-|--------|----------------------|
+| Folder | Files |
+|--------|-------|
 | `assets/images/` | `case2-hero-left.svg`, `case2-hero-right.svg`, `case2-hero.png`, `case2-context.png`, `case2-research.png`, `case2-flow1.png` … `case2-flow4.png`, `case2-edge-case1.png`, `case2-edge-case2.png`, `case2-preview-user-save-from-marketplace.png`, `case2-preview-prompt-detals.png`, `case2-preview-add-prompt-to-marketplace.png`, `preview-case1.png`, `preview-case3.png` |
 | `assets/videos/` | `case2-userSaveFromMarketplace.mp4`, `case2-prompt-details.mp4`, `case2-add-new-prompt-to-marketplace.mp4` |
 
-#### Components used
-
-| Component | Where |
-|-----------|-------|
-| `case-hero` | Page hero + accordion shell |
-| `bullet-list` | Scope of this iteration |
-| `content-blocks` (base) | Context, Goals, Constraints, Competitive, Key user flow |
-| `content-block__pills` | Success criteria events |
-| `content-block` (media `--fit` + zoom) | Context screenshot, research screenshot |
-| `image-carousel` | Prompt marketplace (4 slides), Edge case (2 slides) |
-| `image-zoom` (overlay + gallery) | Triggered by zoom buttons and carousel clicks |
-| `video-player` | Save prompt, Prompt details, Publish prompt |
-| `more-projects` | Bottom: Case 3 + Case 1 |
-| `email` | Bottom: contact CTA |
-| `footer` | Bottom: site footer |
-
-#### Scripts wired in `case2.html`
+#### Scripts
 
 ```html
 <script src="../js/main.js"></script>
 <script src="../js/components/header-menu.js"></script>
 <script src="../js/components/contact-overlay.js"></script>
+<script src="../js/components/resume-overlay.js"></script>
 <script src="../js/components/case-hero.js"></script>
 <script src="../js/components/image-zoom.js"></script>
 <script src="../js/components/image-carousel.js"></script>
@@ -1327,54 +1307,40 @@ Clicking a slide image opens the Image Zoom overlay in gallery mode via `window.
 
 ## Case 3 — Content Map
 
-`pages/case3.html`. Third case study (AI Hotel Management). Same structure as Case 1 and Case 2.
+`pages/case3.html`. 7 gate-driven sections + `.case-bottom` wrapper.
 
 | # | Section (id) | Left lead | Right column content |
 |---|--------------|-----------|----------------------|
-| 1 | Solution (`#solution`) | AI agents ecosystem framing | — (placeholder, opens instantly) |
-| 2 | Context & problem (`#context-problem`) | Two-paragraph context | 1 content block: **Core qualities** (`bullet-list` with 3 items: Transparency, Collective intelligence, Collaborative decision-making) + `--fit` media `case3-context.png` |
-| 3 | Goals & success criteria (`#goals-success`) | "Objectives and how success will be measured" | 3 content blocks: **Product goals** (list), **UX goals** (text paragraphs), **Success criteria** (pills) |
-| 4 | Scope of this iteration (`#scope`) | "Design and validate the core UX for the AI assistant" | 3 `content-blocks`: Actions and collaboration, Modes and context control, Assistant entry points & layout |
-| 5 | Constraints & inputs (`#constraints`) | "What shaped the solution…" | 2 content blocks: **What influenced the solution** (text), **Key trade-offs** (text) |
-| 6 | Competitive & best-practice analysis (`#competitive-analysis`) | Conversational AI patterns intro | 2 content blocks: **Conversational AI assistant patterns** (text + lists + `--fit` media `case3-pattern-ask.png`), **Agentic patterns and execution safety** (text + lists + `--fit` media `case3-pattern-agentic.png`) |
-| 7 | Key user flow (`#key-user-flow`) | "After several iterations…" | 5 content blocks: **Specify the context** (video), **Make chat group to ask for approval or collaborate** (video), **Ask mode** (video), **Attach source** (video), **Agent mode** (video) |
+| 1 | Solution (`#solution`) | AI agents ecosystem framing | — (opens instantly) |
+| 2 | Context & problem (`#context-problem`) | Two-paragraph context | 1 content block: Core qualities (bullet-list: Transparency, Collective intelligence, Collaborative decision-making) + `--fit` media `case3-context.png` |
+| 3 | Goals & success criteria (`#goals-success`) | "Objectives and how success will be measured" | 3 content blocks: Product goals (list), UX goals (text), Success criteria (pills) |
+| 4 | Scope of this iteration (`#scope`) | "Design and validate the core UX for the AI assistant" | 3 content blocks: Actions and collaboration, Modes and context control, Assistant entry points & layout |
+| 5 | Constraints & inputs (`#constraints`) | "What shaped the solution…" | 2 content blocks: What influenced the solution (text), Key trade-offs (text) |
+| 6 | Competitive & best-practice analysis (`#competitive-analysis`) | Conversational AI patterns intro | 2 content blocks: Conversational AI patterns (text + `--fit` media `case3-pattern-ask.png`), Agentic patterns (text + `--fit` media `case3-pattern-agentic.png`) |
+| 7 | Key user flow (`#key-user-flow`) | "After several iterations…" | 5 content blocks: Specify context (video), Group chat (video), Ask mode (video), Attach source (video), Agent mode (video) |
 
-#### Bottom sections (`.case-bottom` wrapper)
+#### Bottom sections
 
 | # | Section | Content |
 |---|---------|---------|
-| 8 | More Projects | Two preview cards: Case 1 (preview-case1.png → case1.html), Case 2 (preview-case2.png → case2.html) |
+| 8 | More Projects | Case 1 + Case 2 |
 | 9 | Email | Reusable contact CTA |
 | 10 | Footer | Reusable footer |
 
 #### Asset map
 
-| Folder | Files used by Case 3 |
-|--------|----------------------|
+| Folder | Files |
+|--------|-------|
 | `assets/images/` | `case3-hero-left.svg`, `case3-hero-right.svg`, `case3-hero.png`, `case3-context.png`, `case3-pattern-ask.png`, `case3-pattern-agentic.png`, `case3-preview-user-flow-context.png`, `case3-preview-user-flow-group-chat.png`, `case3-preview-user-flow-ask-mode.png`, `case3-preview-user-flow-attach-source.png`, `case3-preview-user-flow-agent-mode.png`, `preview-case1.png`, `preview-case2.png` |
-| `assets/videos/` | `case3-user-flow-context.mp4`, `case3-user-flow-group-chat.mp4`, `case3-user-flow-ask-mode.mp4`, `case3-user-flow-attach-source.mp4`, `Case3-use-flow-agent.mp4` |
+| `assets/videos/` | `case3-user-flow-context.mp4`, `case3-user-flow-group-chat.mp4`, `case3-user-flow-ask-mode.mp4`, `case3-user-flow-attach-source.mp4`, `case3-user-flow-agent-mode.mp4` |
 
-#### Components used
-
-| Component | Where |
-|-----------|-------|
-| `case-hero` | Page hero + accordion shell |
-| `bullet-list` | Context & problem (Core qualities) |
-| `content-blocks` (base) | Goals, Scope, Constraints, Competitive, Key user flow |
-| `content-block__pills` | Success criteria events |
-| `content-block` (media `--fit` + zoom) | Context screenshot, pattern screenshots |
-| `image-zoom` (overlay) | Triggered by zoom buttons |
-| `video-player` | All 5 Key user flow blocks |
-| `more-projects` | Bottom: Case 1 + Case 2 |
-| `email` | Bottom: contact CTA |
-| `footer` | Bottom: site footer |
-
-#### Scripts wired in `case3.html`
+#### Scripts
 
 ```html
 <script src="../js/main.js"></script>
 <script src="../js/components/header-menu.js"></script>
 <script src="../js/components/contact-overlay.js"></script>
+<script src="../js/components/resume-overlay.js"></script>
 <script src="../js/components/case-hero.js"></script>
 <script src="../js/components/image-zoom.js"></script>
 <script src="../js/components/image-carousel.js"></script>
@@ -1386,48 +1352,58 @@ Clicking a slide image opens the Image Zoom overlay in gallery mode via `window.
 
 ## Session retrospective (Case 1)
 
-What this iteration produced beyond the case content itself:
-
-- **Right-column body type unified.** All paragraph / list / persona / cell text in `.case-hero__nav-content` now shares `16px / 400 / 1.4 / #000` so dense case copy reads as one voice.
-- **`content-block__media` rewritten.** Old behavior (fixed 714px, `aspect-ratio: 4/3`, `object-fit: cover`) cropped any image that wasn't 4:3. New default is `width: 100%; height: auto;` — natural aspect ratio, no clipping. The `--fit` modifier now only adds the 1px `#EAEAEA` stroke.
-- **`content-block__list` added** as a sibling utility to `content-block__text` (same typography, `list-style: disc`) so bullet lists inside content blocks stay typographically consistent.
-- **Divider opacity dropped to 20%.** Every divider in case-hero (info rows, nav titles), content-blocks and bullet-list moved from `rgba(0,0,0,0.4)` to `rgba(0,0,0,0.2)` for a quieter rhythm.
-- **`.case-hero__nav-content` got fixed widths** per breakpoint (840 / 784 / 100% / 100%) so the right column never bleeds past the design grid.
-- **Image zoom hardened.** Backdrop click no longer closes the lightbox (it was too easy to dismiss while panning). Drag-to-pan is documented as the alternative to the arrow buttons.
-- **New `video-player` component** introduced for silent screen-recording walkthroughs. Native HTML5 controls are stripped down to play/pause + progress only (volume, mute, fullscreen toggle, picture-in-picture, cast, download, playback speed and the overflow "three dots" menu are all removed via `controlslist` + WebKit pseudo-element CSS). Background clicks don't dismiss; only the × button or Esc do.
-- **Component-folder ↔ showcase sync rule** is in effect: every new partial under `components/` (`content-block.html`, `content-block-media.html`, `video-player.html`, `email.html`) is also rendered on `pages/components.html` for visual QA.
-- **Case Hero rewritten from scroll-jacked accordion to gate-driven reveal.** The old approach hijacked scroll events and expanded left-column body text via JS `maxHeight` animation (rAF loop, lerp smoothing). The new approach is simpler: closed items are `display: none`, each section gets `.is-open` when the previous section's bottom scrolls into view (50px gate buffer). Both left and right blocks enter from the bottom of the viewport via natural page scroll. Left column uses `position: sticky; top: 90px`; right column has `min-height: calc(100vh - 90px)`. All listeners are passive — no scroll hijacking. At ≤1200px all sections are open and static.
-- **Click navigation preserved.** Clicking a closed section's title opens all sections up to that index and smooth-scrolls to it.
-- **New `more-projects` component.** Reusable two-card section (`components/more-projects.html`, `css/components/more-projects.css`). Cards use CSS subgrid to synchronise text-container height across both cards so images always start at the same vertical position. Card title 24px, body 19px, image `object-fit: cover; object-position: center` (400px desktop, 340px mobile), border 1px rgba(0,0,0,0.2), padding 20px, internal gap 16px.
-- **`.case-bottom` visibility wrapper.** More Projects, Email and Footer on case pages are wrapped in a `.case-bottom` div (`display: none` by default). `case-hero.js` adds `.is-visible` only after all nav-items receive `.is-open`. This prevents bottom sections from flashing into the viewport during fast scrolling while closed nav-items are `display: none` and the page is temporarily shorter. Gate check upgraded from single-step to while-loop so all eligible items open in one scroll event.
-- **Case 1 page complete.** Full page structure: Header → Case Hero (7 gate-driven sections) → More Projects → Email → Footer. All sections mirrored to `pages/components.html` showcase.
+- **Right-column body type unified.** All paragraph / list / persona / cell text in `.case-hero__nav-content` now shares `16px / 400 / 1.4` so dense case copy reads as one voice.
+- **`content-block__media` rewritten.** Old behavior (fixed 714px, `aspect-ratio: 4/3`, `object-fit: cover`) cropped any image that wasn't 4:3. New default is `width: 100%; height: auto;` — natural aspect ratio, no clipping. The `--fit` modifier now only adds the 1px stroke.
+- **`content-block__list` added** as a sibling utility to `content-block__text`.
+- **Divider opacity at 20%.** All dividers use `var(--color-black-20)` for a quieter rhythm.
+- **`.case-hero__nav-content` fixed widths** per breakpoint (840 / 784 / 100% / 100%).
+- **Image zoom hardened.** Backdrop click no longer closes the lightbox. Drag-to-pan available.
+- **New `video-player` component.** Silent screen-recording walkthroughs. Native controls stripped to play/pause + progress only.
+- **Case Hero gate-driven reveal.** Replaced scroll-jacked accordion. Closed items `display: none`, each opens when previous section's bottom scrolls into view (50px gate). Left column `position: sticky; top: 90px`; right column `min-height: calc(100vh - 90px)`. Passive listeners.
+- **New `more-projects` component.** Two-card section with CSS subgrid for synchronized image row alignment.
+- **`.case-bottom` visibility wrapper.** More Projects + Email + Footer hidden until all nav-items open.
+- **Case 1 complete.** Header → Case Hero (7 sections) → More Projects → Email → Footer.
 
 ---
 
 ## Session retrospective (Cases 2 & 3)
 
-What this iteration produced beyond the case content itself:
-
-- **New `image-carousel` component.** Inline slideable gallery (`css/components/image-carousel.css` + `js/components/image-carousel.js`). CSS `translateX` sliding, dot navigation, prev/next buttons with CSS chevron icons via `::after` pseudo-element (`border-top` + `border-right` rotated). Integrates with Image Zoom via `window.imageZoomOpenGallery(srcs, alts, index)` public API.
-- **Image Zoom extended with gallery navigation.** Added `gallerySrcs`, `galleryAlts`, `galleryIndex` state, `galleryPrev()` / `galleryNext()` / `updateGalleryButtons()` functions, and `centerViewport()` to scroll to image center after load. Gallery prev/next buttons use CSS chevrons, toggled by `.has-gallery` class. Public API: `window.imageZoomOpenGallery(srcs, alts, startIndex)`.
-- **`content-block__pills` added.** Inline tag-like elements: `rgba(0,0,0,0.08)` background, `border-radius: 8px`, gap 12px. Used for success criteria event tracking labels.
-- **Content-block dividers hidden inside case-hero.** Added `.case-hero__nav-content .content-block { border-top: none; padding-top: 0 }` so right-column content blocks stack without dividers on all case pages.
-- **Case 2 page complete.** 7 sections: Solution, Context & problem, Goals & success criteria, Scope of this iteration, Constraints & inputs, Competitive & best-practice analysis, Key user flow (with 2 image carousels and 3 video players). `.case-bottom` wrapper with More Projects (Case 3, Case 1) + Email + Footer.
-- **Case 3 page complete.** 7 sections matching Case 2 structure but with hotel-management AI assistant content. Key user flow has 5 video-player blocks. Competitive section has 2 content blocks with pattern screenshots. `.case-bottom` wrapper with More Projects (Case 1, Case 2) + Email + Footer.
-- **Cache-busting strategy.** `?v=N` query params added to hero and preview images across all pages to force browser reload after asset updates.
+- **New `image-carousel` component.** CSS `translateX` sliding, dot navigation, prev/next CSS chevron buttons. Integrates with Image Zoom via `window.imageZoomOpenGallery(srcs, alts, index)`.
+- **Image Zoom extended with gallery navigation.** `.has-gallery` class, gallery prev/next buttons, `centerViewport()` after load.
+- **`content-block__pills` added.** Tag elements with `var(--color-black-08)` background, `var(--radius-md)`.
+- **Content-block dividers hidden inside case-hero.** Scoped rule `.case-hero__nav-content .content-block { border-top: none; padding-top: 0 }`.
+- **Case 2 complete.** 7 sections including 2 image carousels + 3 video players.
+- **Case 3 complete.** 7 sections including 5 video-player blocks + 2 pattern screenshots.
+- **Cache-busting strategy.** `?v=N` query params on hero and preview images.
 
 ---
 
 ## Session retrospective (Polish & finishing)
 
-- **Hero ticker hidden.** `.hero__ticker { display: none }` added to `hero.css`. The marquee strip is preserved in HTML but invisible on all breakpoints.
-- **Grid toggle button hidden.** `document.body.appendChild(btn)` commented out in `grid-overlay.js` — button is never added to the DOM. The grid overlay itself still exists and can be re-enabled by uncommenting the line.
-- **New `resume-overlay` component.** `css/components/resume-overlay.css` + `js/components/resume-overlay.js`. Clicking the Resume button in any header opens a fullscreen overlay with an embedded Google Doc (via "Publish to web" iframe URL) and a "Download PDF" button that triggers `export?format=pdf` on the original doc. The document is editable in Google Docs — changes appear immediately in the overlay without any site updates. Wired to all pages: `index.html`, `case1–3.html`, `article.html`, `components.html`.
+- **Hero ticker hidden.** `.hero__ticker { display: none }` — marquee preserved in HTML but invisible.
+- **Grid toggle button hidden.** `document.body.appendChild(btn)` commented out — never added to DOM.
+- **New `resume-overlay` component.** Fullscreen overlay with embedded Google Doc iframe + "Download PDF" button. Wired to all pages.
+- **Published to GitHub Pages.** Repo: `github.com/3medvidana-boop/Portfolio` (public). GitHub Pages enabled on `main` branch.
 
-| Property | Value |
-|----------|-------|
-| Embed URL | Google Doc "Publish to web" `?embedded=true` |
-| Download URL | Original doc ID `/export?format=pdf` |
-| iframe max-width | 900px, centered in a flex wrapper |
-| Close | × button or Esc key |
-| Body scroll lock | `overflow: hidden` while open |
+---
+
+## Session retrospective (Video player & contact overlay)
+
+- **Case 3 Agent mode video fixed.** `data-video-src` corrected to `case3-user-flow-agent-mode.mp4` (matched actual file on disk).
+- **Video player overlay fill fixed.** `<video>` changed from `width/height: 100%` (flex-height unreliable) to `position: absolute; inset: 0; object-fit: contain` — video now fills the entire overlay at maximum size regardless of aspect ratio.
+- **Mobile landscape playback added.** Opening a video on ≤ 834 px portrait: JS attempts `screen.orientation.lock('landscape')` (Android Chrome); CSS `@media (orientation: portrait)` rotates the overlay 90° and swaps vh/vw dimensions as a universal iOS/fallback. Orientation unlocked on close.
+- **Contact overlay image constrained.** `max-height` reduced from `calc(100vh - 120px - 40px)` (~920 px) to `120 px`. Form now fits on screen without scroll; scroll appears only when textarea content overflows.
+
+---
+
+## Session retrospective (Asset naming & design tokens)
+
+- **Asset naming fixed.** `icon-manu.svg` renamed to `icon-menu.svg`; all 6 HTML files updated. Video reference in `case3.html` corrected to `case3-user-flow-agent.mp4` (lowercase, consistent naming).
+- **Dead files removed.** `css/components/case-stack.css`, `js/components/case-stack.js`, `pages/article.html` deleted.
+- **Design token system introduced.** Added to `css/base/variables.css`:
+  - **Colors:** `--color-black/white/surface`, 5 black-alpha variants (`--color-black-08/16/20/60/85`), `--color-border`, `--color-accent-green/mint`, `--color-error`
+  - **Spacing:** `--page-margin` (90/60/20px via breakpoint media queries), `--section-gap-lg/md/sm`, `--space-4` through `--space-24`
+  - **Border-radius:** `--radius-sm/md/full`
+  - **Transitions:** `--transition-fast/base/slow/panel/spring`
+  - **Z-index:** `--z-header/header-menu/overlay/modal/resume/dev-grid`
+- **Tokens rolled out to all 18 CSS component files.** No hardcoded color, z-index, border-radius or transition values remain in any component. Every `#000`, `#fff`, `rgba(0,0,0,X)`, `border-radius: 50%`, `0.3s ease`, `z-index: 100` etc. replaced with the corresponding token.

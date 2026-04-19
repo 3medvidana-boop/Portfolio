@@ -9,7 +9,7 @@
 .header {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: var(--z-header);
   display: flex;
   align-items: center;
   width: 100%;
@@ -21,7 +21,6 @@
   background-position: center;
   background-repeat: no-repeat;
   box-sizing: border-box;
-  z-index: 100;
 }
 
 /* ---- Home button ---- */
@@ -31,7 +30,7 @@
   justify-content: center;
   width: 90px;
   height: 90px;
-  background-color: #000000;
+  background-color: var(--color-black);
   flex-shrink: 0;
   text-decoration: none;
   cursor: pointer;
@@ -60,14 +59,14 @@
 .header__name {
   font-size: 68px;
   font-weight: 400;
-  color: #FFFFFF;
+  color: var(--color-white);
   white-space: nowrap;
 }
 
 .header__role {
   font-size: 36px;
   font-weight: 400;
-  color: #FFFFFF;
+  color: var(--color-white);
   opacity: 1;
   white-space: nowrap;
 }
@@ -75,18 +74,18 @@
 /* ---- Inner pages modifier ---- */
 .header--inner {
   background-image: none;
-  background-color: #ffffff;
-  border-bottom: 2px solid #000000;
+  background-color: var(--color-white);
+  border-bottom: 2px solid var(--color-black);
 }
 
 .header--inner .header__name {
   font-size: 36px;
-  color: #000000;
+  color: var(--color-black);
 }
 
 .header--inner .header__role {
   font-size: 24px;
-  color: #000000;
+  color: var(--color-black);
 }
 
 /* ---- Email button ---- */
@@ -117,7 +116,7 @@
   gap: 12px;
   width: 370px;
   height: 90px;
-  background-color: #000000;
+  background-color: var(--color-black);
   flex-shrink: 0;
   text-decoration: none;
   cursor: pointer;
@@ -131,7 +130,7 @@
   font-weight: var(--button-text-font-weight);
   line-height: var(--button-text-line-height);
   letter-spacing: var(--button-text-letter-spacing);
-  color: #FFFFFF;
+  color: var(--color-white);
   white-space: nowrap;
 }
 
@@ -139,7 +138,7 @@
   width: 48px;
   height: 48px;
   display: block;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-base);
   filter: invert(1);
 }
 
@@ -165,9 +164,9 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  z-index: 99;
+  z-index: var(--z-header-menu);
   transform: translateX(100%);
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform var(--transition-panel);
   overflow: hidden;
 }
 
@@ -200,7 +199,7 @@
   font-weight: var(--button-text-font-weight);
   line-height: var(--button-text-line-height);
   letter-spacing: var(--button-text-letter-spacing);
-  color: #000;
+  color: var(--color-black);
   text-decoration: none;
 }
 
@@ -210,7 +209,7 @@
   justify-content: center;
   width: 90px;
   height: 90px;
-  background: #000;
+  background: var(--color-black);
   flex-shrink: 0;
   margin-top: 16px;
 }

@@ -3,11 +3,62 @@
    ========================================================================== */
 
 :root {
-  /* Colors — define here */
 
-  /* Spacing — define here */
+  /* ---- Colors: Neutrals ---- */
+  --color-black:        #000;
+  --color-white:        #fff;
+  --color-surface:      #f7f7f7;
 
-  /* Border radius — define here */
+  /* ---- Colors: Black alpha ---- */
+  --color-black-08:     rgba(0, 0, 0, 0.08);
+  --color-black-16:     rgba(0, 0, 0, 0.16);
+  --color-black-20:     rgba(0, 0, 0, 0.20);
+  --color-black-60:     rgba(0, 0, 0, 0.60);
+  --color-black-85:     rgba(0, 0, 0, 0.85);
+
+  /* ---- Colors: Borders ---- */
+  --color-border:       #EAEAEA;
+
+  /* ---- Colors: Brand accents ---- */
+  --color-accent-green: #6DF644;
+  --color-accent-mint:  #55F8AF;
+
+  /* ---- Colors: Semantic ---- */
+  --color-error:        #E53935;
+
+  /* ---- Spacing ---- */
+  --page-margin:        90px;
+
+  --section-gap-lg:     120px;
+  --section-gap-md:     80px;
+  --section-gap-sm:     40px;
+
+  --space-4:    4px;
+  --space-8:    8px;
+  --space-12:  12px;
+  --space-16:  16px;
+  --space-20:  20px;
+  --space-24:  24px;
+
+  /* ---- Border radius ---- */
+  --radius-sm:    4px;
+  --radius-md:    8px;
+  --radius-full:  50%;
+
+  /* ---- Transitions ---- */
+  --transition-fast:    0.2s ease;
+  --transition-base:    0.3s ease;
+  --transition-slow:    0.5s ease;
+  --transition-panel:   0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-spring:  0.6s cubic-bezier(0.34, 1.56, 0.64,  1);
+
+  /* ---- Z-index ---- */
+  --z-header:       100;
+  --z-header-menu:   99;
+  --z-overlay:      200;
+  --z-modal:       1000;
+  --z-resume:      1001;
+  --z-dev-grid:    9999;
 
   /* Shadows — define here */
 
@@ -59,9 +110,17 @@
   --button-text-letter-spacing: -0.5px;
 }
 
-/* ---- 834px: H1 ---- */
+/* ---- 1200px: tablet ---- */
+@media (max-width: 1200px) {
+  :root {
+    --page-margin: 60px;
+  }
+}
+
+/* ---- 834px ---- */
 @media (max-width: 834px) {
   :root {
+    --page-margin: 20px;
     --h1-font-size: 36px;
     --h1-line-height: 36px;
     --h1-letter-spacing: -0.5px;
