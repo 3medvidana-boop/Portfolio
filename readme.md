@@ -1,20 +1,20 @@
-# Portfolio Blog
+# Portfolio — Anastasiia Medvid
 
 ## Goals
 
-- Build a scalable, component-driven portfolio/blog prototype
+- Build a scalable, component-driven portfolio site
 - Maintain clean separation between structure, styles, and logic
 - Provide a component showcase page for visual QA and development
 
 ## Pages
 
-| Page | File | Purpose |
-|------|------|---------|
-| Index Blog | `index.html` | Main blog listing page |
-| Case 1 | `pages/case1.html` | Project case page (HR B2B) |
-| Case 2 | `pages/case2.html` | Project case page (Prompt Marketplace) |
-| Case 3 | `pages/case3.html` | Project case page (AI Hotel Management) |
-| Components | `pages/components.html` | UI component showcase / sandbox |
+| Page | File | `<title>` | Purpose |
+|------|------|-----------|---------|
+| Home | `index.html` | Portfolio Anastasiia Medvid, UX/UI Designer | Main portfolio page |
+| Case 1 | `pages/case1.html` | HR Tool Redesign — Anastasiia Medvid | Project case page (HR B2B) |
+| Case 2 | `pages/case2.html` | Prompt Marketplace — Anastasiia Medvid | Project case page (Prompt Marketplace) |
+| Case 3 | `pages/case3.html` | AI Hotel Management — Anastasiia Medvid | Project case page (AI Hotel Management) |
+| Components | `pages/components.html` | Components — Showcase | UI component showcase / sandbox |
 
 ## Project Structure
 
@@ -1390,13 +1390,21 @@ On case pages, More Projects + Email + Footer are wrapped in a `.case-bottom` di
 
 ---
 
+## Session retrospective (SEO titles & domain)
+
+- **`<title>` tags updated on all pages.** `index.html`: `Portfolio Anastasiia Medvid, UX/UI Designer`. Case pages follow pattern `[Project] — Anastasiia Medvid`: HR Tool Redesign, Prompt Marketplace, AI Hotel Management. All titles ≤ 60 chars for Google display.
+- **Vercel domain renamed.** `portfolio-tau-two-55.vercel.app` → `ui-ux-anastasiia-medvid.vercel.app`. Old domain set to redirect to new.
+- **readme.md H1 updated.** `Portfolio Blog` → `Portfolio — Anastasiia Medvid`. Pages table expanded with `<title>` column.
+
+---
+
 ## Session retrospective (Codebase audit & component docs)
 
 - **Full codebase audit.** All 95 assets (78 images, 10 videos, 7 icons) verified — zero broken references across all HTML, CSS, and JS files.
 - **Case 3 info-box corrected.** `pages/case3.html` had "Prompt optimization platform for LLMs" (copy-pasted from case2). Fixed to "AI hotel management SaaS".
 - **`components/components.md` created.** Comprehensive component reference: 18 components documented with BEM block + elements table, modifiers, state classes, JS trigger contracts, breakpoints, and pages used. Includes component creation checklist, CSS/JS file templates, and a unified state-class conventions table.
 - **`readme.md` project structure updated.** `components/components.md` added to the file tree; Principles section now links to it as the component reference.
-- **Deployed to Vercel** in addition to GitHub Pages.
+- **Deployed to Vercel** in addition to GitHub Pages. Live URL: `ui-ux-anastasiia-medvid.vercel.app`
 
 ---
 
