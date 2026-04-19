@@ -18,7 +18,7 @@
   gap: 0;
   width: 100%;
   max-width: 100vw;
-  height: 990px;
+  height: min(990px, calc(100vh - 90px));
   overflow: hidden;
   background-image: url('../../assets/images/hero-background.svg');
   background-size: cover;
@@ -120,7 +120,7 @@
   grid-column: 3 / 4;
   grid-row: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-end;   /* anchors bottom — clipping happens at top only */
   justify-content: center;
   height: 100%;
   min-width: 0;
@@ -275,7 +275,7 @@
 @media (max-width: 1919px) {
   .hero {
     grid-template-columns: 90px 1fr 372px 370px;
-    height: 866px;
+    height: min(866px, calc(100vh - 90px));
   }
 
   .hero__panel-content {
