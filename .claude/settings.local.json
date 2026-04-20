@@ -38,7 +38,15 @@
       "Bash(Remove-Item \"C:\\\\Portfolio\\\\css\\\\components\\\\case-stack.css\" -Force)",
       "Bash(Remove-Item \"C:\\\\Portfolio\\\\js\\\\components\\\\case-stack.js\" -Force)",
       "Bash(Remove-Item \"C:\\\\Portfolio\\\\pages\\\\article.html\" -Force)",
-      "Bash([ ! -f \"/c/Portfolio/assets/images/$f\" ])"
+      "Bash([ ! -f \"/c/Portfolio/assets/images/$f\" ])",
+      "Bash(python3 -c ' *)",
+      "Bash(python -c ' *)",
+      "Bash(python3 -c \"print\\('ok'\\)\")",
+      "Bash(perl -i -0777 -pe ' *)",
+      "Bash(grep -l \"Cal.Sans\" index.html pages/*.html)",
+      "Bash(perl _fix_lazy.pl)",
+      "Bash(sed -i -e 's|case1-research-interview\\\\.png|case1-research-interview.jpg|g' -e 's|case1-research-hr1\\\\.png|case1-research-hr1.jpg|g' -e 's|case1-research-hr2\\\\.png|case1-research-hr2.jpg|g' -e 's|case1-test-table\\\\.png|case1-test-table.jpg|g' pages/case1.html)",
+      "Bash(sed -i 's|case2-research\\\\.png|case2-research.jpg|g' pages/case2.html)"
     ]
   }
 }
