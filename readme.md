@@ -326,7 +326,7 @@ Single SVG source (`icon-arrow-right.svg`, fill: `#000000`) used in two color co
 | Email button | 90x90 visible | hidden | hidden |
 | Resume button | 370x90, label + arrow | 316x90, label 32px | 60x60, icon only 32x32 |
 | Menu overlay | hidden | enabled (slide-in) | enabled (slide-in) |
-| Background | image-header-background.svg | same | same |
+| Background | image-header-background.png | same | same |
 
 ---
 
@@ -520,6 +520,8 @@ Hover:       [->  Label text      ]
 
 #### "See all" Button
 
+> **Currently hidden** — `display: none` on `.projects__see-all`. Restore by removing the `display: none` rule (or adding `.projects__see-all--visible`) when the page is ready.
+
 | Property | >= 1267px | 1200-1266px | 834-1199px | < 834px |
 |----------|-----------|-------------|------------|---------|
 | Width | 370px + 90px padding | 90px + 90px padding | 90px + 60px padding | 60px |
@@ -546,7 +548,7 @@ Hover:       [->  Label text      ]
 | Property | Case 1 | Case 2 | Case 3 | Case 4 |
 |----------|--------|--------|--------|--------|
 | margin-right | 90px | 150px | 210px | 270px |
-| Background image | project-case1.svg | project-case2.svg | project-case3.svg | project-case4.svg |
+| Background image | project-case1.png | project-case2.svg | project-case3.svg | project-case4.svg |
 | border-left | 4px solid transparent | same | same | none |
 | Focused border-left | 4px solid var(--color-black) | same | same | — |
 | Hover | bg var(--color-white), no image | same | same | disabled |
@@ -620,8 +622,8 @@ Each row becomes a column. 1st card is full width, 2nd card has 120px left offse
 | Card height | 240px | 240px | 240px |
 | Card padding | 16px | 16px | 16px |
 | Border | 1px solid var(--color-black-16) | same | same |
-| Background-size | 100% 100% | 100% 100% | 100% 100% |
-| Hover bg-size | 110% 110% (10% zoom) | 110% 110% | disabled (stays 100% 100%) |
+| Background-size | 100% 100% | 100% 100% | cover |
+| Hover bg-size | 110% 110% (10% zoom) | 110% 110% | disabled (stays cover) |
 | Gradient overlay | 48% height, white gradient | same | same (stays visible) |
 | Hover overlay | opacity: 0 | opacity: 0 | disabled (stays opacity: 1) |
 | 2nd card margin-left | 0 | 120px | 0 |
@@ -631,12 +633,12 @@ Each row becomes a column. 1st card is full width, 2nd card has 120px left offse
 
 | Card | Image file |
 |------|-----------|
-| Product design | services-productDesign.svg |
-| UX/UI design | services-uxUiDesign.svg |
-| Prototyping | services-prototyping.svg |
-| AI-driven | services-aiDrived.svg |
-| Design systems | services-ds.svg |
-| User tests | services-tests.svg |
+| Product design | services-productDesign.png |
+| UX/UI design | services-uxUiDesign.png |
+| Prototyping | services-prototyping.png |
+| AI-driven | services-aidrived.png |
+| Design systems | services-ds.png |
+| User tests | services-tests.png |
 
 #### Scroll-Driven Horizontal Movement (Desktop Only)
 
@@ -686,7 +688,7 @@ On viewports > 1200px, when the staircase pushes cards beyond the viewport, `ser
 
 | Property | Value |
 |----------|-------|
-| Image | workflow-image.svg |
+| Image | workflow-image.png |
 | Fixed size | 870 x auto (proportional) |
 | Max width | 100% of container |
 | Margin-top | 0px |
@@ -705,7 +707,7 @@ On viewports > 1200px, when the staircase pushes cards beyond the viewport, `ser
 | Padding top/bottom | 120px | 120px | 80px |
 | Content layout | flex row, gap 24px | flex row, gap 24px | flex column |
 | Content padding-left/right | 90px | 60px | 20px |
-| Background | email-big.svg (cover) | same | same |
+| Background | email-big.png (cover) | same | same |
 
 #### Title Block (Left)
 
@@ -723,7 +725,7 @@ On viewports > 1200px, when the staircase pushes cards beyond the viewport, `ser
 | Property | >= 1200px | 834-1199px | < 834px |
 |----------|-----------|------------|---------|
 | Text | body tokens | same | same |
-| Image | email-small.svg, 100% width, 218px height, cover | same | same |
+| Image | email-small.png, 100% width, 218px height, cover | same | same |
 | Button position | absolute, top-right of image | same | same |
 | Button width | 370px | 316px | full width (container query <=618px) |
 | Button height | 90px | 90px | 60px |
@@ -892,7 +894,7 @@ This prevents iOS Safari from holding a compositing layer for the overlay at res
 
 | Property | Value |
 |----------|-------|
-| Source | email-image.svg |
+| Source | email-image.png |
 | Max height | `120px` (all breakpoints) — keeps the form fully visible without scroll by default |
 | Fit | `object-fit: contain`, `object-position: left top` — proportional scale, no crop |
 
@@ -922,9 +924,9 @@ The document is editable in Google Docs — changes appear immediately in the ov
 
 | Property | >= 1200px | < 834px |
 |----------|-----------|---------|
-| Background | manu-bkg.svg (cover) | same |
-| Left image | manu-left.svg, 90px wide | 60px wide |
-| Bottom image | manu-bottom.svg, 90px height | 60px height |
+| Background | manu-bkg.png (cover) | same |
+| Left image | manu-left.png, 90px wide | 60px wide |
+| Bottom image | manu-bottom.png, 90px height | 60px height |
 | Content padding-left | 90px + 20px | 60px + 20px |
 | Content padding-top | 40px | 40px |
 | Links font | button-text tokens | same |
@@ -954,13 +956,13 @@ Top section of every case page. Composed of: left decorative strip, title block,
 
 | Property | >= 1200px | 834-1199px | < 834px |
 |----------|-----------|------------|---------|
-| Left strip | `.case-hero__left` 90px, `case1-hero-left.svg`, 900px tall | same | hidden |
+| Left strip | `.case-hero__left` 90px, `case1-hero-left.png`, 900px tall | same | hidden |
 | Body padding-left | 20px | 20px | 0 |
 | Title block padding | 24px 24px 24px 20px | same | 20px |
 | Info column width | `calc(2*(100vw-300px)/6 + 24px + 90px)` | `calc((100vw-180px)/4 + 60px)` | 100% |
 | Info column padding | 0 90px 24px 20px | 0 60px 24px 20px | 20px |
 | Info min-height | 698px | auto | 400px |
-| Info background | `case1-hero-right.svg`, cover, top-left | same | same |
+| Info background | `case1-hero-right.png`, cover, top-left | same | same |
 | Laptop position | absolute, top: 380px, right: 0 | static, full width, margin-bottom 24px | static, padding-left 20px, margin-top -24px |
 | Laptop image | `case1-hero.png` | min-height 445px, object-fit cover | same |
 
@@ -1261,7 +1263,7 @@ On case pages, More Projects + Email + Footer are wrapped in a `.case-bottom` di
 
 | Folder | Files |
 |--------|-------|
-| `assets/images/` | `case1-hero-left.svg`, `case1-hero-right.svg`, `case1-hero.png`, `case1-research-interview.png`, `case1-research-hr1.png`, `case1-research-hr2.png`, `case1-prototype-userFlow.png`, `case1-intro-flowHr.png`, `case1-intro-flowCandidate.png`, `case1-test-table.png`, `case1-finalD1.png` … `case1-finalD4.png`, `preview-case2.png`, `preview-case3.png` |
+| `assets/images/` | `case1-hero-left.png`, `case1-hero-right.png`, `case1-hero.png`, `case1-research-interview.jpg`, `case1-research-hr1.jpg`, `case1-research-hr2.jpg`, `case1-prototype-userFlow.png`, `case1-intro-flowHr.png`, `case1-intro-flowCandidate.png`, `case1-test-table.jpg`, `case1-finalD1.png` … `case1-finalD4.png`, `preview-case2.png`, `preview-case3.png` |
 | `assets/videos/` | `case1-flowHr.mp4`, `case1-flowCandidate.mp4` |
 
 #### Scripts
@@ -1305,7 +1307,7 @@ On case pages, More Projects + Email + Footer are wrapped in a `.case-bottom` di
 
 | Folder | Files |
 |--------|-------|
-| `assets/images/` | `case2-hero-left.svg`, `case2-hero-right.svg`, `case2-hero.png`, `case2-context.png`, `case2-research.png`, `case2-flow1.png` … `case2-flow4.png`, `case2-edge-case1.png`, `case2-edge-case2.png`, `case2-preview-user-save-from-marketplace.png`, `case2-preview-prompt-detals.png`, `case2-preview-add-prompt-to-marketplace.png`, `preview-case1.png`, `preview-case3.png` |
+| `assets/images/` | `case2-hero-left.png`, `case2-hero-right.png`, `case2-hero.png`, `case2-context.png`, `case2-research.jpg`, `case2-flow1.png` … `case2-flow4.png`, `case2-edge-case1.png`, `case2-edge-case2.png`, `case2-preview-user-save-from-marketplace.png`, `case2-preview-prompt-detals.png`, `case2-preview-add-prompt-to-marketplace.png`, `preview-case1.png`, `preview-case3.png` |
 | `assets/videos/` | `case2-userSaveFromMarketplace.mp4`, `case2-prompt-details.mp4`, `case2-add-new-prompt-to-marketplace.mp4` |
 
 #### Scripts
@@ -1350,7 +1352,7 @@ On case pages, More Projects + Email + Footer are wrapped in a `.case-bottom` di
 
 | Folder | Files |
 |--------|-------|
-| `assets/images/` | `case3-hero-left.svg`, `case3-hero-right.svg`, `case3-hero.png`, `case3-context.png`, `case3-pattern-ask.png`, `case3-pattern-agentic.png`, `case3-preview-user-flow-context.png`, `case3-preview-user-flow-group-chat.png`, `case3-preview-user-flow-ask-mode.png`, `case3-preview-user-flow-attach-source.png`, `case3-preview-user-flow-agent-mode.png`, `preview-case1.png`, `preview-case2.png` |
+| `assets/images/` | `case3-hero-left.png`, `case3-hero-right.png`, `case3-hero.png`, `case3-context.png`, `case3-pattern-ask.png`, `case3-pattern-agentic.png`, `case3-preview-user-flow-context.png`, `case3-preview-user-flow-group-chat.png`, `case3-preview-user-flow-ask-mode.png`, `case3-preview-user-flow-attach-source.png`, `case3-preview-user-flow-agent-mode.png`, `preview-case1.png`, `preview-case2.png` |
 | `assets/videos/` | `case3-user-flow-context.mp4`, `case3-user-flow-group-chat.mp4`, `case3-user-flow-ask-mode.mp4`, `case3-user-flow-attach-source.mp4`, `case3-user-flow-agent-mode.mp4` |
 
 #### Scripts
@@ -1468,3 +1470,24 @@ On case pages, More Projects + Email + Footer are wrapped in a `.case-bottom` di
   - **Transitions:** `--transition-fast/base/slow/panel/spring`
   - **Z-index:** `--z-header/header-menu/overlay/modal/resume/dev-grid`
 - **Tokens rolled out to all 18 CSS component files.** No hardcoded color, z-index, border-radius or transition values remain in any component. Every `#000`, `#fff`, `rgba(0,0,0,X)`, `border-radius: 50%`, `0.3s ease`, `z-index: 100` etc. replaced with the corresponding token.
+
+---
+
+## Session retrospective (SVG → PNG migration for iOS GPU fix)
+
+- **Root cause of iOS black rendering identified.** All large "image" SVG files exported from Figma are actually embedded-PNG SVGs: each contains `<image xlink:href="data:image/png;base64,..."/>` wrapped in an SVG container (~2.4–2.8 MB each). iOS Safari's GPU compositor overloads when multiple such SVGs are loaded simultaneously, causing `position: fixed` and `position: sticky` elements (header, hero, email, projects) to paint as solid black.
+- **Systematic SVG → PNG migration.** All affected background images and `<img>` sources replaced in batches across HTML and CSS files:
+
+| Batch | Files migrated |
+|-------|----------------|
+| Header & case hero | `image-header-background`, `case1/2/3-hero-left`, `case1/2/3-hero-right` |
+| Shared UI | `competencess-bottom`, `email-avatar`, `email-big`, `email-image`, `email-small`, `hero-background`, `hero-screen-left-side` |
+| Menu overlay | `manu-bkg`, `manu-bottom`, `manu-left` |
+| Services cards | `services-productDesign`, `services-uxUiDesign`, `services-prototyping`, `services-aidrived`, `services-ds`, `services-tests` |
+| Competences icons | `shape-1-orange`, `shape-2-green`, `shape-3-pink`, `shape-4-bly` |
+| Hero & projects | `panel-nav`, `project-case1`, `workflow-image` |
+
+- **Safe SVGs kept in place.** `assets/icons/` (7 icon SVGs, ≤ 1 KB each) and `logo56.svg` (221 B) are genuine vectors — no embedded PNGs, no iOS risk.
+- **Pending migration.** `hero-circle.svg` / `hero-circle1200.svg` / `hero-circle1440.svg` / `hero-circle-bottom.svg` (2.7 MB each) + `project-case2/3/4.svg` — PNG replacements not yet provided.
+- **Dead files removed.** `Project-case1/2/3/4-image.svg` (unused 200–324 B stubs) deleted from `assets/images/`.
+- **`projects__see-all` button hidden.** `display: none` added to `.projects__see-all` in `projects.css` via a `--visible` modifier pattern. HTML markup preserved; restore by adding class `.projects__see-all--visible` or removing the `display: none` rule when the "see all" page is ready.

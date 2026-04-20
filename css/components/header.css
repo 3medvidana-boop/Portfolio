@@ -160,7 +160,7 @@
   left: 0;
   width: 100%;
   height: calc(100% - 90px);
-  background-image: url('../../assets/images/manu-bkg.svg');
+  background-image: url('../../assets/images/manu-bkg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

@@ -82,27 +82,27 @@
 
 /* Background images */
 .services__card--product-design {
-  background-image: url('../../assets/images/services-productDesign.svg');
+  background-image: url('../../assets/images/services-productDesign.png');
 }
 
 .services__card--ux-ui-design {
-  background-image: url('../../assets/images/services-uxUiDesign.svg');
+  background-image: url('../../assets/images/services-uxUiDesign.png');
 }
 
 .services__card--prototyping {
-  background-image: url('../../assets/images/services-prototyping.svg');
+  background-image: url('../../assets/images/services-prototyping.png');
 }
 
 .services__card--ai-driven {
-  background-image: url('../../assets/images/services-aiDrived.svg');
+  background-image: url('../../assets/images/services-aidrived.png');
 }
 
 .services__card--design-systems {
-  background-image: url('../../assets/images/services-ds.svg');
+  background-image: url('../../assets/images/services-ds.png');
 }
 
 .services__card--user-tests {
-  background-image: url('../../assets/images/services-tests.svg');
+  background-image: url('../../assets/images/services-tests.png');
 }
 
 /* Card title — bottom-left, max 2 lines */

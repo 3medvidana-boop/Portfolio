@@ -152,8 +152,12 @@
   background: var(--color-accent-green);
 }
 
-/* ---- "See all" button — identical to header Resume ---- */
+/* ---- "See all" button — hidden until implemented ---- */
 .projects__see-all {
+  display: none; /* TODO: restore when "see all" page is ready */
+}
+
+.projects__see-all--visible {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -251,7 +255,7 @@
 
 /* Background images per case */
 .projects__case:nth-child(1) {
-  background-image: url('../../assets/images/project-case1.svg');
+  background-image: url('../../assets/images/project-case1.png');
 }
 
 .projects__case:nth-child(2) {

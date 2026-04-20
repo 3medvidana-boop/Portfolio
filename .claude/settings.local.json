@@ -46,7 +46,10 @@
       "Bash(grep -l \"Cal.Sans\" index.html pages/*.html)",
       "Bash(perl _fix_lazy.pl)",
       "Bash(sed -i -e 's|case1-research-interview\\\\.png|case1-research-interview.jpg|g' -e 's|case1-research-hr1\\\\.png|case1-research-hr1.jpg|g' -e 's|case1-research-hr2\\\\.png|case1-research-hr2.jpg|g' -e 's|case1-test-table\\\\.png|case1-test-table.jpg|g' pages/case1.html)",
-      "Bash(sed -i 's|case2-research\\\\.png|case2-research.jpg|g' pages/case2.html)"
+      "Bash(sed -i 's|case2-research\\\\.png|case2-research.jpg|g' pages/case2.html)",
+      "Bash(sed -i -e 's|case1-hero-left\\\\.svg|case1-hero-left.png|g' -e 's|case1-hero-right\\\\.svg|case1-hero-right.png|g' pages/case1.html)",
+      "Bash(sed -i -e 's|case2-hero-left\\\\.svg|case2-hero-left.png|g' -e 's|case2-hero-right\\\\.svg|case2-hero-right.png|g' pages/case2.html)",
+      "Bash(sed -i -e 's|case3-hero-left\\\\.svg|case3-hero-left.png|g' -e 's|case3-hero-right\\\\.svg|case3-hero-right.png|g' pages/case3.html)"
     ]
   }
 }
