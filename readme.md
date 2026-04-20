@@ -807,7 +807,18 @@ On viewports > 1200px, when the staircase pushes cards beyond the viewport, `ser
 | Panel slide-in | `transform: translateX(100%)` → `translateX(0)` |
 | Transition | `var(--transition-panel)` |
 | Backdrop | `opacity: 0` → `1`, same transition; `backdrop-filter: blur(12px)` added **only** on `.is-open` (iOS compositing fix) |
-| Visibility | `visibility: hidden` / `pointer-events: none` → visible/auto |
+| Visibility | `display: none` → `.is-animating` (display flex, transition-ready) → `.is-open` (pointer-events active) |
+
+#### iOS compositor pattern
+
+The overlay uses a two-step JS open and `transitionend`-based close to ensure `position: fixed` elements are completely removed from the GPU compositor when not visible:
+
+```
+Open:  add .is-animating → rAF → rAF → add .is-open
+Close: remove .is-open → transitionend → remove .is-animating → display: none
+```
+
+This prevents iOS Safari from holding a compositing layer for the overlay at rest, which caused other `position: fixed` / sticky elements (header, hero) to paint as solid black.
 
 #### Panel Width
 
@@ -918,6 +929,10 @@ The document is editable in Google Docs — changes appear immediately in the ov
 | Content padding-top | 40px | 40px |
 | Links font | button-text tokens | same |
 | Slide transition | var(--transition-panel) | same |
+
+#### iOS compositor pattern (same as contact overlay)
+
+`display: none` at rest → `.is-animating` on open start → `.is-open` triggers slide-in → remove `.is-open` on close → `transitionend` → remove `.is-animating` → `display: none`.
 
 #### Email Button in Menu
 
@@ -1423,6 +1438,22 @@ On case pages, More Projects + Email + Footer are wrapped in a `.case-bottom` di
 - **Hero "Contact me" button wired to overlay.** `hero__bottom-contact` was `<a href="mailto:">` with no JS trigger — clicking did nothing. Changed to `<a href="#" class="hero__bottom-contact js-contact-open">` so it opens the contact overlay like all other `.js-contact-open` triggers (header, email section, menu).
 - **Hero circle clipping direction fixed.** `.hero__panel-center` changed from `align-items: center` to `align-items: flex-end` — image is now anchored to the bottom of the panel, clipping happens at the top only.
 - **iOS Safari black rendering bug fixed.** Random elements (header, hero, email section) painted as solid black on iOS due to `backdrop-filter: blur(12px)` being applied to `.contact-overlay__backdrop` even when the overlay was closed (opacity: 0 but still GPU-composited). Fixed by removing `backdrop-filter` from the base rule and adding it only to `.contact-overlay.is-open .contact-overlay__backdrop`. GPU compositing layer is now created only when the overlay actually opens.
+
+---
+
+## Session retrospective (Performance optimisation)
+
+- **Google Fonts trimmed.** All 5 HTML files loaded Roboto (full variable range 100–900 + italic) + Inter (100–900) + Cal Sans — but only Roboto 400 and 600 are used anywhere in the CSS. Reduced to `family=Roboto:wght@400;600` — removes 2 redundant font families and replaces the variable-range request with two specific weights.
+- **`loading="lazy"` added to below-fold images.** Applied across all pages using the fold line as the split point (hero section end on index, case-hero nav start on case pages). Totals: index.html 21, case1.html 18, case2.html 18, case3.html 15. Multi-line `<img>` tags (video-player posters) handled correctly via Perl slurp mode.
+- **Heavy PNGs replaced with compressed JPGs.** Five images swapped to user-supplied JPG versions: `case1-research-interview` 14 MB → 2.1 MB, `case1-test-table` 14 MB → 2.1 MB, `case2-research` 5.6 MB → 3.0 MB, `case1-research-hr1` 4.2 MB → 160 KB, `case1-research-hr2` 3.0 MB → 100 KB. Total saving ≈ 35 MB. All `src` and `data-zoom-src` references updated.
+
+---
+
+## Session retrospective (iOS rendering & services fix)
+
+- **iOS black rendering — root cause found and fixed (contact overlay).** `contact-overlay` was always `display: flex; position: fixed` with `visibility: hidden` — iOS Safari kept a GPU compositor layer for it at rest, conflicting with sticky/fixed elements (header, hero, email, projects). Fixed by switching to `display: none` at rest + two-step JS open (`is-animating` → rAF → `is-open`) + `transitionend`-based close.
+- **iOS black rendering — second source fixed (header menu).** `header__menu` had the identical pattern: at ≤1200px it was `display: block; position: fixed; transform: translateX(100%)` — off-screen but always composited. Applied the same `display: none` + `.is-animating` + `transitionend` pattern. `header-menu.js` refactored into `openMenu()` / `closeMenu()` functions; `closeMenu` exposed as `menu._closeMenu` so `contact-overlay.js` can call it cleanly.
+- **Services card images distorted on mobile — fixed.** `background-size: 100% 100%` stretched the SVG backgrounds to fill the card exactly, ignoring aspect ratio. Desktop cards are ~850×240 px (3.5:1); mobile cards are ~335×240 px (1.4:1) — the same stretch on a narrower card distorts the image. Fixed by adding `background-size: cover` at the `≤834px` breakpoint. Image now scales proportionally and fills the card without distortion.
 
 ---
 

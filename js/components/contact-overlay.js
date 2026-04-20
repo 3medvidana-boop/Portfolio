@@ -34,11 +34,16 @@
     }
 
     function openOverlay() {
-      var header = document.querySelector('.header');
       var menu = document.querySelector('.header__menu');
-      if (header && menu) {
-        header.classList.remove('header--menu-open');
+      if (menu && typeof menu._closeMenu === 'function') {
+        // Use the menu's own close logic (handles is-animating cleanup)
+        menu._closeMenu();
+      } else if (menu) {
+        // Fallback: instant close without animation
+        var header = document.querySelector('.header');
+        if (header) header.classList.remove('header--menu-open');
         menu.classList.remove('is-open');
+        menu.classList.remove('is-animating');
       }
       // Step 1: make element display:flex so transitions can fire
       overlay.classList.add('is-animating');

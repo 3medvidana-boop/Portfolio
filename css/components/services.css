@@ -195,6 +195,7 @@
 
   .services__card {
     width: 100%;
+    background-size: cover; /* proportional scale — prevents distortion on narrow cards */
   }
 
   .services__card:nth-child(2) {
@@ -208,7 +209,7 @@
 
   /* Disable hover */
   .services__card:hover {
-    background-size: 100% 100%;
+    background-size: cover;
   }
 
   .services__card:hover::after {

@@ -303,8 +303,9 @@
     height: 32px;
   }
 
-  /* Menu overlay — enabled */
-  .header__menu {
+  /* Menu overlay — enters DOM only when animating or open,
+     so iOS Safari never creates a GPU compositor layer for it at rest */
+  .header__menu.is-animating {
     display: block;
   }
 }
