@@ -64,7 +64,7 @@
   padding: 16px;
   box-sizing: border-box;
   border: 1px solid var(--color-black-16);
-  background-size: 100% 100%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
@@ -72,12 +72,6 @@
   overflow: hidden;
   position: relative;
   cursor: pointer;
-  transition: background-size var(--transition-base);
-}
-
-/* Hover: zoom background image 10% */
-.services__card:hover {
-  background-size: 110% 110%;
 }
 
 /* Background images */
@@ -195,7 +189,6 @@
 
   .services__card {
     width: 100%;
-    background-size: cover; /* proportional scale — prevents distortion on narrow cards */
   }
 
   .services__card:nth-child(2) {
@@ -207,11 +200,7 @@
     padding-bottom: 80px;
   }
 
-  /* Disable hover */
-  .services__card:hover {
-    background-size: cover;
-  }
-
+  /* Disable gradient hover on mobile */
   .services__card:hover::after {
     opacity: 1;
   }
