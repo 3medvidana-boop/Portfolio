@@ -49,7 +49,8 @@
       "Bash(sed -i 's|case2-research\\\\.png|case2-research.jpg|g' pages/case2.html)",
       "Bash(sed -i -e 's|case1-hero-left\\\\.svg|case1-hero-left.png|g' -e 's|case1-hero-right\\\\.svg|case1-hero-right.png|g' pages/case1.html)",
       "Bash(sed -i -e 's|case2-hero-left\\\\.svg|case2-hero-left.png|g' -e 's|case2-hero-right\\\\.svg|case2-hero-right.png|g' pages/case2.html)",
-      "Bash(sed -i -e 's|case3-hero-left\\\\.svg|case3-hero-left.png|g' -e 's|case3-hero-right\\\\.svg|case3-hero-right.png|g' pages/case3.html)"
+      "Bash(sed -i -e 's|case3-hero-left\\\\.svg|case3-hero-left.png|g' -e 's|case3-hero-right\\\\.svg|case3-hero-right.png|g' pages/case3.html)",
+      "WebSearch"
     ]
   }
 }

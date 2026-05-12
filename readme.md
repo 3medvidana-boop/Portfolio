@@ -548,7 +548,7 @@ Hover:       [->  Label text      ]
 | Property | Case 1 | Case 2 | Case 3 | Case 4 |
 |----------|--------|--------|--------|--------|
 | margin-right | 90px | 150px | 210px | 270px |
-| Background image | project-case1.png | project-case2.svg | project-case3.svg | project-case4.svg |
+| Background image | project-case1.png | project-case2.png | project-case3.png | project-case4.png |
 | border-left | 4px solid transparent | same | same | none |
 | Focused border-left | 4px solid var(--color-black) | same | same | — |
 | Hover | bg var(--color-white), no image | same | same | disabled |
@@ -622,8 +622,8 @@ Each row becomes a column. 1st card is full width, 2nd card has 120px left offse
 | Card height | 240px | 240px | 240px |
 | Card padding | 16px | 16px | 16px |
 | Border | 1px solid var(--color-black-16) | same | same |
-| Background-size | 100% 100% | 100% 100% | cover |
-| Hover bg-size | 110% 110% (10% zoom) | 110% 110% | disabled (stays cover) |
+| Background-size | cover | cover | cover |
+| Hover bg-size | — (removed) | — (removed) | disabled |
 | Gradient overlay | 48% height, white gradient | same | same (stays visible) |
 | Hover overlay | opacity: 0 | opacity: 0 | disabled (stays opacity: 1) |
 | 2nd card margin-left | 0 | 120px | 0 |
@@ -1488,6 +1488,17 @@ On case pages, More Projects + Email + Footer are wrapped in a `.case-bottom` di
 | Hero & projects | `panel-nav`, `project-case1`, `workflow-image` |
 
 - **Safe SVGs kept in place.** `assets/icons/` (7 icon SVGs, ≤ 1 KB each) and `logo56.svg` (221 B) are genuine vectors — no embedded PNGs, no iOS risk.
-- **Pending migration.** `hero-circle.svg` / `hero-circle1200.svg` / `hero-circle1440.svg` / `hero-circle-bottom.svg` (2.7 MB each) + `project-case2/3/4.svg` — PNG replacements not yet provided.
+- **Pending migration.** `hero-circle.svg` / `hero-circle1200.svg` / `hero-circle1440.svg` / `hero-circle-bottom.svg` (2.7 MB each) — PNG replacements not yet provided. `project-case2/3/4.svg` — ✅ completed in follow-up.
 - **Dead files removed.** `Project-case1/2/3/4-image.svg` (unused 200–324 B stubs) deleted from `assets/images/`.
 - **`projects__see-all` button hidden.** `display: none` added to `.projects__see-all` in `projects.css` via a `--visible` modifier pattern. HTML markup preserved; restore by adding class `.projects__see-all--visible` or removing the `display: none` rule when the "see all" page is ready.
+
+---
+
+## Session retrospective (Domain, email & visual fixes)
+
+- **Domain `ursaux.com` purchased on Vercel.** Brand name: Ursa (Latin for bear, matching surname Медвідь) + UX (field of work). Unique, memorable, no existing brand conflict.
+- **Zoho Workplace Standard configured** (€2.7/month). Primary address `hello@ursaux.com` for the portfolio site; alias `a.medvid@ursaux.com` for outreach. MX, SPF, DKIM records added to Vercel DNS. Domain verified.
+- **Formspree updated** — contact form submissions now delivered to `hello@ursaux.com`.
+- **Header email link updated.** `components/header.html` and `pages/components.html`: `mailto:` → `mailto:hello@ursaux.com`. Note: on all real pages (`index.html`, `case1–3.html`) the header email icon opens the contact overlay via `js-contact-open`, not a `mailto:` link.
+- **Services cards `background-size` changed to `cover` at all breakpoints.** Previous `100% 100%` stretched images to fill card dimensions exactly, causing visible distortion as card aspect ratio changed with viewport width. `cover` maintains image proportions and crops to fill. Hover zoom animation (`110% 110%`) removed — CSS cannot transition smoothly from a keyword (`cover`) to a percentage value.
+- **`project-case2/3/4.svg` references updated to `.png`** in `projects.css`. PNG files were already present; only the CSS references were stale.
