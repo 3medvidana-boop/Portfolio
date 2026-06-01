@@ -33,6 +33,10 @@
 .projects__title {
   margin: 0;
   white-space: nowrap;
+  /* Semantically an <h2>, but keeps the <h1>-scale look to match the hero title */
+  font-size: var(--h1-font-size);
+  line-height: var(--h1-line-height);
+  letter-spacing: var(--h1-letter-spacing);
 }
 
 .projects__pagination {

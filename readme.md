@@ -217,7 +217,7 @@ Mobile overrides at `@media (max-width: 834px)`.
 | letter-spacing | -0.969px | -0.5px |
 | color | `var(--color-black)` | `var(--color-black)` |
 
-**Used in:** `h1` (global), `.hero__title`, `.projects__title`
+**Used in:** `h1` (global), `.hero__title`, `.projects__title` (the latter is an `<h2>` element that overrides its font to the `--h1-*` scale — see note below)
 
 #### `--h2-*`
 
@@ -230,7 +230,7 @@ Mobile overrides at `@media (max-width: 834px)`.
 | letter-spacing | -0.855px | -0.5px |
 | color | `var(--color-black)` | `var(--color-black)` |
 
-**Used in:** `h2` (global), `.competences__title`, `.services__title`, `.workflow__title`, `.email__greeting`, `.email__name`, `.footer__name`
+**Used in:** `h2` (global), `.competences__title`, `.services__title`, `.workflow__title`, `.email__greeting`, `.email__name`, `.footer__name`, `.projects__title` (semantic `<h2>` tag, visually scaled to `--h1-*` via font overrides)
 
 #### `--h3-*`
 
@@ -1502,3 +1502,63 @@ On case pages, More Projects + Email + Footer are wrapped in a `.case-bottom` di
 - **Header email link updated.** `components/header.html` and `pages/components.html`: `mailto:` → `mailto:hello@ursaux.com`. Note: on all real pages (`index.html`, `case1–3.html`) the header email icon opens the contact overlay via `js-contact-open`, not a `mailto:` link.
 - **Services cards `background-size` changed to `cover` at all breakpoints.** Previous `100% 100%` stretched images to fill card dimensions exactly, causing visible distortion as card aspect ratio changed with viewport width. `cover` maintains image proportions and crops to fill. Hover zoom animation (`110% 110%`) removed — CSS cannot transition smoothly from a keyword (`cover`) to a percentage value.
 - **`project-case2/3/4.svg` references updated to `.png`** in `projects.css`. PNG files were already present; only the CSS references were stale.
+- **Favicon added.** `favicon.png` in project root, linked on all 5 pages.
+- **OG + Twitter Card meta tags added** to all 5 pages. Unique `og:title`, `og:description`, `og:url` per page; shared `og:image` → `assets/images/og-image.png`.
+- **`<meta name="description">` added** to all 5 pages. Index description includes "Based in EU, available for worldwide clients."
+- **`lang="uk"` → `lang="en"`** on all pages — content is English, correct for EU/worldwide search visibility.
+
+---
+
+## SEO checklist — ursaux.com
+
+### ✅ Done
+
+| # | What |
+|---|------|
+| 1 | `lang="en"` on all pages |
+| 2 | `<meta charset>`, `<meta viewport>` |
+| 3 | Unique `<title>` per page (50–60 chars) |
+| 4 | `<meta name="description">` per page (110–160 chars) |
+| 5 | Open Graph tags (title, description, image, url, type) |
+| 6 | Twitter Card tags |
+| 7 | OG image `og-image.png` 1200×630px |
+| 8 | Favicon |
+| 9 | HTTPS + custom domain `ursaux.com` |
+| 10 | `loading="lazy"` on below-fold images |
+| 11 | `width` + `height` on all `<img>` tags |
+| 12 | Google Fonts trimmed (Roboto 400/600 only) |
+| 13 | Compressed images (JPG replacing heavy PNGs) |
+| 14 | `sitemap.xml` — home + 3 case pages (components.html excluded) |
+| 15 | `robots.txt` — allow all, disallow components.html, link sitemap |
+| 16 | `<link rel="canonical">` on home + 3 case pages |
+| 17 | Single `<h1>` per page — `Projects` changed `<h1>`→`<h2>` on index (font kept via `--h1-*` override) |
+| 18 | Keyword-rich `<title>`, `<h1>` and hero subtitle on index (SaaS, B2B, AI products, UX/UI designer) |
+| 19 | Descriptive keyword alt text on content images (home previews, avatar, all case-page screenshots) |
+| 20 | JSON-LD `Person` structured data on index (name, jobTitle, knowsAbout, sameAs LinkedIn) |
+| 21 | `rel="noopener noreferrer"` on all external links (LinkedIn, resume Google Doc) |
+
+### ❌ To do
+
+All remaining items are **external, post-deploy actions** — they require the site to be live so crawlers/tools can read `sitemap.xml`, `robots.txt` and the meta tags.
+
+| # | What | Priority |
+|---|------|----------|
+| 1 | **Google Search Console** — verify domain, submit sitemap | 🔴 Critical |
+| 2 | **LinkedIn** — add `ursaux.com` to profile (backlink) | 🟡 Important |
+| 3 | **Google Analytics or Plausible** — traffic tracking | 🟡 Important |
+| 4 | **PageSpeed Insights** — check Core Web Vitals score | 🟡 Important |
+
+---
+
+## Session retrospective (SEO foundation)
+
+- **Crawlability files added.** `sitemap.xml` (home + 3 case pages; `components.html` excluded as an internal showcase) and `robots.txt` (allow all, disallow `components.html`, link to sitemap).
+- **Per-page meta complete.** Unique `<title>` (keyword-front-loaded), `<meta name="description">`, Open Graph + Twitter Card tags, and `<link rel="canonical">` on all four public pages. `og-image.png` (1200×630) verified on opengraph.xyz.
+- **Favicon** (`favicon.png`) linked on all pages.
+- **`lang="uk"` → `lang="en"`** — content is English; correct signal for EU/worldwide search.
+- **Keyword optimisation of the homepage.** `<title>`, `<h1>` and hero subtitle rewritten around the target niche: *UX/UI designer for complex B2B, SaaS and AI products*. The `<h1>` keeps the brand voice ("…that feel obvious") while the subtitle carries the explicit keyword line.
+- **Single `<h1>` per page.** On `index.html` the `Projects` heading was changed `<h1>`→`<h2>`; its visual scale is preserved by overriding `.projects__title` to the `--h1-*` tokens.
+- **Descriptive, keyword-rich `alt` text** on every content image — homepage previews, the email avatar, and all case-page screenshots (hero laptops, research, personas, user flows, test tables, final UI). Decorative images (icons, arrows, gradient strips, background shapes) intentionally keep `alt=""` per accessibility guidance.
+- **JSON-LD `Person` structured data** on `index.html` — `name`, `jobTitle`, `description`, `knowsAbout` (UX/UI, B2B SaaS, AI product design, design systems…), `sameAs` (LinkedIn).
+- **`rel="noopener noreferrer"`** confirmed on all external links (LinkedIn footer, resume Google Doc).
+- **Pending — external post-deploy actions only.** Google Search Console (verify + submit sitemap), LinkedIn backlink, analytics, PageSpeed/Core Web Vitals check.

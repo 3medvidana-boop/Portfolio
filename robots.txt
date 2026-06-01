@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /pages/components.html
+
+Sitemap: https://ursaux.com/sitemap.xml
